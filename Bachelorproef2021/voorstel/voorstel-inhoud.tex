@@ -1,0 +1,59 @@
+%---------- Inleiding ---------------------------------------------------------
+
+\section{Introductie} % The \section*{} command stops section numbering
+\label{sec:introductie}
+
+Artificiële intelligentie heeft de afgelopen jaren al heel wat vooruitgang geboekt. Ook op het vlak van vertalingen zien we veel tools opduiken zoals Google Translate en DeepL die een redelijk goede vertaling aan de gebruiker kunnen aanbieden. Vaak volstaan deze vertalingen niet omdat Artificiële Intelligentie geen emotionele gevoelswaarden of culturele aspecten, zoals beleefdheidsvormen, kan verstaan of vertalen. De betekenis of zelfs context van veel zinnen gaat zo verloren. Maar zou het niet handig zijn moest een AI gevoelswaarden kunnen afleiden uit een tekst? Denk maar aan bedrijven waarvoor de klanten recensies kunnen schrijven. De AI zou dan aan de hand van detectiesoftware bepaalde gevoelswaarden kunnen herkennen. Het bedrijf in kwestie kan dan inspelen op de gevoelens van elke afzonderlijke klant, wat enorm veel voordelen met zich oplevert.
+Een voorbeeld hiervan: een klant laat een boze, ontevreden recensie achter. De AI detecteert dat dit een boze recensie is, en speelt hierop in met een verontschuldigend antwoord en misschien zelfs een compensatie.  
+In deze bachelorproef zal dit thema onderzocht worden: kunnen AI’s getraind worden om gevoelswaarden in een tekst te begrijpen en hiernaar correct te handelen? Daarbij worden volgende vragen onderzocht:
+
+\begin{itemize}
+  \item Hoe ver staan Natural Language Processing en Sentiment Analysis al?
+  \item Kunnen AI's bepaalde gevoelswaarden al begrijpen?
+  \item In welke mate kunnen AI's deze gevoelswaarden begrijpen?
+  \item Kunnen bedrijven Sentiment Analysis en Opinion Mining gebruiken bij het analyseren van hun reviews?
+\end{itemize}
+
+%---------- Stand van zaken ---------------------------------------------------
+
+\section{State-of-the-art}
+\label{sec:state-of-the-art}
+
+Artificiële Intelligentie heeft al heel wat vorderingen gemaakt op het vlak van het analyseren van teksten. Maar deze analyses verstaan nooit de gevoelswaarde die de auteur in de tekst probeert te brengen. 
+Het vakgebied van artificiële intelligentie dat hierover handelt, heet Natural Language Processing of NLP. NLP houdt zich vooral bezig met de interactie tussen computers en menselijke taal. NLP onderzoekt of een AI in staat is om de inhoud van een tekst te begrijpen. De uitdaging is hier om ook gevoelens uit deze teksten te halen.~\autocite{Knight1997}
+Een vaak gebruikte techniek bij NLP is sentiment analysis, ook bekend als opinion mining. Deze techniek bepaalt of data een positieve, negatieve of neutrale connotatie heeft. ~\autocite{MonkeyLearn2020}
+Er zijn al een aantal onderzoeken gedaan naar de mogelijkheid om AI’s de kennis over gevoelswaarden te geven. ~\autocite{ChewYean2015} Microsoft heeft zo een Tekst Analytics API ontworpen. ''De Text Analytics API is een cloud-gebaseerde dienst die Natural Language Processing (NLP) functies biedt voor text mining en tekstanalyse, waaronder: sentiment analysis, opinion mining,key phrase extraction, language detection en named entity recognition.'' ~\autocite{Microsoft2020} Er werd hiervoor een  Text Analytics Library ontworpen. Hierbij kan men over een zin zeggen of deze een negatieve, neutrale of positieve connotatie heeft. Dit onderzoek zal verder uitgewerkt worden in de bachelorproef.
+Verder zal er geprobeerd worden om zelf een dataset te trainen en de hoogst mogelijke accuracy proberen te halen met behulp van een al eerder aangemaakte dataset van een aantal reviews ~\autocite{Minqing2004}. 
+
+
+% Voor literatuurverwijzingen zijn er twee belangrijke commando's:
+% \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
+%   geen onderdeel is van de zin.
+% \textcite{KEY} => Auteur (jaartal)  Gebruik dit als de auteursnaam wel een
+%   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
+%   ...'')
+
+
+%---------- Methodologie ------------------------------------------------------
+\section{Methodologie}
+\label{sec:methodologie}
+
+Om uit te testen hoe ver AI al staat met het analyseren van een tekst en de gevoelens van deze tekst, zal de hierboven vermelde Microsoft library getest worden in Visual Studio. Er zullen een honderdtal zinnen weergegeven worden, en op basis van deze zinnen zal er gekeken worden hoe goed deze tool is om recensies en opmerkingen te analyseren. Zinnen die goed geanalyseerd worden zullen een 1 toegekend krijgen, terwijl zinnen die slecht geanalyseerd worden een 0 krijgen. Onder 'goed' verstaan we een positieve zin die beoordeeld wordt als positief, een negatieve zin als negatief en een neutrale zin als neutraal. 
+In dit onderzoek zal de data van een al bestaande dataset getraind worden om te kijken of AI al ver genoeg staat zodat bedrijven hun recensies zouden kunnen laten analyseren. Verder onderzoek over welke dataset zal gebruikt worden is nog nodig.
+
+
+%---------- Verwachte resultaten ----------------------------------------------
+\section{Verwachte resultaten}
+\label{sec:verwachte_resultaten}
+
+Wat er verwacht wordt van de resultaten na de testen uitgevoerd te hebben, is dat Artificiële Intelligentie al ver staat, maar dat het detecteren van emoties in teksten nog niet perfect is. Er zijn al heel wat studies en experimenten uitgevoerd over dit onderwerp, maar er zijn enorm veel nuances aan een taal, waardoor verwacht wordt dat de huidige tools de tekst nog niet perfect kunnen evalueren. Voor het evalueren van de gevoelswaarden van recensies voor bedrijven wordt er verwacht dat de huidige tools en de huidige kennis wel genoeg zijn.
+Bij de Microsoft Library worden redelijk goede resultaten verwacht. Er wordt verwacht dat 85-90 procent van de zinnen juist geanalyseerd zal worden. De Microsoft Library geeft enkel aan of een zin een positieve, negatieve of neutrale connotatie heeft. Bij het trainen van een al eerder gedefineerde dataset, met eigen geschreven training en testing worden er iets minder goede resultaten verwacht. We verwachten hier dat 75-80 procent van de zinnen correct geanalyseerd zal worden.
+
+
+
+%---------- Verwachte conclusies ----------------------------------------------
+\section{Verwachte conclusies}
+\label{sec:verwachte_conclusies}
+
+De conclusie die verwacht wordt is de volgende: Artificiële Intelligentie is wel klaar om door bedrijven toegepast te worden om het gevoel van hun klanten in reviews of teksten te herkennen en hier gepast op te handelen. Het is echter heel moeilijk voor AI’s om het menselijk denken en handelen in een dataset te plaatsen en deze te analyseren. Ondanks dat AI nog niet in staat is om alle zinnen correct te analyseren, staat AI wel al ver genoeg om opinion mining in het echte leven bij bedrijven te gebruiken.
+
