@@ -6,10 +6,11 @@
 % bijzonder aan wat de link is met het vorige en volgende hoofdstuk.
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
-In een eerste hoofdstuk wordt het begrip artificiële intelligentie besproken. Deze term is heel belangrijk, want het analyseren van reviews is een toepassing hiervan. Ook de geschiedenis wordt hier kort besproken. Daarna wordt machine learning beter uitgelegd. Machine learning is een belangrijk deelveld van artificiële intelligentie. Vervolgens worden deep learning en neurale netwerken besproken. Deze technieken zijn nodig om de reviews te analyseren. 
+
 
 \section{Artificiële Intelligentie: Introductie en Termen}
 \label{sec:artificiëleintelligentieintroductie}
+In een eerste hoofdstuk wordt het begrip artificiële intelligentie besproken. Deze term is heel belangrijk, want het analyseren van reviews is een toepassing hiervan. Ook de geschiedenis wordt hier kort besproken. Daarna wordt machine learning beter uitgelegd. Machine learning is een belangrijk deelveld van artificiële intelligentie. Vervolgens worden deep learning en neurale netwerken besproken. Deze technieken zijn nodig om de reviews te analyseren. 
 
 \subsection{Artificiële Intelligentie}
 \label{sec:artificiëleintelligentie}
@@ -33,21 +34,285 @@ Artificiële intelligentie blijft tot op vandaag de dag een veelbesproken onderw
 
 \subsection{Machine Learning}
 \label{sec:machinelearning}
+Machine Learning is een deelveld van artificiële intelligentie. Het verschil is dat machine learning leert van fouten en successen en zichzelf programmeert om een specifieke taak zo goed mogelijk uit te voeren, met meer precisie. Een voorbeeld hiervan: YouTube beveelt de gebruiker steeds nieuwe video’s aan die hem of haar kunnen interesseren aan de hand van video’s die de gebruiker al eerder heeft bekeken. \autocite{IBM2021}
+
+Als men spreekt over machinaal leren (of machine learning), dan spreekt men over algoritmen. Deze kan men definiëren als “een opeenvolging van statistische verwerkingsstappen”. Bij machinaal leren worden deze algoritmen getraind met het doel om patronen en herkenningspunten te ontdekken in gegevens en op basis van deze gegevens beslissingen of voorspellingen te maken op basis van nieuwe gegevens. \autocite{IBM2020a}
+
+Machines kunnen op een aantal verschillende manieren leren, of een mix van verschillende technieken toepassen. Deze technieken kunnen in 3 categorieën ingedeeld worden:
 
 \subsubsection{Supervised Learning}
 \label{sec:supervisedlearning}
+Bij supervised learning krijgt het algoritme gelabelde gegevens. Bijvoorbeeld bij een dataset van de winkelketen Zalando krijgt elk item een label: ‘kledij’ of ‘schoenen’. Het algoritme leert aan de hand van deze gelabelde gegevens en kan zo toekomstige gegevens in een categorie opdelen. Wanneer de labels reële getallen zijn, gaat het over \textbf{regressie}. Wanneer de labels voorgedefinieerde klassen voorstellen, dan gaat het over \textbf{classificatie}. Een voorbeeld hiervan is spamdetectie, waarbij de gegevens opgedeeld worden in ‘spam’ en ‘geen spam’.\autocite{Lievens2020} 
 
 \subsubsection{Unsupervised Learning}
 \label{sec:unsupervisedlearning}
+Bij unsupervised learning krijgt het algoritme ongelabelde gegevens. Het doel hiervan is om een ‘structuur’ te ontdekken in de dataset. Clustering is de bekendste taak van unsupervised learning. Hierbij wordt de data in groepen (clusters) opgedeeld. Een voorbeeld hiervan is een website van een krant. Hier worden de verschillende artikels gegroepeerd volgens onderwerp. \autocite{Lievens2020}
+Andere taken van unsupervised learning zijn Anomaliedetectie en primaire componentenanalyse. 
 
 \subsubsection{Reinforcement Learning}
 \label{sec:reinforcementlearning}
-
+Bij reinforcement learning wordt er geen gebruik gemaakt van datasets. Het algoritme leert van een dynamische omgeving. Deze omgeving geeft een reeks van beloningssignalen. Een negatief signaal betekent een ‘slechte’ handeling van de machine, terwijl een positief signaal een ‘goede’ handeling van de machine betekent. De machine leert welke acties leiden tot de hoogste totale beloning. \autocite{Lievens2020} Een voorbeeld hiervan is zelfrijdende auto’s. Deze worden beloond om op de weg te blijven. 
 \subsection{Deep Learning}
 \label{sec:deeplearning}
+Deep Learning is een ander deelveld van artificiële intelligentie, meer bepaald een deelveld van machine learning. Bij deep learning leert de robot zichzelf een specifieke taak aan, maar zonder interventie van wetenschappers. \autocite{IBM2020} Bij deep learning wordt het proces van gegevens analyseren steeds herhaald zodat de nauwkeurigheid van toekomstige voorspellingen steeds verbetert. Deep Learning wordt tegenwoordig vaak gebruikt, bijvoorbeeld bij digitale assistenten of spraak-gestuurde huizen. \autocite{IBM2020}
+Ook het herkennen van gevoelens in recensies gebeurt aan de hand van deep learning. 
+Dankzij deep learning, kunnen algoritmes een output geven die veel accurater is dan bij machine learning. Deep learning werkt met algoritmes die gebaseerd zijn op artificiële neurale netwerken en traint zijn model aan de hand van gelabelde data.
+
 
 \subsection{Neurale Netwerken}
-\label{sec:neurallnetworks}
+\label{sec:neuralnetworks}
+
+De meeste deep learning modellen maken gebruik van neurale netwerken. Daarom refereren sommigen naar deep learning modellen als ‘deep neural networks’. 
+Een neuraal netwerk is een netwerk dat gebaseerd is op de hersenstructuur. Een neuraal netwerk bestaat uit neuronen, dit is ook zichtbaar op de foto hieronder. Het netwerk heeft verder enkele input neuronen en enkele output neuronen. Tussen deze inputs en outputs zijn er verbindingen, waar gewichten aan toegekend worden. Alle input neuronen samen worden de inputlaag genoemd, terwijl alle output neuronen de outputlaag vormen. Er kunnen hiertussen nog één of meerdere lagen liggen, die de verborgen lagen worden genoemd. De data gaat doorheen dit model, van de inputlaag, door de verborgen lagen, naar de uitvoerlaag. Hoe Natural Language Processing (NLP) deze lagen gebruikt, wordt later in deze bachelorproef besproken. \autocite{Vervoort2017}
+
+\begin{figure}[!ht]
+    \includegraphics[width=\textwidth]{NeuraalNetwerk.jpg}
+    \caption{\label{neuraalnetwerk}Neuraal Netwerk \autocite{KULeuven2019}.}
+\end{figure}
+
+De verschillende lagen voeren verschillende transformaties uit op de inputdata. Omdat de data van de invoer naar de uitvoer stroomt, wordt dit een voorwaarts gericht netwerk genoemd. Op de foto zien we dat de invoerlaag 4 neuronen heeft en de uitvoerlaag heeft 3 neuronen. Dit betekent dat er 3 mogelijke uitkomsten zijn. De verborgen lagen kunnen verschillende types lagen zijn. Zo zijn er bijvoorbeeld convolutional layers, dense layers of pooling layers. Op elke verbinding tussen de lagen staan er ‘gewichten’. De transformatie van input naar output wordt zo berekend:
+output = activatiefunctie x (som van de gewichten van de input nodes). \autocite{Vervoort2017} Wat een activatiefunctie is wordt later besproken. 
+
+\section{Datasets en gegevensvergaring}
+\label{sec:datasetsgegevensvergaring}
+In dit tweede hoofdstuk wordt besproken wat een dataset juist is, en hoe deze getraind kan worden. Verder worden enkele termen overlopen zoals een activatiefunctie en over-en underfitting. Deze termen zullen zeker terugkomen in het hoofdstuk Methodologie. 
+
+\subsection{Hoe wordt een dataset getraind?}
+\label{sec:hoewordtdatasetgetraind}
+In de paragraaf hierboven, werd uitgelegd wat deep learning is. Hierbij wordt een taak steeds herhaald, met als doel om de nauwkeurigheid te verbeteren. Deep learning werkt aan de hand van een dataset. 
+
+Een dataset is een verzameling van data. In deze bachelorproef is de data een aantal reviews. Elke review bevat enkele attributen: de auteur, het product, de tekst uit de review,...
+
+Wat betekent het om een dataset te trainen? Bij deep learning gaat de machine steeds over de dataset en leert hij uit de dataset. De nauwkeurigheid van een toekomstige voorspelling over een review wordt zo steeds beter. 
+
+Maar hoe wordt zo een dataset getraind?
+Om dit uit te leggen, dienen eerst drie termen verklaard te worden. Ten eerste is er de \textbf{training dataset}. Deze dataset is een verzameling van gegevens die gebruikt wordt om het model te trainen. Het model leert dan van deze gegevens. Om bepaalde parameters af te stellen, de hyperparameters, wordt er een \textbf{validatie dataset} gebruikt. Deze hyperparameters staan ook bekend als metaparameters en worden gebruikt om overfitting te vermijden. De term overfitting wordt later besproken. De resultaten die voort komen uit de validatie dataset worden gebruikt om onze hyperparameters bij te stellen. Ten slotte is er de \textbf{test dataset}. Deze dataset wordt meestal in het begin van onze training afgesplitst van de originele dataset, en wordt na het trainen op ons model toegepast, om te kijken of onze dataset een goede hypothese kan vormen voor nog onbekende gegevens. Dit levert steeds een nauwkeurigheid op. Hoe hoger deze nauwkeurigheid, hoe beter. \autocite{Shah2017} Om een dataset te trainen, moeten er eerst een paar stappen gebeuren. Deze worden hieronder besproken. 
+
+\subsubsection{Data preparatie}
+\label{sec:datapreparatie}
+Voordat het model getraind kan worden, moeten de gegevens uit de dataset eens overlopen worden. Het aantal attributen van een dataset kan zo verminderd worden. Data die niet nodig is, of die niet van belang is om het model te trainen kunnen alvast verwijderd worden uit de gegevens. 
+
+\subsubsection{Data Cleaning}
+\label{sec:datacleaning}
+In deze fase van het proces wordt de data ‘opgeschoond’. Soms kan data inconsistent zijn of kunnen er enkele velden missen. Daarom is het interessant om alle rijen te verwijderen die data van het type ‘null’ bevatten. Dit zijn de lege velden van de dataset. Verder is het ook belangrijk om alle niet-numerieke data om te zetten naar numerieke data. Zo kan bijvoorbeeld ‘geslacht’ omgezet worden in 0 en 1 via one hot encoding. Hierdoor wordt het veldje ‘geslacht’ omgezet in 2 nieuwe velden geslacht\_vrouw en geslacht\_man, waarbij er een 1 toegekend wordt als dit waar is, en een 0 als dit niet waar is. 
+
+\subsubsection{Opzetten van training dataset en test dataset}
+\label{sec:opzetten}
+Eenmaal de dataset opgekuist en klaargezet is, kan de dataset opgesplitst worden. De dataset wordt opgesplitst in een training set en een test set. Dit gebeurt steeds volgens een ratio. Meestal wordt 70\% van de dataset omgezet naar de training set en 30\% naar de test set. De training dataset wordt gebruikt om het model te trainen, de test dataset wordt gebruikt om te testen of de data wel goed getraind is. 
+
+\subsubsection{Het juiste model kiezen}
+\label{sec:model}
+Eenmaal de dataset opgesplitst is in een training en een test dataset, is het tijd om het model te kiezen. Voor het onderwerp van deze bachelorproef hebben we een neuraal netwerk nodig.
+
+HIER KOMT MEER UITLEG OVER MODEL, LAGEN, EPOCHS,... 
+
+Eenmaal het model gekozen en getraind is, is het mogelijk om de nauwkeurigheid van het model te berekenen en verder onderzoek te doen. 
+
+\subsection{Overfitting en underfitting}
+\label{sec:overunderfitting}
+
+Wanneer er een model getraind wordt, kan het natuurlijk voorvallen dat het model té goed of té slecht getraind is. Hiervoor worden de termen overfitting en underfitting gebruikt. Het model dat getraind wordt moet goed zijn. Een model kan ‘goed’ genoemd worden als het voor toekomstige informatie een goede predictie kan maken. Een model dat de data van de dataset te goed generaliseert, wordt \textbf{overfitting} genoemd. De nauwkeurigheid voor de getrainde data is zeer goed, maar dit is niet het geval voor toekomstige data. Om het anders te zeggen, het model heeft té veel van de training dataset geleerd. Bij \textbf{underfitting} is dit omgekeerd. Het model heeft te weinig van de training dataset geleerd, waardoor predicties met nieuwe data slecht zullen zijn. Bij het trainen van een model, is het belangrijk om een juiste balans te vinden. \autocite{AlMasri2019}
+
+Hoe wordt deze balans gevonden? Hoe worden overfitting en underfitting opgelost? 
+Voor \textbf{overfitting} kunnen er enkele technieken toegepast worden om dit te vermijden. 
+
+Overfitting kan herkend worden doordat de training set betere resultaten verkrijgt dan de test dataset. Om overfitting op te lossen kan er ten eerste extra data aan de training dataset toegevoegd worden. Het model kan meer leren als er meer data toegevoegd wordt. Zo is er ook extra diversiteit in de gegevens. Ten tweede kan de complexiteit van het model verminderd worden. Er kan bijvoorbeeld een verborgen laag weggehaald worden, of het aantal neuronen in de lagen kan verminderd worden. Ten derde kan er cross-validatie toegepast worden. Er worden kleine mini train-test datasets gemaakt om het model te verfijnen. Er zijn natuurlijk nog andere methoden om overfitting te vermijden. \autocite{Datascience2021}
+
+Omgekeerd, moet er ook rekening worden gehouden met underfitting. Om underfitting te vermijden kan ten eerste de complexiteit van het model verhoogd worden. Ten tweede kan het aantal features verhoogd worden en kan onnodige data uit de dataset verwijderd worden. Ten slotte kan ook het aantal epochs (cyclus die door de volledige dataset gaat) verhoogd worden zodat het trainen langer duurt en het model betere resultaten geeft. \autocite{GeeksforGeeks2020}
+
+\subsection{Activatiefunctie van een neuraal netwerk}
+\label{sec:activatiefunctie}
+
+De activatiefunctie van een neuraal netwerk is een functie die de inputdata van een neuron transformeert in output. Er bestaan meerdere activatiefuncties, de juiste activatiefunctie voor het netwerk kiezen heeft een grote impact op het netwerk. De verborgen lagen gebruiken meestal dezelfde activatiefunctie, maar dit kan een andere activatiefunctie zijn dan die van de outputlaag. Alle afbeeldingen van de activatiefuncties zijn gebaseerd op informatie gevonden uit het artikel van \textcite{Brownlee2021}. 
+
+\subsubsection{ReLU}
+\label{sec:ReLU}
+
+De eerste mogelijke activatiefunctie is de ReLU (of rectified linear activatiefunctie). De ReLU is, zoals de naam al aangeeft, een lineaire functie. Wanneer de output positief is, zal de ReLU gewoon de output nemen. Als de output negatief is zal de ReLU daar een waarde van 0 aan toekennen. Dit betekent dus dat op de ReLU grafiek, de functie nooit negatief zal zijn. De ReLU wordt het vaakste gebruikt bij verborgen lagen. \autocite{Brownlee2021}
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{ReLU.PNG}
+    \caption{\label{ReLU}De ReLU activatiefunctie \autocite{Brownlee2021}.}
+\end{figure}
+\FloatBarrier
+
+
+\subsubsection{Sigmoïde}
+\label{sec:sigmoide}
+
+De sigmoïde activatiefunctie zorgt ervoor dat elke input een output tussen 0 en 1 wordt. Ook hier kan de grafiek dus nooit in het negatieve gaan. Hoe hoger de input, hoe dichter bij 1 en omgekeerd. De sigmoïde functie wordt ook gebruikt bij logistische regressie, maar dit wordt niet in deze bachelorproef besproken. \autocite{Brownlee2021} De sigmoïde activatiefunctie gebeurt als volgt:
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{sigmoide.PNG}
+    \caption{\label{sigmoide}De sigmoïde activatiefunctie \autocite{Brownlee2021}.}
+\end{figure}
+\FloatBarrier
+
+
+\subsubsection{Tanh}
+\label{sec:tanh}
+
+De Tanh activatiefunctie lijkt een beetje op de sigmoïde activatiefunctie in die zin dat ze allebei die S-vorm vertonen. Het verschil tussen de sigmoïde activatiefunctie en de tanh activatiefunctie is dat de tanh activatiefunctie de input omzet in waarden tussen -1 en 1. Waardoor dit de enige activatiefunctie is waarbij de output negatief kan zijn. Hoe groter de input, hoe dichter bij 1, hoe kleiner de input, hoe dichter bij -1. \autocite{Brownlee2021}
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{tanh.PNG}
+    \caption{\label{tanh}De Tanh activatiefunctie \autocite{Brownlee2021}.}
+\end{figure}
+\FloatBarrier
+
+
+\section{Natural Language Processing}
+\label{sec:NLP}
+
+In dit hoofdstuk wordt besproken wat NLP of Natural Language Processing juist is. Daarnaast worden enkele interessante technieken besproken die in het onderzoek naar NLP zeker toegepast zullen worden. 
+
+\subsection{Wat is NLP?}
+\label{sec:WatisNLP}
+NLP staat voor Natural Language Processing en is het hoofdonderwerp van deze bachelorproef. Natural Language processing is het deelveld van artificiële intelligentie dat zich bezighoudt met taal. Deze term geeft machines of computers de mogelijkheid om tekst of spraak te herkennen. NLP maakt gebruik van machine learning en deep learning om taal te herkennen. Deze onderwerpen werden hiervoor al besproken. De NLP technologie stelt een machine niet enkel in staat om tekst te herkennen, maar ook om deze te ‘begrijpen’. Zo zijn de vertaaltools begonnen. NLP houdt niet enkel het herkennen van teksten in, maar ook het vertalen en begrijpen van teksten. Enkele voorbeelden hiervan zijn Google Translate en DeepL. NLP komt niet enkel voor in vertaaltools, maar ook bij digitale assistenten of chatbots. \autocite{IBM2020}
+
+Het analyseren van teksten, zinnen of uitgesproken woorden is niet gemakkelijk. De menselijke taal is heel complex. Mensen drukken zich vaak op heel veel verschillende manieren uit, en het is aan de machine om dit te interpreteren. Naast honderden talen, heeft elke taal nog vele dialecten. Daarnaast heeft elke taal zijn eigen grammaticaregels, termen en syntaxisregels.
+Op vlak van spraak gestuurde NLP, verspreekt een persoon zich al snel, of kan deze met een dialect praten. \autocite{sas2020}
+
+Natural Language Processing heeft veel technieken om de menselijke taal te interpreteren. NLP breekt de volledige teksten op in stukjes. Daarna probeert NLP de relaties tussen deze stukjes te analyseren en begrijpen. Enkele belangrijke taken van NLP zijn tokenization and parsing, language detection en lemmatization/stemming. \autocite{sas2020}
+
+\subsubsection{Language detection}
+\label{sec:Languagedetection}
+
+Wanneer een tekst onderzocht wordt, moet de machine eerst bepalen in welke taal deze tekst staat. Wanneer er meerdere talen in 1 tekst staan, worden er meerdere classificatie modellen gemaakt, 1 per taal. In de foto hieronder wordt dit getest met de zin ‘vandaag is een mooie dag’. 
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{LanguageDetection.png}
+    \caption{\label{languagedetection}Language Detection \autocite{sas2020}.}
+\end{figure}
+\FloatBarrier
+
+\subsubsection{Tokenization and parsing}
+\label{sec:Tokenization}
+
+Tokenization is een NLP techniek waarbij een string of zin in kleinere tokens opgedeeld wordt. Tokenization is belangrijk omdat in NLP de tekst geanalyseerd wordt op tokens. 
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{Tokenization.png}
+    \caption{\label{tokenization}Tokenization and parsing \autocite{sas2020}.}
+\end{figure}
+\FloatBarrier
+
+\subsubsection{Stemming and lemmatization}
+\label{sec:stemming}
+
+Stemming en lemmatization zijn twee NLP technieken die lijken op elkaar, maar toch verschillen op bepaalde vlakken. Het zijn beiden tekst normalisatie technieken. Stemming en lemmatization baseren zich allebei op het feit dat woorden afgestamd zijn van een ander woord. Zo hebben we bijvoorbeeld het werkwoord ‘spelen’. Van het werkwoord spelen kan gezegd worden dat het afstamt van speel. ‘Speelt’ en ‘Speelde’ stammen ook af van de stam ‘speel’. Het verschil tussen stemming en lemmatization is dat lemmatization rekening houdt met de context van het woord. \autocite{sas2020}
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{Stemming.png}
+    \caption{\label{stemming}Stemming and lemmatization \autocite{sas2020}.}
+\end{figure}
+\FloatBarrier
+
+NLP wordt vaak gebruikt in het alledaagse leven. Alexa en Siri zijn heel gekende voorbeelden, maar deze techniek wordt ook in veel andere toepassing gebruikt, zoals bij spam filtering. 
+
+\subsection{Text Analytics}
+\label{sec:textanalytics}
+
+Text analytics of text mining is een techniek die veel wordt teruggevonden in Natural Language Processing. Dankzij deze techniek wordt tekst zonder structuur gemakkelijk omgezet in een gestructureerde dataset. \autocite{Linguamatics2021} Deze dataset is nodig om het model te kunnen trainen, zoals uitgelegd in Hoofdstuk 2: Datasets en gegevensvergaring.
+Text mining is enorm belangrijk. In het dagelijkse leven komt iedereen in aanraking met tekst, denk maar aan e-mails, digitale assistenten, chatbots of posten op sociale media. In deze bachelorproef worden volzinnen uit recensies geanalyseerd op een positieve of negatieve connotatie. Text mining zal hier aan te pas komen op deze ongestructureerde volzinnen in een gestructureerde dataset om te vormen. Tijdens dit proces zal NLP aan de hand van machine learning toegepast worden. 
+
+\section{Sentiment Analysis}
+\label{sec:sentimentanalysis}
+
+In dit hoofdstuk wordt het begrip Sentiment Analysis besproken. Ten tweede wordt ook kort ingegaan op wat gevoelswaarden juist zijn. Verder wordt ook de problematiek van deze bachelorproef uitgelegd: waarom is het nu zo moeilijk om sentiment uit een tekst te halen?  
+
+\subsection{Wat is Sentiment Analysis?}
+\label{sec:watissentimentanalysis}
+
+Sentiment Analysis is het onderzoek dat in deze bachelorproef wordt uitgevoerd. Er wordt een sentiment analyse uitgevoerd op recensies. Sentiment analyse is een Natural Language Processing (NLP) techniek die gebruikt wordt om te onderzoeken of een tekst een positieve, neutrale of negatieve connotatie heeft. Klanten drukken vaak hun gevoelens uit in de vorm van tekst en/of recensies. Het is voor bedrijven essentieel om op deze gevoelens in te spelen. Met sentiment analysis kan een bedrijf de feedback van de klant analyseren en te begrijpen. \autocite{MonkeyLearn2021}
+ 
+Dankzij Sentiment Analysis kan een bedrijf te weten komen wat er in het hoofd van hun klanten omgaat. Sentiment Analysis kan niet enkel de reviews van de klant analyseren als positief/negatief, maar kan dit ook koppelen aan een bepaald product. Zo weet het bedrijf van welk product de klanten het meest tevreden zijn. \autocite{MonkeyLearn2021}
+
+Er zijn verschillende soorten sentiment analysis, zoals emotie detectie, multilingual sentiment analysis en aspect-based sentiment analysis. 
+
+Emotie detectie is een soort sentiment analysis die zich bezig houdt met het achterhalen van gevoelens uit teksten. Deze gevoelens kunnen boosheid, blijheid, verdriet en veel meer uitdrukken. \autocite{MonkeyLearn2021}
+
+Aspect-based sentiment analysis is de techniek die toegepast zal worden in het onderzoek van deze bachelorproef. Bij deze techniek komt een bedrijf te weten over welke features of producten de klant positief of negatief is .\autocite{MonkeyLearn2021}
+ 
+Multilingual sentiment analysis is hetzelfde als sentiment analysis, maar met de gedachte dat een review in de eigen taal moet geanalyseerd worden, om geen context of connotatie te verliezen. \autocite{MonkeyLearn2021}
+
+\subsection{Sentiment Analysis en Algoritmen}
+\label{sec:sentimentanalysisenalgoritmen}
+
+Bij het implementeren van het sentiment analysis model, zijn er 3 soorten algoritmes die men kan gebruiken. (MonkeyLearn, 2021)
+
+\subsubsection{Rule based}
+\label{rule based}
+
+Rule based algoritmen voeren de analyse uit op basis van een set regels. Deze regels kunnen ook bestaan uit NLP technieken zoals tokenization. Algoritmen gebaseerd op regels bepalen twee lijsten. Een lijst met positieve woorden zoals ‘goed’, ‘mooi’, ‘prachtig’ en ‘super’, en een lijst met negatieve woorden zoals ‘slecht’, ‘ontevreden’,  en  ‘lelijk’. Daarna telt het algoritme het aantal woorden uit deze lijst dat voorkomt in de gegeven tekst of review. Als er meer positieve woorden geteld zijn dan negatieve, dan wordt de tekst gezien als positief. Dit is dus omgekeerd ook het geval. \autocite{MonkeyLearn2021}
+
+\subsubsection{Automatic}
+\label{automatic}
+
+Bij dit algoritme gebruikt men machine learning technieken, waarbij de data getraind wordt. Wanneer we dan een tekst of review in dit algoritme steken, zal het algoritme daar een negatieve, neutrale of positieve connotatie aan toekennen. Dit gebeurt aan de hand van deep learning. \autocite{MonkeyLearn2021}
+
+\subsubsection{Hybrid}
+\label{hybrid}
+
+Bij hybrid algoritmen, maakt het algoritme gebruik van zowel rule-based als automatic algoritmen. \autocite{MonkeyLearn2021}
+
+\subsection{Wat zijn gevoelswaarden?}
+\label{gevoelswaarden}
+
+In de context van deze bachelorproef kunnen recensies gevoelswaarden bevatten. Ten eerste zijn er positieve gevoelswaarden. Dit gaat over positieve recensies die lovende kritiek geven over het product of het product aanraden. Enkele voorbeelden van positieve recensies: 
+
+\begin{itemize}
+    \item “Ik gebruik de laptop veel onderweg in de trein. Super makkelijk om mee te nemen. Hij start snel op en is perfect voor mijn werk.”
+    \item “Zoals altijd super een super spannend boek van een geweldige schrijver. Heerlijk!”
+\end{itemize}
+
+Echter kunnen recensies ook negatief zijn. Enkele voorbeelden van negatieve recensies:
+
+\begin{itemize}
+    \item “Deze jas heeft geen ritssluiting, waardoor de kans bestaat dat er regen door komt. Dit is niet wat ik verwacht had.”
+    \item “Teleurstellend. Het telefoonhoesje was beschadigd bij ontvangst.”
+\end{itemize}
+
+\subsection{Waarom is het moeilijk voor AI's om sentiment te analyseren?}
+\label{moeilijksentimentanalyseren}
+
+\subsubsection{Subjectiviteit}
+\label{subjectiviteit}
+
+Gevoelens zijn subjectief. Er zijn 1000 manieren waarop iemand zich kan uitdrukken, de één al positiever dan de ander. 
+
+\subsubsection{Context}
+\label{context}
+
+De context van bepaalde woorden is ook enorm belangrijk. Een voorbeeld: “De auto was bij aankoop goed beschadigd”. In deze zin zit het woordje ‘goed’, maar dit betekent niet dat de review een positieve connotatie heeft, integendeel. \autocite{MonkeyLearn2021}
+
+\subsubsection{Ironie en sarcasme}
+\label{ironiesarcasme}
+
+Ironie en sarcasme zijn twee zaken die een machine moeilijk kan herkennen. Wanneer iemand ironie of sarcasme gebruikt, drukt hij zijn negatieve gevoelens over een bepaald aspect uit met positieve woorden. \autocite{MonkeyLearn2021} Een voorbeeld hiervan: “Wauw, dat ging goed!”. Deze zin kan zowel in een positieve context gezien worden, maar kan ook sarcastisch opgenomen worden. 
+
+\subsubsection{Vergelijkingen}
+\label{vergelijkingen}
+
+Ook vergelijkingen kunnen door elkaar gebruikt worden. We kunnen ‘beter dan’ gebruiken in verschillende contexten. 
+
+\begin{itemize}
+    \item “Deze smartphone is beter dan de vorige versie.”
+\end{itemize}
+
+Deze review heeft duidelijk een positieve context, maar we kunnen ook deze review analyseren:
+
+
+\begin{itemize}
+    \item “Deze smartphone is trager dan gewoonlijk, maar het is beter dan niets.”
+\end{itemize}
+
+In deze context, is ‘beter dan’ helemaal niet positief. Dit duidt ook aan waarom het voor artificiële intelligentie zo moeilijk is om een sentiment uit een zin te halen. 
+
+
+\section{Gevoelswaarden detecteren in teksten}
+\label{gevoelswaardendetecteren}
+
 
 
 

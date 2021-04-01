@@ -16,7 +16,7 @@
 }
 
 @Online{Datascience2021,
-  author = {Elite Datascience},
+  author = {{Elite Datascience}},
   date   = {2021},
   title  = {Overfitting in Machine Learning: What is it and how to prevent it.},
   url    = {https://elitedatascience.com/overfitting-in-machine-learning},
@@ -37,14 +37,14 @@
 }
 
 @Online{IBM2021,
-  author = {IBM},
+  author = {{IBM Cloud Education}},
   date   = {2021},
   title  = {What is Artificial Intelligence (AI)},
   url    = {https://www.geeksforgeeks.org/underfitting-and-overfitting-in-machine-learning/},
 }
 
 @Online{IBM2020a,
-  author = {IBM},
+  author = {{IBM Cloud Education}},
   date   = {2020-07-15},
   title  = {What is Machine Learning?},
   url    = {https://www.ibm.com/cloud/learn/machine-learning},
@@ -71,7 +71,7 @@
   title        = {Siri, Siri in my Hand, who's the Fairest in the Land? On the Interpretations, Illustrations and Implications of Artificial Intelligence},
 }
 
-@Article{Rockwell2017,
+@Article{Anyoha2017,
   author       = {Rockwell Anyoha},
   date         = {2017-08-28},
   journaltitle = {Harvard University},
@@ -114,6 +114,13 @@
   journaltitle = {TechPulse},
   title        = {Wat is een artificieel neuraal netwerk?},
   url          = {https://techpulse.be/achtergrond/217521/wat-een-artificieel-neuraal-netwerk/},
+}
+
+@Online{KULeuven2019,
+  author = {{KU Leuven}},
+  date   = {2019-12-05},
+  title  = {Neuraal Netwerk},
+  url    = {https://www.kuleuven.be/toekomstigestudenten/verwondering/afbeeldingen/neuraal-netwerk/view},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}
