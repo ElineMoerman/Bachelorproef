@@ -1,7 +1,7 @@
 % Encoding: UTF-8
 
 @Online{IBM2020,
-  author       = {IBM},
+  author       = {{IBM Cloud Education}},
   date         = {2020-07-02},
   title        = {Natural Language Processing},
   url          = {https://www.ibm.com/cloud/learn/natural-language-processing},
@@ -121,6 +121,27 @@
   date   = {2019-12-05},
   title  = {Neuraal Netwerk},
   url    = {https://www.kuleuven.be/toekomstigestudenten/verwondering/afbeeldingen/neuraal-netwerk/view},
+}
+
+@Article{Marketing2021,
+  author = {Vendasta Marketing},
+  date   = {2021},
+  title  = {The SaaS Platform: A Beginner's Guide to Software as a Service},
+  url    = {https://www.vendasta.com/blog/saas-platform-guide/#:~:text=A SaaS platform is a,a website or an app.},
+}
+
+@Online{Maguire2021,
+  author = {Riley Maguire},
+  date   = {2021-03-28},
+  title  = {What is MonkeyLearn?},
+  url    = {https://help.monkeylearn.com/en/articles/2174206-what-is-monkeylearn},
+}
+
+@Dataset{Ni2019,
+  author = {Jianomo Ni, Jiacheng Li, Julian McAuley},
+  date   = {2019},
+  editor = {EMNLP},
+  title  = {Empirical Methods in Natural Language Processing},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

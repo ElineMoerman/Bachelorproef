@@ -66,7 +66,7 @@ De meeste deep learning modellen maken gebruik van neurale netwerken. Daarom ref
 Een neuraal netwerk is een netwerk dat gebaseerd is op de hersenstructuur. Een neuraal netwerk bestaat uit neuronen, dit is ook zichtbaar op de foto hieronder. Het netwerk heeft verder enkele input neuronen en enkele output neuronen. Tussen deze inputs en outputs zijn er verbindingen, waar gewichten aan toegekend worden. Alle input neuronen samen worden de inputlaag genoemd, terwijl alle output neuronen de outputlaag vormen. Er kunnen hiertussen nog één of meerdere lagen liggen, die de verborgen lagen worden genoemd. De data gaat doorheen dit model, van de inputlaag, door de verborgen lagen, naar de uitvoerlaag. Hoe Natural Language Processing (NLP) deze lagen gebruikt, wordt later in deze bachelorproef besproken. \autocite{Vervoort2017}
 
 \begin{figure}[!ht]
-    \includegraphics[width=\textwidth]{NeuraalNetwerk.jpg}
+    \includegraphics[width=\textwidth]{neuraalnetwerk.jpg}
     \caption{\label{neuraalnetwerk}Neuraal Netwerk \autocite{KULeuven2019}.}
 \end{figure}
 
@@ -181,7 +181,7 @@ Natural Language Processing heeft veel technieken om de menselijke taal te inter
 Wanneer een tekst onderzocht wordt, moet de machine eerst bepalen in welke taal deze tekst staat. Wanneer er meerdere talen in 1 tekst staan, worden er meerdere classificatie modellen gemaakt, 1 per taal. In de foto hieronder wordt dit getest met de zin ‘vandaag is een mooie dag’. 
 
 \begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{LanguageDetection.png}
+    \includegraphics[width=\textwidth]{langdetect.PNG}
     \caption{\label{languagedetection}Language Detection \autocite{sas2020}.}
 \end{figure}
 \FloatBarrier
@@ -192,7 +192,7 @@ Wanneer een tekst onderzocht wordt, moet de machine eerst bepalen in welke taal 
 Tokenization is een NLP techniek waarbij een string of zin in kleinere tokens opgedeeld wordt. Tokenization is belangrijk omdat in NLP de tekst geanalyseerd wordt op tokens. 
 
 \begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{Tokenization.png}
+    \includegraphics[width=\textwidth]{tokenization.PNG}
     \caption{\label{tokenization}Tokenization and parsing \autocite{sas2020}.}
 \end{figure}
 \FloatBarrier
@@ -203,7 +203,7 @@ Tokenization is een NLP techniek waarbij een string of zin in kleinere tokens op
 Stemming en lemmatization zijn twee NLP technieken die lijken op elkaar, maar toch verschillen op bepaalde vlakken. Het zijn beiden tekst normalisatie technieken. Stemming en lemmatization baseren zich allebei op het feit dat woorden afgestamd zijn van een ander woord. Zo hebben we bijvoorbeeld het werkwoord ‘spelen’. Van het werkwoord spelen kan gezegd worden dat het afstamt van speel. ‘Speelt’ en ‘Speelde’ stammen ook af van de stam ‘speel’. Het verschil tussen stemming en lemmatization is dat lemmatization rekening houdt met de context van het woord. \autocite{sas2020}
 
 \begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{Stemming.png}
+    \includegraphics[width=\textwidth]{stemming.png}
     \caption{\label{stemming}Stemming and lemmatization \autocite{sas2020}.}
 \end{figure}
 \FloatBarrier
@@ -224,22 +224,24 @@ In dit hoofdstuk wordt het begrip Sentiment Analysis besproken. Ten tweede wordt
 \subsection{Wat is Sentiment Analysis?}
 \label{sec:watissentimentanalysis}
 
-Sentiment Analysis is het onderzoek dat in deze bachelorproef wordt uitgevoerd. Er wordt een sentiment analyse uitgevoerd op recensies. Sentiment analyse is een Natural Language Processing (NLP) techniek die gebruikt wordt om te onderzoeken of een tekst een positieve, neutrale of negatieve connotatie heeft. Klanten drukken vaak hun gevoelens uit in de vorm van tekst en/of recensies. Het is voor bedrijven essentieel om op deze gevoelens in te spelen. Met sentiment analysis kan een bedrijf de feedback van de klant analyseren en te begrijpen. \autocite{MonkeyLearn2021}
+Sentiment Analysis is het onderzoek dat in deze bachelorproef wordt gevoerd. Er wordt een sentiment analyse uitgevoerd op recensies. Sentiment analyse is een Natural Language Processing (NLP) techniek die gebruikt wordt om te onderzoeken of een tekst een positieve, neutrale of negatieve connotatie heeft. Klanten drukken vaak hun gevoelens uit in de vorm van recensies. Het is voor bedrijven essentieel om op deze gevoelens in te spelen. Met sentiment analysis kan een bedrijf de feedback van de klant analyseren en begrijpen. \autocite{MonkeyLearn2021}
  
 Dankzij Sentiment Analysis kan een bedrijf te weten komen wat er in het hoofd van hun klanten omgaat. Sentiment Analysis kan niet enkel de reviews van de klant analyseren als positief/negatief, maar kan dit ook koppelen aan een bepaald product. Zo weet het bedrijf van welk product de klanten het meest tevreden zijn. \autocite{MonkeyLearn2021}
 
-Er zijn verschillende soorten sentiment analysis, zoals emotie detectie, multilingual sentiment analysis en aspect-based sentiment analysis. 
+Er zijn verschillende soorten sentiment analysis, zoals emotiedetectie, multilingual sentiment analysis en aspect-based sentiment analysis. 
 
-Emotie detectie is een soort sentiment analysis die zich bezig houdt met het achterhalen van gevoelens uit teksten. Deze gevoelens kunnen boosheid, blijheid, verdriet en veel meer uitdrukken. \autocite{MonkeyLearn2021}
+Emotiedetectie is een soort sentiment analysis die zich bezig houdt met het achterhalen van gevoelens uit teksten. Deze gevoelens kunnen boosheid, blijheid, verdriet en veel meer uitdrukken. \autocite{MonkeyLearn2021}
 
-Aspect-based sentiment analysis is de techniek die toegepast zal worden in het onderzoek van deze bachelorproef. Bij deze techniek komt een bedrijf te weten over welke features of producten de klant positief of negatief is .\autocite{MonkeyLearn2021}
+Aspect-based sentiment analysis is de techniek die toegepast zal worden in het onderzoek van deze bachelorproef. Bij deze techniek komt een bedrijf te weten over welke features of producten de klant zich positief of negatief uitdrukt. \autocite{MonkeyLearn2021}
+
+Aspect-based sentiment analysis analyseert ten eerste de sentimenten van de tekst, en ten tweede ook de aspecten (features of producten) waarover de gevoelens gaan.
  
 Multilingual sentiment analysis is hetzelfde als sentiment analysis, maar met de gedachte dat een review in de eigen taal moet geanalyseerd worden, om geen context of connotatie te verliezen. \autocite{MonkeyLearn2021}
 
 \subsection{Sentiment Analysis en Algoritmen}
 \label{sec:sentimentanalysisenalgoritmen}
 
-Bij het implementeren van het sentiment analysis model, zijn er 3 soorten algoritmes die men kan gebruiken. (MonkeyLearn, 2021)
+Bij het implementeren van het sentiment analysis model, zijn er drie soorten algoritmes die men kan gebruiken. (MonkeyLearn, 2021)
 
 \subsubsection{Rule based}
 \label{rule based}
@@ -259,17 +261,17 @@ Bij hybrid algoritmen, maakt het algoritme gebruik van zowel rule-based als auto
 \subsection{Wat zijn gevoelswaarden?}
 \label{gevoelswaarden}
 
-In de context van deze bachelorproef kunnen recensies gevoelswaarden bevatten. Ten eerste zijn er positieve gevoelswaarden. Dit gaat over positieve recensies die lovende kritiek geven over het product of het product aanraden. Enkele voorbeelden van positieve recensies: 
+In de context van deze bachelorproef kunnen recensies gevoelswaarden bevatten. Ten eerste zijn er positieve gevoelswaarden. Dit gaat over recensies die lovende kritiek geven over het product of het product aanraden. Enkele voorbeelden van positieve recensies: 
 
 \begin{itemize}
     \item “Ik gebruik de laptop veel onderweg in de trein. Super makkelijk om mee te nemen. Hij start snel op en is perfect voor mijn werk.”
-    \item “Zoals altijd super een super spannend boek van een geweldige schrijver. Heerlijk!”
+    \item “Zoals altijd super een superspannend boek van een geweldige schrijver. Heerlijk!”
 \end{itemize}
 
 Echter kunnen recensies ook negatief zijn. Enkele voorbeelden van negatieve recensies:
 
 \begin{itemize}
-    \item “Deze jas heeft geen ritssluiting, waardoor de kans bestaat dat er regen door komt. Dit is niet wat ik verwacht had.”
+    \item “Deze jas heeft geen ritssluiting, waardoor de kans bestaat dat er regen doorkomt. Dit is niet wat ik verwacht had.”
     \item “Teleurstellend. Het telefoonhoesje was beschadigd bij ontvangst.”
 \end{itemize}
 
@@ -279,7 +281,7 @@ Echter kunnen recensies ook negatief zijn. Enkele voorbeelden van negatieve rece
 \subsubsection{Subjectiviteit}
 \label{subjectiviteit}
 
-Gevoelens zijn subjectief. Er zijn 1000 manieren waarop iemand zich kan uitdrukken, de één al positiever dan de ander. 
+Gevoelens zijn subjectief. Er zijn talloze manieren waarop iemand zich kan uitdrukken, de één al positiever dan de ander. 
 
 \subsubsection{Context}
 \label{context}
@@ -307,12 +309,84 @@ Deze review heeft duidelijk een positieve context, maar we kunnen ook deze revie
     \item “Deze smartphone is trager dan gewoonlijk, maar het is beter dan niets.”
 \end{itemize}
 
-In deze context, is ‘beter dan’ helemaal niet positief. Dit duidt ook aan waarom het voor artificiële intelligentie zo moeilijk is om een sentiment uit een zin te halen. 
+In deze context, is ‘beter dan’ helemaal niet positief. Dit toont ook aan waarom het voor artificiële intelligentie zo moeilijk is om een sentiment uit een zin te halen. 
 
 
 \section{Gevoelswaarden detecteren in teksten}
 \label{gevoelswaardendetecteren}
 
+Sentiment of gevoelswaarden kunnen op verschillende manieren gedetecteerd worden in teksten. Daarom worden in dit hoofdstuk enkele manieren besproken die in de methodologie zullen toegepast worden. 
 
+\subsection{SaaS (Software as a Service)}
+\label{saas}
 
+Wanneer een model voor sentiment analysis zou geschreven moeten worden, dan zou er een team aan programmeurs en een grote som geld nodig zijn. Daarom is het interessant om SaaS-tools te gebruiken. SaaS platforms bieden software als een service aan. Dit betekent dat de gebruiker deze software via het internet kan gebruiken, maar deze niet op zijn computer kan downloaden. \autocite{Marketing2021} Deze techniek wordt zeker gebruikt in het methodologie-gedeelte. De software-platforms hieronder zijn voorbeelden van SaaS. 
+
+\subsubsection{MonkeyLearn}
+\label{monkeylearn}
+
+Monkeylearn is een platform dat services aanbiedt om tekst te analyseren aan de hand van machine learning en sentiment analysis. Het voorziet een grafische user interface om zelf reviews in te geven en deze te trainen. \autocite{Maguire2021} Het platform van MonkeyLearn zal getest en gebruikt worden tijdens het onderzoek.
+
+\subsubsection{Text Analytics API}
+\label{textanalytics}
+
+Text Analytics API is een service die NLP aan de gebruiker aanbiedt. Technieken zoals sentiment analysis en opinion mining kunnen worden uitgevoerd aan de hand van deze service. Deze API maakt deel uit van Azure Cognitive Services. \autocite{Microsoft2020} Deze Tekst Analytics API kan gebruikt worden in Visual Studio Code aan de hand van REST API. Ook deze service zal getest en gebruikt worden tijdens het onderzoek.
+
+Naast SaaS-tools, kan men ook zelf een dataset zoeken en deze trainen. Dit wordt verder besproken in het volgende hoofdstuk.
+
+\section{De Datasets}
+\label{datasets} 
+
+Zoals hiervoor aangehaald, is het natuurlijk ook mogelijk om zelf een dataset te gebruiken en deze te trainen. In dit onderzoek worden er twee datasets gebruikt.
+
+\subsection{Amazon Dataset}
+\label{amazon}
+
+De eerste dataset is de \textbf{Amazon dataset}. Deze dataset bevat reviews van de producten die op de populaire website Amazon verkocht worden. Deze dataset bevat meer dan 233 miljoen reviews, daardoor zal niet deze volledige dataset gebruikt worden. De reviews van deze dataset werden verzameld tussen 1996 en 2018. \autocite{Ni2019} Een voorbeeld van hoe 1 review er uit ziet in de dataset kan hieronder gevonden worden: 
+  
+\begin{table}[]
+    \begin{tabular}{@{}|l|l|@{}}
+        \toprule
+        \textbf{Attribute} & \textbf{Content}                                                                                                                                                                                                                                                                                        \\ \midrule
+        reviewerID         & A2SUAM1J3GNN3B                                                                                                                                                                                                                                                                                          \\
+        asin               & 0000013714                                                                                                                                                                                                                                                                                              \\
+        reviewerName       & J. McDonald                                                                                                                                                                                                                                                                                             \\
+        helpful            & {[}2,3{]}                                                                                                                                                                                                                                                                                               \\
+        reviewText         & \begin{tabular}[c]{@{}l@{}}I bought this for my husband who plays the piano. \\ He is having a wonderful time playing these old hymns. \\ The music is at times hard to read because we think the book\\  was published for singing from more than playing from. \\ Great purchase though!\end{tabular} \\
+        overall            & 5.0                                                                                                                                                                                                                                                                                                     \\
+        summary            & Heavenly Highway Hymns                                                                                                                                                                                                                                                                                  \\
+        unixReviewTime     & 1251800000                                                                                                                                                                                                                                                                                              \\
+        reviewTime         & 09 13, 2009                                                                                                                                                                                                                                                                                             \\ \bottomrule
+    \end{tabular}
+    \caption{Attributen van de Amazon Dataset}
+    \label{tab:amazondataset}
+\end{table}
+
+\subsection{Twitter US Airline Sentiment Dataset}
+\label{twitter}
+
+De tweede dataset is de \textbf{Twitter US Airline Sentiment dataset}. Deze dataset bevat reviews in de vorm van tweets. Deze reviews gaan over de bekendste US vluchtmaatschappijen.\autocite{Kaggle2020} Een voorbeeld van hoe 1 review er uit ziet in de database kan hieronder gevonden worden:
+\begin{table}[]
+    \begin{tabular}{@{}|l|l|@{}}
+        \toprule
+        \textbf{Attribute}             & \textbf{Content}            \\ \midrule
+        tweet\_id                      & 570306133677760513          \\
+        airline\_sentiment             & neutral                     \\
+        airline\_sentiment\_confidence & 0.3486                      \\
+        negativereason                 & Bad Flight                  \\
+        negativereason\_confidence     & 0.7033                      \\
+        airline                        & Virgin America              \\
+        airline\_sentiment\_gold       & NaN                         \\
+        name                           & jnardino                    \\
+        negativereason\_gold           & NaN                         \\
+        retweet\_count                 & 0                           \\
+        text                           & @VirginAmerica, Thanks!     \\
+        tweet\_coord                   & NaN                         \\
+        tweet\_created                 & 2015-02-24 11:35:52-0800    \\
+        tweet\_location                & San Francisco CA            \\
+        user\_timezone                 & Pacific Time (US \& Canada) \\ \bottomrule
+    \end{tabular}
+    \caption{Attributen van de Twitter US Airline Sentiment Dataset}
+    \label{tab:twitterdataset}
+\end{table}
 
