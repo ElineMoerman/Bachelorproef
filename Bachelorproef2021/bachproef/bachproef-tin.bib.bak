@@ -144,4 +144,18 @@
   title  = {Empirical Methods in Natural Language Processing},
 }
 
+@Online{Kaggle2020,
+  author = {Kaggle},
+  date   = {2020},
+  title  = {Twitter US Airline Sentiment},
+  url    = {https://www.kaggle.com/crowdflower/twitter-airline-sentiment},
+}
+
+@Article{Balachandran2020,
+  author = {Sandeep Balachandran},
+  date   = {2020-01-19},
+  title  = {Machine Learning - Dense Layer},
+  url    = {https://dev.to/sandeepbalachandran/machine-learning-dense-layer-2m4n},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

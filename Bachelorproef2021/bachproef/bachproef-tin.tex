@@ -37,6 +37,50 @@
 %  - 2e semester = 2e examenperiode => 2
 %  - tweede zit  = 3e examenperiode => 3
 \examenperiode{2}
+\makeglossaries
+
+\newglossaryentry{AI}
+{
+    name=Artificiële Intelligentie,
+    description={Een tak van de wetenschap die zich bezighoudt met het onderzoek naar hoe computers of machines het denkvermogen, leervermogen en keuzeproces van de mens proberen na te bootsen.}
+}
+
+\newglossaryentry{MachineLearning}
+{
+    name=Machine Learning,
+    description={Een deelveld van artificiële intelligentie waarbij de machine zichzelf programmeert om een specifieke taak zo goed mogelijk uit te voeren.}
+}
+
+\newglossaryentry{TuringTest}
+{
+    name=Turing Test,
+    description={Een test om te beoordelen of een computer aanzien kan worden als intelligent door een persoon te laten denken dat de computer een mens is.}
+}
+\newglossaryentry{SupervisedLearning}
+{
+    name=Supervised Learning,
+    description={De machine krijgt gelabelde gegevens om te analyseren.}
+}
+\newglossaryentry{UnsupervisedLearning}
+{
+    name=Unsupervised Learning,
+    description={De machine krijgt ongelabelde gegevens om te analyseren met als doel om een structuur te ontdekken in deze gegevens.}
+}
+\newglossaryentry{ReinforcementLearning}
+{
+    name=Reinforcement Learning,
+    description={De machine leert aan de hand van een aantal beloningssignalen.}
+}
+\newglossaryentry{DeepLearning}
+{
+    name=Deep Learning,
+    description={Een deelveld van machine learning waarbij de machine zichzelf een taak aanleert en de gegevens steeds blijft analyseren om de beste nauwkeurigheid te behalen.}
+}
+\newglossaryentry{NeuraalNetwerk}
+{
+    name=Neuraal Netwerk,
+    description={Een netwerk dat gebaseerd is op de hersenstructuur. Het bestaat uit neuronen.}
+}
 
 %===============================================================================
 % Inhoud document
@@ -121,8 +165,10 @@ Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat 
 \input{../voorstel/voorstel-inhoud}
 
 %%---------- Andere bijlagen --------------------------------------------------
+\chapter{Verklarende woordenlijst}
 % TODO: Voeg hier eventuele andere bijlagen toe
-%\input{...}
+\input{verklarendeWoordenlijst}
+\clearpage
 
 %%---------- Referentielijst --------------------------------------------------
 

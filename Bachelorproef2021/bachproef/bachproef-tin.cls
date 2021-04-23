@@ -43,6 +43,8 @@
 \graphicspath{{img/}}       % Map met in te voegen afbeeldingen
 \RequirePackage{tikz}       % Grafische taal voor maken van afbeeldingen
 \RequirePackage{placeins}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[automake]{glossaries}
 
 %-------------------------------------------------------------------------------
 % Lettertypes, bestandscodering
