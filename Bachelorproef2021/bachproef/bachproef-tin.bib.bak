@@ -158,4 +158,18 @@
   url    = {https://dev.to/sandeepbalachandran/machine-learning-dense-layer-2m4n},
 }
 
+@Article{Nanculef2020,
+  author       = {Ricardo Ñanculef; Simone Balocco},
+  date         = {2020},
+  journaltitle = {Intravascular Ultrasounc},
+  title        = {Training Convolutional Nets to Detect Calcified Plaue in IVUS Sequences},
+}
+
+@Article{Microsoft2021,
+  author = {Microsoft},
+  date   = {2021},
+  title  = {Text Analytics},
+  url    = {https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

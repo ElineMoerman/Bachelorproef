@@ -75,17 +75,17 @@ De verschillende lagen voeren verschillende transformaties uit op de inputdata. 
 
 \subsubsection{Convolutional layers}
 \label{sec:convolutionallayers}
-Convolutional layers worden gebruikt om visuele beelden te analyseren. Deze lagen ontvangen als input een afbeelding en geven als output een volledig andere afbeelding. Om dit te kunnen doen bevat een convolutional layer een filter die over de afbeelding geschoven wordt. Fotoherkenning is één van de bekendste voorbeelden waarbij dit soort lagen gebruikt worden. \autocite{Nanculef2020}
+\gls{ConvolutionalLayer} worden gebruikt om visuele beelden te analyseren. Deze lagen ontvangen als input een afbeelding en geven als output een volledig andere afbeelding. Om dit te kunnen doen bevat een convolutional layer een filter die over de afbeelding geschoven wordt. Fotoherkenning is één van de bekendste voorbeelden waarbij dit soort lagen gebruikt worden. \autocite{Nanculef2020}
 
 
 \subsubsection{Dense layers}
 \label{sec:denselayers}
-Dense layers zijn de lagen die het vaakst voorkomen bij deep neural networks. Een ander woord voor dense layers is fully connected layers. Deze naam legt de term mooi uit omdat een dense layer volledig verbonden is met alle neuronen in de vorige laag. \autocite{Balachandran2020}
+\gls{DenseLayer} zijn de lagen die het vaakst voorkomen bij deep neural networks. Een ander woord voor dense layers is fully connected layers. Deze naam legt de term mooi uit omdat een dense layer volledig verbonden is met alle neuronen in de vorige laag. \autocite{Balachandran2020}
 
 
 \subsubsection{Pooling layers}
 \label{sec:poolinglayers}
-Pooling layers zijn lagen die zich bevinden tussen twee convolutional layers. Pooling layers verminderen de complexiteit van de parameters en verminderen het aantal berekeningen die gedaan moeten worden. \autocite{Nanculef2020}
+\gls{PoolingLayer} zijn lagen die zich bevinden tussen twee convolutional layers. Pooling layers verminderen de complexiteit van de parameters en verminderen het aantal berekeningen die gedaan moeten worden. \autocite{Nanculef2020}
 
 Op elke verbinding tussen de lagen staan er ‘gewichten’. De transformatie van input naar output wordt zo berekend:
 output = activatiefunctie x (som van de gewichten van de input nodes). \autocite{Vervoort2017} Wat een activatiefunctie is wordt later besproken. 
@@ -103,7 +103,7 @@ Een dataset is een verzameling van data. In deze bachelorproef is de data een aa
 Wat betekent het om een dataset te trainen? Bij deep learning gaat de machine steeds over de dataset en leert hij uit de dataset. De nauwkeurigheid van een toekomstige voorspelling over een review wordt zo steeds beter. 
 
 Maar hoe wordt zo een dataset getraind?
-Om dit uit te leggen, dienen eerst drie termen verklaard te worden. Ten eerste is er de \textbf{training dataset}. Deze dataset is een verzameling van gegevens die gebruikt wordt om het model te trainen. Het model leert dan van deze gegevens. Om bepaalde parameters af te stellen, de hyperparameters, wordt er een \textbf{validatie dataset} gebruikt. Deze hyperparameters staan ook bekend als metaparameters en worden gebruikt om overfitting te vermijden. De term overfitting wordt later besproken. De resultaten die voort komen uit de validatie dataset worden gebruikt om onze hyperparameters bij te stellen. Ten slotte is er de \textbf{test dataset}. Deze dataset wordt meestal in het begin van onze training afgesplitst van de originele dataset, en wordt na het trainen op ons model toegepast, om te kijken of onze dataset een goede hypothese kan vormen voor nog onbekende gegevens. Dit levert steeds een nauwkeurigheid op. Hoe hoger deze nauwkeurigheid, hoe beter. \autocite{Shah2017} Om een dataset te trainen, moeten er eerst een paar stappen gebeuren. Deze worden hieronder besproken. 
+Om dit uit te leggen, dienen eerst drie termen verklaard te worden. Ten eerste is er de \gls{TrainingDataset}. Deze dataset is een verzameling van gegevens die gebruikt wordt om het model te trainen. Het model leert dan van deze gegevens. Om bepaalde parameters af te stellen, de hyperparameters, wordt er een \gls{ValidatieDataset} gebruikt. Deze hyperparameters staan ook bekend als metaparameters en worden gebruikt om overfitting te vermijden. De term overfitting wordt later besproken. De resultaten die voort komen uit de validatie dataset worden gebruikt om onze hyperparameters bij te stellen. Ten slotte is er de \gls{TestDataset}. Deze dataset wordt meestal in het begin van onze training afgesplitst van de originele dataset, en wordt na het trainen op ons model toegepast, om te kijken of onze dataset een goede hypothese kan vormen voor nog onbekende gegevens. Dit levert steeds een nauwkeurigheid op. Hoe hoger deze nauwkeurigheid, hoe beter. \autocite{Shah2017} Om een dataset te trainen, moeten er eerst een paar stappen gebeuren. Deze worden hieronder besproken. 
 
 \subsubsection{Data preparatie}
 \label{sec:datapreparatie}
@@ -111,7 +111,7 @@ Voordat het model getraind kan worden, moeten de gegevens uit de dataset eens ov
 
 \subsubsection{Data Cleaning}
 \label{sec:datacleaning}
-In deze fase van het proces wordt de data ‘opgeschoond’. Soms kan data inconsistent zijn of kunnen er enkele velden missen. Daarom is het interessant om alle rijen te verwijderen die data van het type ‘null’ bevatten. Dit zijn de lege velden van de dataset. Verder is het ook belangrijk om alle niet-numerieke data om te zetten naar numerieke data. Zo kan bijvoorbeeld ‘geslacht’ omgezet worden in 0 en 1 via one hot encoding. Hierdoor wordt het veldje ‘geslacht’ omgezet in 2 nieuwe velden geslacht\_vrouw en geslacht\_man, waarbij er een 1 toegekend wordt als dit waar is, en een 0 als dit niet waar is. 
+In deze fase van het proces wordt de data ‘opgeschoond’. Soms kan data inconsistent zijn of kunnen er enkele velden missen. Daarom is het interessant om alle rijen te verwijderen die data van het type ‘null’ bevatten. Dit zijn de lege velden van de dataset. Verder is het ook belangrijk om alle niet-numerieke data om te zetten naar numerieke data. Zo kan bijvoorbeeld ‘geslacht’ omgezet worden in 0 en 1 via \gls{OneHotEncoding}. Hierdoor wordt het veldje ‘geslacht’ omgezet in 2 nieuwe velden geslacht\_vrouw en geslacht\_man, waarbij er een 1 toegekend wordt als dit waar is, en een 0 als dit niet waar is. 
 
 \subsubsection{Opzetten van training dataset en test dataset}
 \label{sec:opzetten}
@@ -123,14 +123,14 @@ Eenmaal de dataset opgesplitst is in een training en een test dataset, is het ti
 
 Ten eerste is het belangrijk om de juiste lagen te kiezen om het model te trainen. Eerder in deze bachelorproef werden dense layers, pooling layers en convolutional layers besproken. Elke laag heeft zijn voor-en nadelen. 
 
-Ten tweede moet het aantal epochs gekozen worden. Een epoch stelt een volledige cyclus door het neurale netwerk voor. Als het aantal epochs 20 is, zal er 20 keer door het netwerk gegaan worden. Elke keer dat er door het netwerk gegaan wordt, wordt de data opnieuw geanalyseerd en wordt de AI een beetje slimmer en nauwkeuriger.
+Ten tweede moet het aantal epochs gekozen worden. Een \gls{Epoch} stelt een volledige cyclus door het neurale netwerk voor. Als het aantal epochs 20 is, zal er 20 keer door het netwerk gegaan worden. Elke keer dat er door het netwerk gegaan wordt, wordt de data opnieuw geanalyseerd en wordt de AI een beetje slimmer en nauwkeuriger.
 
 Eenmaal het model gekozen en getraind is, is het mogelijk om de nauwkeurigheid van het model te berekenen en verder onderzoek te doen. 
 
 \subsection{Overfitting en underfitting}
 \label{sec:overunderfitting}
 
-Wanneer er een model getraind wordt, kan het natuurlijk voorvallen dat het model té goed of té slecht getraind is. Hiervoor worden de termen overfitting en underfitting gebruikt. Het model dat getraind wordt moet goed zijn. Een model kan ‘goed’ genoemd worden als het voor toekomstige informatie een goede predictie kan maken. Een model dat de data van de dataset te goed generaliseert, wordt \textbf{overfitting} genoemd. De nauwkeurigheid voor de getrainde data is zeer goed, maar dit is niet het geval voor toekomstige data. Om het anders te zeggen, het model heeft té veel van de training dataset geleerd. Bij \textbf{underfitting} is dit omgekeerd. Het model heeft te weinig van de training dataset geleerd, waardoor predicties met nieuwe data slecht zullen zijn. Bij het trainen van een model, is het belangrijk om een juiste balans te vinden. \autocite{AlMasri2019}
+Wanneer er een model getraind wordt, kan het natuurlijk voorvallen dat het model té goed of té slecht getraind is. Hiervoor worden de termen \gls{Overfitting} en \gls{Underfitting} gebruikt. Het model dat getraind wordt moet goed zijn. Een model kan ‘goed’ genoemd worden als het voor toekomstige informatie een goede predictie kan maken. Een model dat de data van de dataset te goed generaliseert, wordt \textbf{overfitting} genoemd. De nauwkeurigheid voor de getrainde data is zeer goed, maar dit is niet het geval voor toekomstige data. Om het anders te zeggen, het model heeft té veel van de training dataset geleerd. Bij \textbf{underfitting} is dit omgekeerd. Het model heeft te weinig van de training dataset geleerd, waardoor predicties met nieuwe data slecht zullen zijn. Bij het trainen van een model, is het belangrijk om een juiste balans te vinden. \autocite{AlMasri2019}
 
 Hoe wordt deze balans gevonden? Hoe worden overfitting en underfitting opgelost? 
 Voor \textbf{overfitting} kunnen er enkele technieken toegepast worden om dit te vermijden. 
@@ -142,12 +142,12 @@ Omgekeerd, moet er ook rekening worden gehouden met underfitting. Om underfittin
 \subsection{Activatiefunctie van een neuraal netwerk}
 \label{sec:activatiefunctie}
 
-De activatiefunctie van een neuraal netwerk is een functie die de inputdata van een neuron transformeert in output. Er bestaan meerdere activatiefuncties, de juiste activatiefunctie voor het netwerk kiezen heeft een grote impact op het netwerk. De verborgen lagen gebruiken meestal dezelfde activatiefunctie, maar dit kan een andere activatiefunctie zijn dan die van de outputlaag. Alle afbeeldingen van de activatiefuncties zijn gebaseerd op informatie gevonden uit het artikel van \textcite{Brownlee2021}. 
+De \gls{ActivatieFunctie} van een neuraal netwerk is een functie die de inputdata van een neuron transformeert in output. Er bestaan meerdere activatiefuncties, de juiste activatiefunctie voor het netwerk kiezen heeft een grote impact op het netwerk. De verborgen lagen gebruiken meestal dezelfde activatiefunctie, maar dit kan een andere activatiefunctie zijn dan die van de outputlaag. Alle afbeeldingen van de activatiefuncties zijn gebaseerd op informatie gevonden uit het artikel van \textcite{Brownlee2021}. 
 
 \subsubsection{ReLU}
 \label{sec:ReLU}
 
-De eerste mogelijke activatiefunctie is de ReLU (of rectified linear activatiefunctie). De ReLU is, zoals de naam al aangeeft, een lineaire functie. Wanneer de output positief is, zal de ReLU gewoon de output nemen. Als de output negatief is zal de ReLU daar een waarde van 0 aan toekennen. Dit betekent dus dat op de ReLU grafiek, de functie nooit negatief zal zijn. De ReLU wordt het vaakste gebruikt bij verborgen lagen. \autocite{Brownlee2021}
+De eerste mogelijke activatiefunctie is de \gls{ReLU} (of rectified linear activatiefunctie). De ReLU is, zoals de naam al aangeeft, een lineaire functie. Wanneer de output positief is, zal de ReLU gewoon de output nemen. Als de output negatief is zal de ReLU daar een waarde van 0 aan toekennen. Dit betekent dus dat op de ReLU grafiek, de functie nooit negatief zal zijn. De ReLU wordt het vaakste gebruikt bij verborgen lagen. \autocite{Brownlee2021}
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{ReLU.PNG}
@@ -159,7 +159,7 @@ De eerste mogelijke activatiefunctie is de ReLU (of rectified linear activatiefu
 \subsubsection{Sigmoïde}
 \label{sec:sigmoide}
 
-De sigmoïde activatiefunctie zorgt ervoor dat elke input een output tussen 0 en 1 wordt. Ook hier kan de grafiek dus nooit in het negatieve gaan. Hoe hoger de input, hoe dichter bij 1 en omgekeerd. De sigmoïde functie wordt ook gebruikt bij logistische regressie, maar dit wordt niet in deze bachelorproef besproken. \autocite{Brownlee2021} De sigmoïde activatiefunctie gebeurt als volgt:
+De \gls{Sigmoïde} activatiefunctie zorgt ervoor dat elke input een output tussen 0 en 1 wordt. Ook hier kan de grafiek dus nooit in het negatieve gaan. Hoe hoger de input, hoe dichter bij 1 en omgekeerd. De sigmoïde functie wordt ook gebruikt bij logistische regressie, maar dit wordt niet in deze bachelorproef besproken. \autocite{Brownlee2021} De sigmoïde activatiefunctie gebeurt als volgt:
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{sigmoide.PNG}
@@ -171,7 +171,7 @@ De sigmoïde activatiefunctie zorgt ervoor dat elke input een output tussen 0 en
 \subsubsection{Tanh}
 \label{sec:tanh}
 
-De Tanh activatiefunctie lijkt een beetje op de sigmoïde activatiefunctie in die zin dat ze allebei die S-vorm vertonen. Het verschil tussen de sigmoïde activatiefunctie en de tanh activatiefunctie is dat de tanh activatiefunctie de input omzet in waarden tussen -1 en 1. Waardoor dit de enige activatiefunctie is waarbij de output negatief kan zijn. Hoe groter de input, hoe dichter bij 1, hoe kleiner de input, hoe dichter bij -1. \autocite{Brownlee2021}
+De \gls{Tanh} activatiefunctie lijkt een beetje op de sigmoïde activatiefunctie in die zin dat ze allebei die S-vorm vertonen. Het verschil tussen de sigmoïde activatiefunctie en de tanh activatiefunctie is dat de tanh activatiefunctie de input omzet in waarden tussen -1 en 1. Waardoor dit de enige activatiefunctie is waarbij de output negatief kan zijn. Hoe groter de input, hoe dichter bij 1, hoe kleiner de input, hoe dichter bij -1. \autocite{Brownlee2021}
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{tanh.PNG}
@@ -187,7 +187,7 @@ In dit hoofdstuk wordt besproken wat NLP of Natural Language Processing juist is
 
 \subsection{Wat is NLP?}
 \label{sec:WatisNLP}
-NLP staat voor Natural Language Processing en is het hoofdonderwerp van deze bachelorproef. Natural Language processing is het deelveld van artificiële intelligentie dat zich bezighoudt met taal. Deze term geeft machines of computers de mogelijkheid om tekst of spraak te herkennen. NLP maakt gebruik van machine learning en deep learning om taal te herkennen. Deze onderwerpen werden hiervoor al besproken. De NLP technologie stelt een machine niet enkel in staat om tekst te herkennen, maar ook om deze te ‘begrijpen’. Zo zijn de vertaaltools begonnen. NLP houdt niet enkel het herkennen van teksten in, maar ook het vertalen en begrijpen van teksten. Enkele voorbeelden hiervan zijn Google Translate en DeepL. NLP komt niet enkel voor in vertaaltools, maar ook bij digitale assistenten of chatbots. \autocite{IBM2020}
+NLP staat voor \gls{NLP} en is het hoofdonderwerp van deze bachelorproef. Natural Language processing is het deelveld van artificiële intelligentie dat zich bezighoudt met taal. Deze term geeft machines of computers de mogelijkheid om tekst of spraak te herkennen. NLP maakt gebruik van machine learning en deep learning om taal te herkennen. Deze onderwerpen werden hiervoor al besproken. De NLP technologie stelt een machine niet enkel in staat om tekst te herkennen, maar ook om deze te ‘begrijpen’. Zo zijn de vertaaltools begonnen. NLP houdt niet enkel het herkennen van teksten in, maar ook het vertalen en begrijpen van teksten. Enkele voorbeelden hiervan zijn Google Translate en DeepL. NLP komt niet enkel voor in vertaaltools, maar ook bij digitale assistenten of chatbots. \autocite{IBM2020}
 
 Het analyseren van teksten, zinnen of uitgesproken woorden is niet gemakkelijk. De menselijke taal is heel complex. Mensen drukken zich vaak op heel veel verschillende manieren uit, en het is aan de machine om dit te interpreteren. Naast honderden talen, heeft elke taal nog vele dialecten. Daarnaast heeft elke taal zijn eigen grammaticaregels, termen en syntaxisregels.
 Op vlak van spraak gestuurde NLP, verspreekt een persoon zich al snel, of kan deze met een dialect praten. \autocite{sas2020}
@@ -232,7 +232,7 @@ NLP wordt vaak gebruikt in het alledaagse leven. Alexa en Siri zijn heel gekende
 \subsection{Text Analytics}
 \label{sec:textanalytics}
 
-Text analytics of text mining is een techniek die veel wordt teruggevonden in Natural Language Processing. Dankzij deze techniek wordt tekst zonder structuur gemakkelijk omgezet in een gestructureerde dataset. \autocite{Linguamatics2021} Deze dataset is nodig om het model te kunnen trainen, zoals uitgelegd in Hoofdstuk 2: Datasets en gegevensvergaring.
+\gls{TextAnalytics} of text mining is een techniek die veel wordt teruggevonden in Natural Language Processing. Dankzij deze techniek wordt tekst zonder structuur gemakkelijk omgezet in een gestructureerde dataset. \autocite{Linguamatics2021} Deze dataset is nodig om het model te kunnen trainen, zoals uitgelegd in Hoofdstuk 2: Datasets en gegevensvergaring.
 Text mining is enorm belangrijk. In het dagelijkse leven komt iedereen in aanraking met tekst, denk maar aan e-mails, digitale assistenten, chatbots of posten op sociale media. In deze bachelorproef worden volzinnen uit recensies geanalyseerd op een positieve of negatieve connotatie. Text mining zal hier aan te pas komen op deze ongestructureerde volzinnen in een gestructureerde dataset om te vormen. Tijdens dit proces zal NLP aan de hand van machine learning toegepast worden. 
 
 \section{Sentiment Analysis}
@@ -243,7 +243,7 @@ In dit hoofdstuk wordt het begrip Sentiment Analysis besproken. Ten tweede wordt
 \subsection{Wat is Sentiment Analysis?}
 \label{sec:watissentimentanalysis}
 
-Sentiment Analysis is het onderzoek dat in deze bachelorproef wordt gevoerd. Er wordt een sentiment analyse uitgevoerd op recensies. Sentiment analyse is een Natural Language Processing (NLP) techniek die gebruikt wordt om te onderzoeken of een tekst een positieve, neutrale of negatieve connotatie heeft. Klanten drukken vaak hun gevoelens uit in de vorm van recensies. Het is voor bedrijven essentieel om op deze gevoelens in te spelen. Met sentiment analysis kan een bedrijf de feedback van de klant analyseren en begrijpen. \autocite{MonkeyLearn2021}
+\gls{SentimentAnalysis} is het onderzoek dat in deze bachelorproef wordt gevoerd. Er wordt een sentiment analyse uitgevoerd op recensies. Sentiment analyse is een Natural Language Processing (NLP) techniek die gebruikt wordt om te onderzoeken of een tekst een positieve, neutrale of negatieve connotatie heeft. Klanten drukken vaak hun gevoelens uit in de vorm van recensies. Het is voor bedrijven essentieel om op deze gevoelens in te spelen. Met sentiment analysis kan een bedrijf de feedback van de klant analyseren en begrijpen. \autocite{MonkeyLearn2021}
  
 Dankzij Sentiment Analysis kan een bedrijf te weten komen wat er in het hoofd van hun klanten omgaat. Sentiment Analysis kan niet enkel de reviews van de klant analyseren als positief/negatief, maar kan dit ook koppelen aan een bepaald product. Zo weet het bedrijf van welk product de klanten het meest tevreden zijn. \autocite{MonkeyLearn2021}
 
@@ -339,7 +339,7 @@ Sentiment of gevoelswaarden kunnen op verschillende manieren gedetecteerd worden
 \subsection{SaaS (Software as a Service)}
 \label{saas}
 
-Wanneer een model voor sentiment analysis zou geschreven moeten worden, dan zou er een team aan programmeurs en een grote som geld nodig zijn. Daarom is het interessant om SaaS-tools te gebruiken. SaaS platforms bieden software als een service aan. Dit betekent dat de gebruiker deze software via het internet kan gebruiken, maar deze niet op zijn computer kan downloaden. \autocite{Marketing2021} Deze techniek wordt zeker gebruikt in het methodologie-gedeelte. De software-platforms hieronder zijn voorbeelden van SaaS. 
+Wanneer een model voor sentiment analysis zou geschreven moeten worden, dan zou er een team aan programmeurs en een grote som geld nodig zijn. Daarom is het interessant om SaaS-tools te gebruiken. SaaS platforms bieden software als een service aan. Dit betekent dat de gebruiker deze software via het internet kan gebruiken, maar deze niet op zijn computer kan downloaden. \autocite{Marketing2021} Deze techniek wordt zeker gebruikt in het methodologie-gedeelte. De software-platforms hieronder zijn voorbeelden van \gls{SAAS}. 
 
 \subsubsection{MonkeyLearn}
 \label{monkeylearn}
