@@ -172,4 +172,24 @@
   url    = {https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/},
 }
 
+@Online{Microsoft2018,
+  author = {Microsoft},
+  date   = {2018},
+  title  = {Quickstart: Install and use a package in Visual Studio},
+  url    = {https://docs.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-in-visual-studio#:~:text=NuGet packages contain reusable code,for use in your projects.&text=Packages are installed into a,Console, or the dotnet CLI.},
+}
+
+@Article{axxius2021,
+  author = {axxius},
+  date   = {2021},
+  title  = {What is GCP? (Google Cloud Platform)},
+}
+
+@WWW{Bigelow2017,
+  author = {Stephen J. Bigelow},
+  date   = {2017},
+  title  = {Google Cloud Platform (GCP)},
+  url    = {https://searchcloudcomputing.techtarget.com/definition/Google-Cloud-Platform},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
