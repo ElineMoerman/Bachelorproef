@@ -192,4 +192,10 @@
   url    = {https://searchcloudcomputing.techtarget.com/definition/Google-Cloud-Platform},
 }
 
+@Manual{Codelabs2021,
+  author = {Codelabs},
+  date   = {2021},
+  title  = {Using the Natural Language API with C#},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
