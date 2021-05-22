@@ -198,4 +198,21 @@
   title  = {Using the Natural Language API with C#},
 }
 
+@WWW{Kaggle2021,
+  author = {Kaggle},
+  date   = {2021},
+  title  = {Kaggle: Your Home for Data Science},
+  url    = {https://www.kaggle.com/},
+}
+
+@InProceedings{Maas2011,
+  author    = {Maas, Andrew L.},
+  booktitle = {Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies},
+  date      = {2011-06-01},
+  title     = {Learning Word Vectors for Sentiment Analysis},
+  pages     = {142--150},
+  publisher = {Association for Computational Linguistics},
+  urldate   = {http://www.aclweb.org/anthology/P11-1015},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

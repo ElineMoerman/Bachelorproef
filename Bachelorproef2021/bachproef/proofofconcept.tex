@@ -1,0 +1,248 @@
+\chapter{\IfLanguageName{dutch}{Proof-Of-Concept}{Proof-Of-Concept}}
+\label{ch:proof-of-concept}
+
+In dit gedeelte wordt de data door eigen geschreven code getraind en wordt er geprobeerd om een betere of even goede nauwkeurigheid te behalen op de drie datasets als bij de Azure Text Analytics API en het Google Cloud Platform. Het schrijven en testen van de code, gebeurt aan de hand van de stappen die in sectie 2.2.1 besproken werden. Data Preparatie is de eerste stap, daarna data cleaning gevolgd door het opzetten van de training en test dataset. In dit onderzoek zullen ook enkele visualisaties van de data gedaan worden om hier een beter begrip van te kunnen vormen. Dit gebeurt in sectie 4.3, Data Exploratie. Ten slotte wordt het juiste model gekozen en getraind. 
+
+Een belangrijke nota is dat de code gebaseerd is op code gevonden op de website Kaggle.com. Kaggle is een website waar er veel datasets te vinden zijn die de gebruiker, mits het aanmaken van een account, kan downloaden voor eigen gebruik. Verder kan de gebruiker op de website zelf code schrijven voor deze datasets. Het was enorm interessant om de code van de verschillende gebruikers te evalueren en zelf toe te passen om het best mogelijke model te vinden. \autocite{Kaggle2021}
+
+\section{Data Preparatie}
+\label{proofofconceptdatapreparatie}
+De eerste stap die met beide datasets ondernomen wordt, is de data preparatie stap. Tijdens deze stap wordt onnodige data verwijderd. De Amazon en de IMDB datasets bevatten geen onnodige data. Wat wel opnieuw moet gebeuren, is het omzetten van de dataset naar bruikbare data. Voor de Twitter dataset zullen enkele kolommen verwijderd moeten worden.
+
+\subsection{Amazon dataset}
+Het omzetten van de data uit de Amazon dataset verloopt ongeveer gelijkaardig aan de omzetting die gebeurt in hoofdstuk 3.1.3.
+
+Allereerst wordt de data opgehaald via Google Drive. Daarna worden de correcte imports gedeclareerd. Deze stap kan ook gevonden worden in figuur 3.3. Eenmaal de data ingelezen is, worden de reviews gedecodeerd via de functies readlines() en decode(), zoals ook te zien is op figuur 3.4. Voor het trainen van de AI, worden enkel de eerste 200.000 reviews gebruikt. Dit wordt ook gedaan omdat de Twitter Dataset heel wat kleiner is dan de Amazon dataset. Op deze manier krijgt men hopelijk een consistenter resultaat. 
+
+Nadat de data gedecodeerd werd, worden de labels uit de tekst getrokken en worden alle url's verwijderd uit de tekst zoals ook te zien in figuren 3.5 en 3.6. 
+
+Uiteindelijk wordt de data omgezet naar een dataframe met zowel de reviews als de scores. Een voorbeeld van hoe de data er nu uitziet, kan gevonden worden in figuur 4.1.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/AmazonDataframe.PNG}
+    \caption{\label{amazondataframe}Dataframe voor de Amazon dataset.}
+\end{figure}
+\FloatBarrier 
+
+\subsection{Twitter dataset}
+Het omzetten van de data uit de Twitter dataset verloopt ook gelijkaardig aan de omzetting die gebeurt in hoofdstuk 3.1.4.
+
+De data wordt opnieuw opgehaald via Google Drive. De correcte imports worden gedeclareerd en de data wordt ingelezen zoals in figuur 3.16.
+
+\subsection{IMDB dataset}
+Ook het omzetten van de data uit de IMDB dataset verloopt gelijkaardig aan de omzetting die gebeurt in hoofdstuk 3.1.5.
+Na het declareren van de juiste imports, wordt de data opgehaald via Google Drive. De IMDB dataset bevat maar twee kolommen, namelijk de review kolom die de tekst van de review bevat en de sentiment kolom, die 'positive' of 'negative' bevat. 
+
+\section{Data Cleaning}
+\label{proofofconceptdatacleaning}
+Een tweede stap is het opschonen van de data. In deze stap worden lege velden verwijderd en wordt niet-numerieke data omgezet in numerieke data.
+
+\subsection{Amazon dataset}
+Voor de Amazon dataset is er geen cleaning nodig. De data bestaat momenteel uit de review en de score. Er zijn geen overbodige velden of data die moet omgezet worden. Wat natuurlijk wel nog moet gebeuren is de tekst voorbereiden zodat deze op de meest efficiënte manier door het model kan gaan.
+
+Ten eerste is het handig om uit alle reviews de stopwoorden te verwijderen. Deze hebben immers geen impact op de gevoelswaarden van de review. Dit gebeurt via tokenization. Meer info hierover kan gevonden worden in sectie 2.3.1.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/AmazonTokenization.PNG}
+    \caption{\label{amazontokenization}Tokenization voor de Amazon dataset.}
+\end{figure}
+\FloatBarrier
+
+De data wordt verder verwerkt door er vectors van te maken, hoe dit juist gebeurt vindt u in bijlage 1.
+
+\subsubsection{Twitter dataset} 
+De Twitter dataset bevat momenteel 15 kolommen, dit is te veel en helemaal niet nodig. De aanmaakdatum, locatie, reden, id,... zijn allemaal velden die niet nodig zijn. Daarom is het de bedoeling om deze tabel om te zetten naar een tabel met enkel de reviews en de scores. 
+
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/TwitterData.PNG}
+    \caption{\label{twitterdata}Uiteindelijke data voor de Twitter dataset.}
+\end{figure}
+\FloatBarrier
+
+Voor het verwijderen van de stopwoorden, wordt dezelfde functie als bij de Amazon dataset gebruikt. Deze functie kan gevonden worden in figuur 4.2. Er is één klein verschil, bij de Twitter dataset moeten de apenstaartjes vooraan de tweets ook verwijderd worden. 
+
+Een tweede omzetting die moet gebeuren, is het omzetten van de woorden 'negatief', 'neutraal' en 'positief' naar 0, 1 en 2. Dit gebeurt aan de hand van onderstaande omzetting:
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/TwitterOmzetting.PNG}
+    \caption{\label{twitteromzetting}Het omzetten van de scores voor de Twitter dataset.}
+\end{figure}
+\FloatBarrier
+
+\subsection{IMDB dataset}
+Voor de IMDB dataset moeten de stopwoorden ook verwijderd worden. Dit is dezelfde functie als in figuur 4.2. Daarna moeten de woorden 'negative' en 'positive' omgezet worden naar 0 en 1. Deze functie kan men ook vinden in hoofdstuk 3.1.5. Zoals eerder vermeld, bevat de tekst nog html tags. Deze worden eruit gehaald. Dit gebeurt ook in hoofdstuk 3.1.5.
+
+
+\section{Data Exploratie}
+\label{proofofconceptdataexploratie}
+Dit is een extra toegevoegde stap om eens te gaan kijken wat er juist in de data zit. Dit kan gevisualiseerd worden aan de hand van grafieken, of extra velden. 
+
+\subsection{Amazon dataset}
+Om een beter begrip te krijgen van de Amazon dataset, kan men dit op allerlei manieren visualiseren. Momenteel is de Amazon dataset een dataframe. Hierop kunnen we bijvoorbeeld de functie describe() toepassen. Deze functie toont het aantal rijen data, de gemiddelde score, de standaardafwijking (std) en andere gegevens zoals het minimum en het maximum. 
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/AmazonDescribe.PNG}
+    \caption{\label{amazondescribe}Algemene info over de Amazon dataset.}
+\end{figure}
+\FloatBarrier 
+
+Hier kan men zien dat er 200.000 rijen data zijn. Het gemiddelde van de data is 0.505, dit betekent dat er een mooie verdeling is tussen positieve en negatieve scores. Het minimum is uiteraard 0 en het maximum is 1. Via de functie data.shape kunnen de dimensies van de data opgevraagd worden. Voor deze dataset is dit (200000,2). De dataset heeft dus 200.000 rijen en twee kolommen. Deze twee kolommen zijn de reviews en de scores. 
+
+Een andere manier om de verdeling tussen de positieve en de negatieve reviews te bekijken, is via een staafdiagram. Deze kan gezien worden in figuur 4.6. Men kan zien dat er een mooie verdeling is tussen de positieve (oranje balkje) en de negatieve reviews (blauw balkje). Er zijn echter iets meer positieve dan negatieve reviews.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/AmazonVerdeling.PNG}
+    \caption{\label{amazonverdeling}Verdeling van de Amazon dataset.}
+\end{figure}
+\FloatBarrier 
+
+Verder kan ook gekeken worden hoeveel woorden en hoeveel karakters een gemiddelde review bevat en wat de density van de reviews is. De density wordt berekend door het aantal woorden door het aantal karakters te delen. Hierdoor weten we dat hoe kleiner de density is, hoe langer de verschillende woorden in de review zijn. 
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/AmazonExtraVelden.PNG}
+    \caption{\label{amazonaantalwoorden}Extra velden voor de Amazon dataset.}
+\end{figure}
+\FloatBarrier
+
+De resultaten van deze nieuwe kolommen kunnen gevonden worden in figuur 4.8.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/AmazonDescribe2.PNG}
+    \caption{\label{amazondescribe2}Algemene info over de Amazon dataset.}
+\end{figure}
+\FloatBarrier
+
+Ook hier kan de functie describe op toegepast worden. Het gemiddeld aantal woorden is 80,09, het minimum aantal woorden is 10 en het maximum aantal woorden is 241. Onder de kolom char\_count, kan men zien hoeveel karakters een review gemiddeld bevat. Een review bevat gemiddeld 361.82 karakters, het minimum aantal karakters van een review is 78 en het maximum is 873 karakters. Deze dataset heeft dus een grote variatie aan reviews. Dit kan ook afgeleid worden uit de word\_density, waar het gemiddelde 0.22 is, het minimum 0.035 is en het maximum 0.44 is.
+
+Deze data kan ook in een grafiek gegoten worden.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/AmazonExtraGrafiek.PNG}
+    \caption{\label{amazongrafiek}Een grafiek over het aantal woorden, karakters en de density van de Amazon dataset.}
+\end{figure}
+\FloatBarrier
+
+
+De grafieken zien er alle drie anders uit. Voor het aantal woorden en het aantal karakters springt direct in het oog dat er een grote varieteit is. Dit kan men zien aan de breedte van de grafiek die zich uitstrekt van het minimum tot het maximum. De density voor de reviews blijft redelijk dezelfde voor alle reviews. 
+
+
+\subsection{Twitter dataset}
+Voor de Twitter dataset, kan de data ook eens geanalyseerd en gevisualiseerd worden. Na de omzetting kan de score drie betekenissen aannemen. Negatief wordt 0, neutraal wordt 1 en positief wordt 1. Het is dan duidelijk dat het minimum van deze dataset 0 is en het maximum 2 is. Het gemiddelde van de dataset is 0.32. Dit gemiddelde ligt niet zo mooi in het midden als de Amazon dataset. De verdeling van de Twitter dataset is namelijk minder goed. 
+
+Deze verdeling kan ook eens in een grafiek getoond worden.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/TwitterVerdeling.PNG}
+    \caption{\label{twittergrafiek}Verdeling van de Twitter dataset.}
+\end{figure}
+\FloatBarrier
+
+Men kan duidelijk zien dat er veel meer negatieve tweets zijn dan neutrale en positieve. Dit kan ervoor zorgen dat de data iets minder betrouwbaar zal zijn. Zoals eerder vermeld zijn tweets ook meestal korter. Dit kan gecontroleerd worden via de functie describe() toe te passen op enkele extra aangemaakte velden.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/TwitterExtraData2.PNG}
+    \caption{\label{twitterextradata}Extra velden voor de Twitter dataset.}
+\end{figure}
+\FloatBarrier
+
+Er is een duidelijke tendens zichtbaar. Ten eerste is de omvang van de dataset veel kleiner dan bij de Amazon dataset. De Twitter dataset telt maar 14.404 tweets, terwijl de Amazon dataset 200.000 reviews bevat. Het gemiddeld aantal woorden per tweet is 14. Dit is enorm laag, zeker vergeleken met de Amazon dataset. Het maximum aantal woorden is 40 en het minimum aantal woorden is 2. 
+Kan dit een probleem vormen? Is de dataset daarom minder betrouwbaar? Reviews en tweets komen in alle vormen en maten. Een goede AI moet zowel korte als lange reviews/tweets kunnen analyseren. Daarom is het goed om twee compleet verschillende datasets met elkaar te vergelijken. 
+
+Het aantal woorden, karakters en de density kunnen opnieuw in een grafiek geplaatst worden.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/TwitterExtraGrafiek.PNG}
+    \caption{\label{twitterextragrafiek}Een grafiek over het aantal woorden, karakters en de density van de Twitter dataset.}
+\end{figure}
+\FloatBarrier
+
+\subsection{IMDB dataset}
+Dankzij de functie data.describe(), wordt vastgesteld dat de dataset 50.000 reviews bevat. De omvang van de dataset is dan ook (50.000,2).
+
+Om de verdeling van de dataset te beoordelen, wordt dit in een grafiek gegoten. Er blijken evenveel negatieve (blauwe balkje) als positieve (oranje balkje) reviews te zijn. Dit is heel goed, dit betekent dat de IMDB dataset een heel evenwichtige dataset is. 
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/IMDBVerdeling.PNG}
+    \caption{\label{imdbgrafiek}Verdeling van de IMDB dataset.}
+\end{figure}
+\FloatBarrier
+
+Daarna kunnen opnieuw de extra velden word\_count, char\_count en word\_density toegevoegd worden. 
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/IMDBExtraData.PNG}
+    \caption{\label{imdbextradata}Extra data voor de IMDB dataset.}
+\end{figure}
+\FloatBarrier
+
+Het gemiddeld aantal woorden is 152.84, met als maximum aantal woorden 1705 en minimum aantal woorden 5. Deze getallen liggen enorm uiteen. Ook het aantal karakters kan afgeleid worden uit bovenstaande tabel. Het gemiddeld aantal karakters is 752, met een maximum van 8109 karakters en een minimum van 18 karakters. De density wordt berekend door het aantal woorden te delen door het aantal karakters. Hoe lager de density, hoe langer de woorden in de review. Het density-gemiddelde is 0.20, het minimum is 0.08 en het maximum is 0.82. Opnieuw liggen deze getallen ver uiteen. Wanneer deze data in een grafiek gegoten wordt, valt dit helemaal niet op.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/IMDBExtraGrafiek.PNG}
+    \caption{\label{imdbextragrafiek}Een grafiek voor het aantal woorden, karakters en de density van de IMDB dataset.}
+\end{figure}
+\FloatBarrier
+
+De lengte van de reviews, het aantal karakters en de density ligt voor alle reviews ongeveer bij elkaar. Dit kan geconcludeerd worden uit het feit dat de grafieken niet wijd zijn. Alle data ligt geconcentreerd. De dataset bevat echter wel enkele uitschieters. Daarom dat de maxima en minima zo ver uiteen liggen. 
+
+
+\section{Opzetten van training dataset en test dataset}
+De dataset wordt hier opgesplitst. 70\% van de data wordt training dataset en 30\% van de data wordt test dataset. Dit gebeurt voor alle datasets op dezelfde manier.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/AmazonValidatie.PNG}
+    \caption{\label{amazonopsplitsing}Opsplitsen training en test dataset.}
+\end{figure}
+\FloatBarrier
+
+\section{Model kiezen}
+\label{proofofconceptdatamodel}
+Het is enorm moeilijk om het juiste model te kiezen. Een extra laag, of epoch kan een groot verschil uitmaken in de nauwkeurigheid van het model. 
+
+\subsection{Model 1}
+
+Een eerste model dat getest wordt, is een CNN model: een Convolutional Neural Network. Na enkele testen blijkt dat voor de Amazon dataset 30 epochs meer dan genoeg zijn, terwijl de Twitter dataset betere resultaten toont bij 50 epochs.
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/Model1.PNG}
+    \caption{\label{model1}Model 1}
+\end{figure}
+\FloatBarrier
+
+Zoals gezien kan worden op figuur 4.13, is het model een sequentieel model. Dit model wordt gebruikt voor een 'stapel' lagen. Elke laag heeft 1 input en 1 output. Daarom wordt hier sequentieel doorgegaan. Het is ook duidelijk dat er een aantal verschillende lagen gebruikt worden. Zowel convolutional layers, dense layers als pooling layers worden hier gebruikt. Meer informatie over deze verschillende lagen kan gevonden worden in sectie 2.1.5. Dropout lagen zijn lagen die gebruikt worden om overfitting te vermijden. 
+
+Zoals te zien in figuur 4.13, is de eerste laag een embedding laag. Deze laag zet om te beginnen alle positieve getallen, in dit geval de scores, om naar vectors. Daarna wordt er een mix aan convolutionele, pooling en dense lagen gebruikt. De AI gaat zo op verschillende manieren door de data. Verder werd er voor elke laag de ReLU activatiefunctie gebruikt, behalve voor de laatste dense layer. Hier werd een softmax gebruikt. De softmax activatiefunctie wordt gebruikt om de data terug te normaliseren, daarom wordt deze op het einde gebruikt.   
+
+Het duurt even om het model te trainen, maar na een tijdje komen hier resultaten uit. 
+
+Voor de Amazon dataset heeft dit model een nauwkeurigheid van 82\%. Deze worden in een grafiek gestoken zodat men het verloop van de training gedurende de verschillende epochs kan zien. 
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/AmazonResult.PNG}
+    \caption{\label{amazonresult}Resultaten Amazon dataset.}
+\end{figure}
+\FloatBarrier
+
+Voor de Twitter dataset heeft dit model een nauwkeurigheid van 75\%
+Een belangrijke nota hierbij is dat de Twitter dataset 50 epochs nodig had, terwijl de Amazon dataset 30 epochs nodig had.
+
+Wat is de reden hiervoor?
+De Twitter dataset bevat minder data en dus moet de AI aan de hand van minder voorbeelden trainen. Wanneer het aantal epochs verhoogd wordt, doorloopt de AI deze cyclus 50 keer. 
+Ook deze resultaten zijn te vinden in een grafiek zoals te zien op figuur 4.19. 
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/TwitterResult.PNG}
+    \caption{\label{twitterresult}Resultaten Twitter dataset.}
+\end{figure}
+\FloatBarrier
+
+Voor de IMDB dataset heeft dit model een nauwkeurigheid van 72\%.
+Ook de IMDB dataset had 50 epochs nodig om een goed resultaat weer te geven. De IMDB dataset bevat ook minder reviews dan de Amazon dataset, dus zijn er meer epochs nodig. Deze resultaten zijn te vinden in de grafiek van figuur 4.20
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AI/IMDBResult.PNG}
+    \caption{\label{imdbresult}Resultaten IMDB dataset.}
+\end{figure}
+\FloatBarrier
+
+\subsection{Model 2}

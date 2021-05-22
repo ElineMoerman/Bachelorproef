@@ -11,7 +11,7 @@
 %% mogelijke manier toegepast hebt om een antwoord te vinden op de
 %% onderzoeksvraag.
 
-In dit gedeelte van de bachelorproef wordt onderzocht of AI klaar is om Sentiment Analysis toe te passen in het bedrijfsleven. Er zullen een aantal mogelijkheden worden getest om te zien welke tool het meest nauwkeurig is. Zoals eerder vermeld, zal Sentiment Analysis klaar zijn om te gebruiken in het bedrijfsleven bij een succespercentage van 80 \%. 
+In dit gedeelte van de bachelorproef wordt onderzocht of AI klaar is om Sentiment Analysis toe te passen in het bedrijfsleven. Er zullen een aantal mogelijkheden worden getest om te zien welke tool het meest nauwkeurig is. Zoals eerder vermeld, zal Sentiment Analysis klaar zijn om te gebruiken in het bedrijfsleven bij een succespercentage van 80\%. Om dit te realiseren, zullen eerst twee externe tools getest worden: Microsoft Azure Text Analytics API en Google Cloud Platform. In hoofdstuk~\ref{ch:proof-of-concept}: Proof-Of-Concept, zal er zelf getest worden of er een even goed of beter percentage kan bereikt worden door eigen geschreven.
 
 De eerste tool die getest wordt is de Microsoft Azure Text Analytics API. 
 
@@ -71,7 +71,7 @@ Wanneer de Amazon dataset van het internet gehaald wordt, krijgt de gebruiker tw
 \end{figure}
 \FloatBarrier
 
-Daarna (figuur 3.4) wordt de data omgevormd tot bruikbare zinnen. Om te beginnen wordt de data via de functie readlines() omgezet naar een lijst van items waar elke lijn een object vormt. In het tweede blokje code wordt aangegeven hoe een review van de dataset eruitziet. Men kan zien dat er voor elke zin nog een b staat. Deze b moet weggefiltert worden, zodat de data naar tekst omgevormd wordt. 
+Daarna (figuur 3.4) wordt de data omgevormd tot bruikbare zinnen. Om te beginnen wordt de data via de functie readlines() omgezet naar een lijst van items waar elke lijn een object vormt. In het tweede blokje code wordt aangegeven hoe een review van de dataset eruitziet. Men kan zien dat er voor elke zin nog een b staat. Deze b staat er door de functie readlines(). Byte objecten beginnen steeds met een b. Deze b moet weggefilterd worden, zodat de data naar tekst omgevormd wordt. 
 
 Eenmaal dit gebeurd is, kan men in het vierde blokje code zien dat de b weg is.
 
@@ -140,7 +140,7 @@ Maar om dit te verwezenlijken, moet er eerst een connectie met de Azure Text Ana
 \end{figure}
 \FloatBarrier
 
-Eenmaal de connectie in orde is, kan het onderzoek aan de slag gaan met de Azure Text Analytics API. Ten eerste zal er getest worden of de Azure resource alle zinnen ook daadwerkelijk herkent als 'Engels'. In sectie 2.3.1 wordt besproken wat Language Detection juist is. Deze techniek zal via een geschreven methode toegepast worden op alle zinnen. Als de getetecteerde zin gelijk is aan 'English', dan zal de nauwkeurigheid (in het codevoorbeeld: accuracy) verhoogd worden met 1. Als alle zinnen juist gezien worden als Engels, wordt er een nauwkeurigheid van 500/500 bereikt. 
+Eenmaal de connectie in orde is, kan het onderzoek aan de slag gaan met de Azure Text Analytics API. Ten eerste zal er getest worden of de Azure resource alle zinnen ook daadwerkelijk herkent als 'Engels'. In sectie 2.3.1 wordt besproken wat Language Detection juist is. Deze techniek zal via een geschreven methode toegepast worden op alle zinnen. Als de getetecteerde taal gelijk is aan 'English', dan zal de nauwkeurigheid (in het codevoorbeeld: accuracy) verhoogd worden met 1. Als alle zinnen juist gezien worden als Engels, wordt er een nauwkeurigheid van 500/500 bereikt. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{LanguageDetectionAmazon.PNG}
@@ -160,7 +160,7 @@ Daarom wordt er bij elke zin die juist positief of juist negatief bestempeld wor
 
 \subsubsection{Resultaten}
 \label{amazondatasetresultatenazure}
-Ten eerste werd er getest of de Azure Text Analytics API alle geselecteerde zinnen uit de dataset categoriseert als 'Engels'. In Figuur 3.14 ziet men dat de nauwkeurigheid 499/500 of 99.8\% is. Er werd 1 zin als 'Spaans' gecategoriseerd.
+Ten eerste werd er getest of de Azure Text Analytics API alle geselecteerde zinnen uit de dataset categoriseert als 'Engels'. In Figuur 3.14 ziet men dat de nauwkeurigheid 499/500 of 99.8\% is. Er werd 1 zin als 'Spaans' gecategoriseerd. Dit komt doordat deze dataset effectief een Spaanse zin bevatte. De nauwkeurigheid wordt daarom aangepast naar 500/500 of 100\%.
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{LanguageDetectionAmazonResult.PNG}
@@ -214,7 +214,7 @@ Ten slotte worden de zinnen, zoals bij de Amazon dataset, in een nieuw formaat a
 \label{twitterdatasetvisualstudioazure}
 Voor deze dataset maken we gebruik van dezelfde endpoint en key als bij de vorige dataset, zoals te zien op figuur 3.11. Aan de methode voor gebruik te maken van Language Detection moet er in principe bijna niets aangepast worden. Enkel de dataset verandert. De methode die hier toegepast wordt, is ook te zien in figuur 3.12.
 
-Ten tweede wordt ook hier getest of de Azure Text Analytics API de zinnen uit deze dataset kan categoriseren. Hiervoor moet de methode enigzinds aangepast worden aangezien de Twitter dataset wel neutrale connotatie herkent. In deze dataset worden de zinnen gezien als positief, negatief of neutraal. 
+Ten tweede wordt ook hier getest of de Azure Text Analytics API de zinnen uit deze dataset kan categoriseren. Hiervoor moet de methode enigzins aangepast worden aangezien de Twitter dataset wel neutrale connotatie herkent. In deze dataset worden de zinnen gezien als positief, negatief of neutraal. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{SentimentAnalysisTwitter.PNG}
@@ -226,7 +226,7 @@ Ten tweede wordt ook hier getest of de Azure Text Analytics API de zinnen uit de
 \subsubsection{Resultaten}
 \label{twitterdatasetresultatenazure}
 Om te beginnen werd hetzelfde als bij de Amazon dataset getest, namelijk of alle zinnen als 'Engels' herkend worden. 
-Hier haalt de Azure Text Analytics API een score van 499/500, omgerekend is dit 99.8\%. Één zin werd echter herkend als 'Frans'.
+Hier haalt de Azure Text Analytics API een score van 499/500, omgerekend is dit 99.8\%. Één zin werd echter herkend als 'Frans'. Hoe kan dit? Deze zin had veel speciale tekens. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{AccuracyTwitterDatasetAzure.PNG}
@@ -242,9 +242,80 @@ Ten slotte werd er ook getest of Azure de zinnen juist herkent als positief, neu
 \end{figure}
 \FloatBarrier 
 
+\subsection{IMDB Dataset}
+\label{imdbdatasetazure}
+Ten slotte wordt ook de IMDB dataset in deze tool getest. 
+
+\subsubsection{Data omzetten}
+\label{imdbdatasetomzettenazure}
+Na het downloaden van de IMDB dataset, is dit in een csv formaat. Deze data moet wel nog wat omgevormd worden om gebruikt te kunnen worden. Allereerst worden de juiste imports gedeclareerd, wordt er opnieuw een connectie met Google Drive gemaakt en wordt het bestand ingelezen. 
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{Stap1IMDB.PNG}
+    \caption{\label{stap1imdb}IMDB dataset: Imports en connectie met Google Drive.}
+\end{figure}
+\FloatBarrier 
+
+De IMDB dataset bevat maar twee kolommen, de review en de score. Er moeten dus geen kolommen meer verwijderd worden. De data van de kolom sentiment is momenteel 'positive' of 'negative'. Deze worden ten eerste omgezet naar een 1 of een 0. Daarna wordt de functie clean\_html toegepast, om alle html tags, zoals <p></p> te verwijderen. Een voorbeeld van hoe de data er nu uit ziet, is te vinden in figuur 3.24.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{Stap2IMDB.PNG}
+    \caption{\label{stap2imdb}IMDB dataset: Omzetten sentiment en html tags verwijderen.}
+\end{figure}
+\FloatBarrier 
+
+Hierna worden alle reviews die meer dan 3000 karakters hebben verwijderd uit de dataset. Dit wordt gedaan zodat Visual Studio niet té lang moet runnen. 
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{Stap3IMDB.PNG}
+    \caption{\label{stap3imdb}IMDB dataset: Reviews met meer dan 3000 karakters verwijderen.}
+\end{figure}
+\FloatBarrier
+
+Hierna worden de reviews opnieuw in een nieuw formaat afgeprint om gemakkelijk om te zetten naar Visual Studio.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{Stap4IMDB.PNG}
+    \caption{\label{stap4imdb}IMDB dataset: Omzetten naar ander formaat.}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{Stap5IMDB.PNG}
+    \caption{\label{stap5imdb}IMDB dataset: Omzetten naar ander formaat.}
+\end{figure}
+\FloatBarrier
+
+
+
+\subsubsection{Visual Studio}
+\label{imdbdatasetvisualstudioazure}
+Om de taal van de reviews te herkennen, wordt dezelfde methode gebruikt als bij de Twitter en Amazon datasets. Deze kan gevonden worden in figuur 3.12.
+
+Er werd ook getest of de Azure Text Analytics API de zinnen correct kan categoriseren. De methode die hier gebruikt werd is dezelfde als in figuur 3.13. Als de review juist bestempeld wordt als positief of negatief, wordt een punt bij de nauwkeurigheid opgeteld. Wanneer de zin neutraal of gemengd is, wordt de zin in stukjes geanalyseerd en wordt er bepaald of de zin toch negatiever of positiever is. Als er meer positieve stukjes zijn dan er negatieve stukjes zijn, wordt deze zin toch bestempeld als positief. 
+
+\subsubsection{Resultaten}
+\label{imdbdatasetresultatenazure}
+Werden alle zinnen als Engels herkend? De Azure Text Analytics API behaalde een score van 500/500 voor deze dataset. Omgerekend is dit 100\%. Alle zinnen werden correct herkend.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AccuracyIMDBDatasetAzure.PNG}
+    \caption{\label{azurelanguagedetectionimdbresults}Language Detection voor de IMDB dataset in Visual Studio: Resultaten.}
+\end{figure}
+\FloatBarrier 
+
+Ten tweede werd er getest of het categoriseren van de reviews uit de dataset juist verloopt. De Azure Text Analytics API kan deze reviews classifieren als positief of negatief. Er werden 376/500 zinnen juist toegekend. Omgerekend is dit 75,5\%. Dit is een matig resultaat, maar zeker niet slecht. 
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{SentimentAnalysisIMDBResult.PNG}
+    \caption{\label{azuresentimentanalysisimdbresults}Sentiment Analysis voor de IMDB dataset in Visual Studio: Resultaten.}
+\end{figure}
+\FloatBarrier 
+
+
+
 \subsection{Conclusie Azure Text Analytics API}
 \label{conclusieAzure}
-De Azure Analytics API is heel goed voor Language Detection. Bij beide datasets behaalde de tool een score van 99.8\%. Voor Sentiment Analysis waren de resultaten verschillend bij beide datasets. De Amazon dataset had een nauwkeurigheid van 84.2\%, terwijl de Twitter dataset een score van 66.8\% behaalde. Dit is een enorm groot verschil en kan verklaard worden doordat tweets ten eerste meer tussentaal, emoji's, hashtags en apestaartjes bevatten dan reviews. Ten tweede speelt de lengte van de zinnen ook een belangrijke rol. Reviews zijn meestal langer dan tweets. De Azure Analytics API behaalt zo een gemiddelde score van 75.5\%, maar aangezien deze bachelorproef onderzoekt of Sentiment Analysis kan gebruikt worden bij reviews, is dit meer dan voldoende. 
+De Azure Analytics API is heel goed voor Language Detection. Bij de Amazon en de Twitter datasets behaalde de tool een score van 99.8\%. Bij de IMDB dataset behaalde de tool een score van 100\%. Voor Sentiment Analysis waren de resultaten verschillend bij de datasets. De Amazon dataset had een nauwkeurigheid van 84.2\%, terwijl de Twitter dataset een score van 66.8\% behaalde en de IMDB dataset een score van 75.5\% behaalde. Dit is een enorm groot verschil en kan verklaard worden doordat tweets ten eerste meer tussentaal, emoji's, hashtags en apenstaartjes bevatten dan reviews. Ten tweede speelt de lengte van de zinnen ook een belangrijke rol. Reviews zijn meestal langer dan tweets. De Azure Analytics API behaalt zo een gemiddelde score van 75.5\%. Deze bachelorproef onderzoekt echter of Sentiment Analysis specifiek reviews kan analyseren. Als dus het gemiddelde van de Amazon en de IMDB dataset genomen wordt, krijgt men een mooier getal. Het gemiddelde is dan 79.85\%. Dit is ongeveer 80\% en daarom wordt deze tool bestempeld als 'geschikt' voor gebruik in het bedrijfsleven. 
 
 \section{Google Cloud Platform}
 
@@ -267,7 +338,7 @@ De aanpak die hier toegepast wordt, kan ook teruggevonden worden in de developer
 
 Om Google Cloud Platform te gebruiker, is er een account nodig. Daarom is de eerste stap om een account aan te maken. Het enige dat de gebruiker moet doen, is een Visakaart voorzien. Hier wordt geen geld afgehaald, dit is enkel om te bewijzen dat de gebruiker geen robot is. 
 
-Eenmaal het account aangemaakt is, komt men terecht op de homepagina van het platform. Het volgende dat nodig is, is een nieuw project. De verdere setup gebeurt via de Cloud Shell. Dit is een console dit gebruikt kan worden binnen het Google Cloud Platform. 
+Eenmaal het account aangemaakt is, komt men terecht op de homepagina van het platform. Het volgende dat nodig is, is een nieuw project. De verdere setup gebeurt via de Cloud Shell. Dit is een console die gebruikt kan worden binnen het Google Cloud Platform. 
 
 Met behulp van de Cloud Shell wordt de Natural Language API aan het project toegevoegd. 
 
@@ -307,7 +378,7 @@ De data werd op dezelfde manier omgezet als bij het testen van de Azure Text Ana
 
 \subsubsection{Code}
 \label{amazoncodegoogleplatform}
-De code wordt opnieuw geschreven in de klasse Program.cs. Google Cloud Platform werkt met een score die aan elke zin toegekend wordt. Een score tussen -1 en -0.25 betekent dat de tekst negatief is, een score tussen -0.25 en 0.25 betekent een neutrale score en een score tussen 0.25 en 1.0 staat voor een positieve connotatie. Aangezien de Amazon dataset enkel voorbeelden bevat die negatief of positief zijn, zijn de scores verdeeld als volgt: tussen -1 en 0 betekent negatief en tussen 0 en 1 betekent positief. In figuur 3.25 kan de geschreven code teruggevonden worden. Eenmaal alle data geanalyseerd is, komt er een nauwkeurigheid uit. 
+De code wordt opnieuw geschreven in de klasse Program.cs. Google Cloud Platform werkt met een score die aan elke zin toegekend wordt. Een score tussen -1 en -0.25 betekent dat de tekst negatief is, een score tussen -0.25 en 0.25 betekent een neutrale score en een score tussen 0.25 en 1.0 staat voor een positieve connotatie. Aangezien de Amazon dataset enkel voorbeelden bevat die negatief of positief zijn, zijn de scores verdeeld als volgt: tussen -1 en 0 betekent negatief en tussen 0 en 1 betekent positief. In figuur 3.32 kan de geschreven code teruggevonden worden. Eenmaal alle data geanalyseerd is, komt er een nauwkeurigheid uit. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{CodeAmazon.PNG}
@@ -318,7 +389,7 @@ De code wordt opnieuw geschreven in de klasse Program.cs. Google Cloud Platform 
 \subsubsection{Resultaten}
 \label{amazonresultatengoogleplatform}
 
-Er werd getest of Google Cloud Platform de zinnen uit de Amazon dataset juist kan categoriseren als positief of negatief. De resultaten hiervoor kunnen in figuur 3.26 teruggevonden worden. Na het analyseren van de zinnen, behaalde het platform een score van 465/500. Omgerekend is dit 93.0\%. Zoals eerder besproken, wordt een score van 80\% of hoger gezien als succesvol. Daarom kan geconcludeerd worden dat Google Coud Platform uitstekende resultaten biedt. Om meer zekerheid aan de lezer te bieden dat Google Cloud Platform een goede keuze is, wordt dit ook met de Twitter Airlines dataset getest. 
+Er werd getest of Google Cloud Platform de zinnen uit de Amazon dataset juist kan categoriseren als positief of negatief. De resultaten hiervoor kunnen in figuur 3.34 teruggevonden worden. Na het analyseren van de zinnen, behaalde het platform een score van 465/500. Omgerekend is dit 93.0\%. Zoals eerder besproken, wordt een score van 80\% of hoger gezien als succesvol. Daarom kan geconcludeerd worden dat Google Coud Platform uitstekende resultaten biedt. Om meer zekerheid aan de lezer te bieden dat Google Cloud Platform een goede keuze is, wordt dit ook met de Twitter Airlines dataset getest. 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{AccuracyAmazonGoogle.PNG}
     \caption{\label{accuracyTwitter}Google Cloud Platform resultaten voor de Amazon dataset.}
@@ -332,7 +403,7 @@ De data werd op dezelfde manier omgezet als bij het testen van de Azure Text Ana
 
 \subsubsection{Code}
 \label{twittercodegoogleplatform}
-Aangezien de Twitte Airlines dataset wel data over de drie categorieën positief, neutraal en negatief bevat, kan Google Cloud Platform hier nauwkeuriger toegepast worden. Zinnen met een score boven de 0.25 krijgen een lineSentiment met waarde 'positief', zinnen met een score lager dan -0.25 krijgen een lineSentiment met waarde 'negatief' en zinnen met een score tussen de -0.25 en 0.25 krijgen 'neutraal'. Eenmaal alle zinnen door de code gegaan zijn, wordt er een nauwkeurigheid berekend op 500. De code kan teruggevonden worden in figuur 3.27.
+Aangezien de Twitte Airlines dataset wel data over de drie categorieën positief, neutraal en negatief bevat, kan Google Cloud Platform hier nauwkeuriger toegepast worden. Zinnen met een score boven de 0.25 krijgen een lineSentiment met waarde 'positief', zinnen met een score lager dan -0.25 krijgen een lineSentiment met waarde 'negatief' en zinnen met een score tussen de -0.25 en 0.25 krijgen 'neutraal'. Eenmaal alle zinnen door de code gegaan zijn, wordt er een nauwkeurigheid berekend op 500. De code kan teruggevonden worden in figuur 3.34.
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{CodeTwitter.PNG}
@@ -342,7 +413,7 @@ Aangezien de Twitte Airlines dataset wel data over de drie categorieën positief
 
 \subsubsection{Resultaten}
 \label{twitterresultatengoogleplatform}
-Er werd getest of Google Cloud Platform de zinnen uit de Twitter Airlines dataset ook juist kan categoriseren als positief, neutraal of negatief. De resultaten hiervoor kunnen in figuur 3.28 teruggevonden worden. Google Cloud Platform behaalde hier een score van 365/500. Omgerekend is dit 73.0\%. Zoals eerder besproken, wordt een score van 80\% of hoger gezien als succesvol. Daarom kan geconcludeerd worden dat Google Coud Platform redelijk goede resultaten biedt. Er werd eerder geconcludeerd dat de Twitter Airlines dataset steeds minder goede resultaten zal behalen omdat de tekst korter is, en de zinnen in een ander formaat staan. 
+Er werd getest of Google Cloud Platform de zinnen uit de Twitter Airlines dataset ook juist kan categoriseren als positief, neutraal of negatief. De resultaten hiervoor kunnen in figuur 3.35 teruggevonden worden. Google Cloud Platform behaalde hier een score van 365/500. Omgerekend is dit 73.0\%. Zoals eerder besproken, wordt een score van 80\% of hoger gezien als succesvol. Daarom kan geconcludeerd worden dat Google Coud Platform redelijk goede resultaten biedt. Er werd eerder geconcludeerd dat de Twitter Airlines dataset steeds minder goede resultaten zal behalen omdat de tekst korter is, en de zinnen in een ander formaat staan. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{AccuracyTwitterGoogle.PNG}
@@ -350,203 +421,25 @@ Er werd getest of Google Cloud Platform de zinnen uit de Twitter Airlines datase
 \end{figure}
 \FloatBarrier 
 
+\subsection{IMDB Dataset}
+\label{imdbgoogleplatform}
+De data werd op dezelfde manier omgezet als bij het testen van de Azure Text Analytics API. De omzetting kan gevonden worden van figuur 3.23 tot figuur 3.27. Opnieuw worden zinnen met een score boven de 0 gecategoriseerd als 'positief', en zinnen met een score onder de 0, worden als 'negatief' beoordeeld. Er wordt opnieuw een nauwkeurigheid op 500 berekend.
+
+De code die gebruikt wordt, is dezelfde als in figuur 3.34.
+
+
+\subsubsection{Resultaten}
+\label{imdbresultatengoogleplatform}
+Na het testen van Google Cloud Platform op de IMDB Movies Dataset, komen er hier resultaten op 500 uit. De reviews konden gezien worden als positief of negatief. Google Cloud Platform behaalde voor deze dataset een score van 446/500. Omgerekend is dit 89.2\%.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{AccuracyIMDBGoogle.PNG}
+    \caption{\label{accuracyimdb}Google Cloud Platform resultaten voor de IMDB dataset.}
+\end{figure}
+\FloatBarrier 
 \subsection{Conclusie Google Cloud Platform}
 \label{conclusieGoogleCloudPlatform}
 
-Google Cloud Platform is goed voor Sentiment Analysis. De resultaten verschilden echter enorm tussen de twee datasets. De Amazon dataset had een nauwkeurigheid van 93.0\%, terwijl de Twitter dataset een score van 73.0\% behaalde. Dit verschil kan verklaard worden doordat tweets meer tussentaal, emoji's, apenstaartjes en andere speciale tekens bevatten. Verder is de lengte van de zinnen in de Twitter dataset veel korter. Google Cloud Platform behaalt zo een gemiddelde score van 83.0\%, dit ligt mooi boven het gewenste 80\% succespercentage.
+Google Cloud Platform is goed voor Sentiment Analysis. De resultaten verschilden echter enorm tussen de datasets. De Amazon dataset had een nauwkeurigheid van 93.0\%, terwijl de Twitter dataset een score van 73.0\% behaalde en de IMDB dataset een score van 89.2\% behaalde. Dit verschil kan verklaard worden doordat tweets meer tussentaal, emoji's, apenstaartjes en andere speciale tekens bevatten. Verder is de lengte van de zinnen in de Twitter dataset veel korter. Google Cloud Platform behaalt zo een gemiddelde score van 85.07\%, dit ligt mooi boven het gewenste 80\% succespercentage. Zonder de Twitter dataset, behaalt Google Cloud Platform een percentage van 91.1\%.
 
-
-\section{Proof Of Concept}
-
-In dit gedeelte wordt de data door eigen geschreven code getraind en wordt er geprobeerd om een betere of even goede nauwkeurigheid te behalen op de twee datasets als bij de Azure Text Analytics API. Het schrijven en testen van de code, gebeurt aan de hand van de stappen die in sectie 2.2.1 besproken werden. Data Preparatie is de eerste stap, daarna data cleaning gevolgd door het opzetten van de training en test dataset. In dit onderzoek zullen ook enkele visualisaties van de data gedaan worden om hier een beter begrip van te kunnen vormen. Ten slotte wordt het juiste model gekozen en getraind. 
-
-Een belangrijke nota is dat de code geïnspireerd is door code gevonden op kaggle. Kaggle is een website waar er veel datasets te vinden zijn die de gebruiker, mits het aanmaken van een account, kan downloaden voor eigen gebruik. Verder kan de gebruiker op de website zelf code schrijven voor deze datasets. Het was enorm interessant om de code van de verschillende gebruikers te evalueren en zelf toe te passen om het best mogelijke model te vinden. \autocite{Kaggle2021}
-
-\subsection{Data Preparatie}
-\label{proofofconceptdatapreparatie}
-De eerste stap die met beide datasets ondernomen wordt, is de data preparatie stap. Tijdens deze stap wordt onnodige data verwijderd. De Amazon dataset, bevat geen onnodige data. Wat wel opnieuw moet gebeuren, is het omzetten van de dataset naar bruikbare data. Voor de Twitter dataset zullen enkele kolommen verwijderd moeten worden.
-
-\subsubsection{Amazon dataset}
-Het omzetten van de data uit de Amazon dataset verloopt ongeveer gelijkaardig aan de omzetting die gebeurt in hoofdstuk 3.1.3.
- 
-Allereerst wordt de data opgehaald via Google Drive. Daarna worden de correcte imports gedeclareerd. Deze stap kan ook gevonden worden in figuur 3.3. Eenmaal de data ingelezen is, worden de reviews gedecodeerd via de functies readlines() en decode(), zoals ook te zien is op figuur 3.4. Voor het trainen van de AI, worden enkel de eerste 200.000 reviews gebruikt. Dit wordt ook gedaan omdat de Twitter Dataset heel wat kleiner is dan de Amazon dataset. Op deze manier krijgt men hopelijk een consistenter resultaat. 
-
-Nadat de data gedecodeerd werd, worden de labels uit de tekst getrokken en worden alle url's verwijderd uit de tekst zoals ook te zien in figuren 3.5 en 3.6. 
-
-Uiteindelijk wordt de data omgezet naar een dataframe met zowel de reviews als de scores. Een voorbeeld van hoe de data er nu uitziet, kan gevonden worden in figuur 3.29.
-
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{AI/AmazonDataframe.PNG}
-    \caption{\label{amazondataframe}Dataframe voor de Amazon dataset.}
-\end{figure}
-\FloatBarrier 
-
-\subsubsection{Twitter dataset}
-Het omzetten van de data uit de Twitter dataset verloopt ook gelijkaardig aan de omzetting die gebeurt in hoofdstuk 3.1.4.
-
-Om te beginnen wordt de data opnieuw opgehaald via Google Drive. De correcte imports worden gedeclareerd en de data wordt ingelezen zoals in figuur 3.16.
-
-\subsection{Data Cleaning}
-\label{proofofconceptdatacleaning}
-Een tweede stap is het opschonen van de data. In deze stap worden lege velden verwijderd en wordt niet-numerieke data omgezet in numerieke data.
-
-\subsubsection{Amazon dataset}
-Voor de Amazon dataset is er geen cleaning nodig. De data bestaat momenteel uit de review en de score. Er zijn geen overbodige velden of data die moet omgezet worden. Wat natuurlijk wel nog moet gebeuren is de tekst voorbereiden zodat deze op de meest efficiënte manier door het model kan gaan.
-
-Ten eerste is het handig om uit alle reviews de stopwoorden te verwijderen. Deze hebben immers geen impact op de gevoelswaarden van de review. Dit gebeurt via tokenization. Meer info hierover kan gevonden worden in sectie 2.3.1.
-
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{AI/AmazonTokenization.PNG}
-    \caption{\label{amazontokenization}Tokenization voor de Amazon dataset.}
-\end{figure}
-\FloatBarrier
-
-De data wordt verder verwerkt door er vectors van te maken, hoe dit juist gebeurt vindt u in bijlage 1.
-
-\subsubsection{Twitter dataset} 
-De Twitter dataset bevat momenteel 15 kolommen, dit is te veel en helemaal niet nodig. De aanmaakdatum, locatie, reden, id,... zijn allemaal velden die niet nodig zijn. Daarom is het de bedoeling om deze tabel om te zetten naar een tabel met enkel de reviews en de scores. 
-
-
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{AI/TwitterData.PNG}
-    \caption{\label{twitterdata}Uiteindelijke data voor de Twitter dataset.}
-\end{figure}
-\FloatBarrier
-
-Voor het verwijderen van de stopwoorden, wordt dezelfde functie als bij de Amazon dataset gebruikt. Deze functie kan gevonden worden in figuur xx. Er is één klein verschil, bij de Twitter dataset moeten de apenstaartjes vooraan de tweets ook verwijderd worden. 
-
-Een tweede omzetting die moet gebeuren, is het omzetten van de woorden 'negatief', 'neutraal' en 'positief' naar 0, 1 en 2. Dit gebeurt aan de hand van onderstaande omzetting:
-
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{AI/TwitterOmzetting.PNG}
-    \caption{\label{twitteromzetting}Het omzetten van de scores voor de Twitter dataset.}
-\end{figure}
-\FloatBarrier
-
-
-\subsection{Data Exploratie}
-\label{proofofconceptdataexploratie}
-Dit is een extra toegevoegde stap om eens te gaan kijken wat er juist in de data zit. Dit kan gevisualiseerd worden aan de hand van grafieken, of extra velden. 
-
-\subsubsection{Amazon dataset}
-Om een beter begrip te krijgen van de Amazon dataset, kan men dit op allerlei manieren visualiseren. Momenteel is de Amazon dataset een dataframe. Hierop kunnen we bijvoorbeeld de functie describe() toepassen. Deze functie toont het aantal rijen data, de gemiddelde score, de standaardafwijking (std) en andere gegevens zoals het minimum en het maximum. 
-
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{AI/AmazonDescribe.PNG}
-    \caption{\label{amazondescribe}Algemene info over de Amazon dataset.}
-\end{figure}
-\FloatBarrier 
-
-Hier kan men zien dat er 200.000 rijen data zijn. Het gemiddelde van de data is 0.505, dit betekent dat er een mooie verdeling is tussen positieve en negatieve scores. Het minimum is uiteraard 0 en het maximum is 1. Via de functie data.shape kunnen de dimensies van de data opgevraagd worden. Voor deze dataset is dit (200000,2). De dataset heeft dus 200.000 rijen en twee kolommen. Deze twee kolommen zijn de reviews en de scores. 
-
-Een andere manier om de verdeling tussen de positieve en de negatieve reviews te bekijken, is via een staafdiagram. Deze kan gezien worden in figuur 3.32. Men kan zien dat er een mooie verdeling is tussen de positieve (oranje balkje) en de negatieve reviews (blauw balkje). Er zijn echter iets meer positieve dan negatieve reviews.
-
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{AI/AmazonVerdeling.PNG}
-    \caption{\label{amazonverdeling}Verdeling van de Amazon dataset.}
-\end{figure}
-\FloatBarrier 
-
-Verder kan ook gekeken worden hoeveel woorden en hoeveel karakters een gemiddelde review bevat en wat de density van de reviews is. De density wordt berekend door het aantal woorden door het aantal karakters te delen. Hierdoor weten we dat hoe kleiner de density is, hoe langer de verschillende woorden in de review zijn. 
-
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{AI/AmazonExtraVelden.PNG}
-    \caption{\label{amazonaantalwoorden}Extra velden voor de Amazon dataset.}
-\end{figure}
-\FloatBarrier
-
-De resultaten van deze nieuwe kolommen kunnen gevonden worden in figuur 3.34.
-
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{AI/AmazonDescribe2.PNG}
-    \caption{\label{amazondescribe2}Algemene info over de Amazon dataset.}
-\end{figure}
-\FloatBarrier
-
-Ook hier kan de functie describe op toegepast worden. Het gemiddeld aantal woorden is 80,09, het minimum aantal woorden is 10 en het maximum aantal woorden is 241. Onder de kolom char\_count, kan men zien hoeveel karakters een review gemiddeld bevat. Een review bevat gemiddeld 361.82 karakters, het minimum aantal karakters van een review is 78 en het maximum is 873 karakters. Deze dataset heeft dus een grote variatie aan reviews. Dit kan ook afgeleid worden uit de word\_density, waar het gemiddelde 0.22 is, het minimum 0.035 is en het maximum 0.44 is.
-
-Deze data kan ook in een grafiek gegoten worden.
-
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{AI/AmazonExtraGrafiek.PNG}
-    \caption{\label{amazongrafiek}Een grafiek over het aantal woorden, karakters en de density van de Amazon dataset.}
-\end{figure}
-\FloatBarrier
-
-
-De grafieken zijn er alle drie anders uit. Voor het aantal woorden en het aantal karakters zien we dat er een grote varieteit is. Dit kan men zien aan de breedte van de grafiek die zich uitstrekt van het minimum tot het maximum. De density voor de reviews blijft redelijk dezelfde voor alle reviews. 
-
-
-\subsubsection{Twitter dataset}
-Voor de Twitter dataset, kan de data ook eens geanalyseerd en gevisualiseerd worden. Na de omzetting kan de score drie betekenissen aannemen. Negatief wordt 0, neutraal wordt 1 en positief wordt 1. Het is dan duidelijk dat het minimum van deze dataset 0 is en het maximum 2 is. Het gemiddelde van de dataset is 0.32. Dit gemiddelde ligt niet zo mooi in het midden als de Amazon dataset. De verdeling van de Twitter dataset is namelijk minder goed. 
-
-Deze verdeling kan ook eens in een grafiek getoond worden.
-
- \begin{figure}[!htbp]
-     \includegraphics[width=\textwidth]{AI/TwitterVerdeling.PNG}
-     \caption{\label{twittergrafiek}Verdeling van de Amazon dataset.}
- \end{figure}
- \FloatBarrier
- 
- Men kan duidelijk zien dat er veel meer negatieve tweets zijn dan neutrale en positieve. Dit kan ervoor zorgen dat de data iets minder betrouwbaar zal zijn. Zoals eerder vermeld zijn tweets ook meestal korter. Dit kan gecontroleerd worden via de functie describe() toe te passen op enkele extra aangemaakte velden.
- 
-  \begin{figure}[!htbp]
-     \includegraphics[width=\textwidth]{AI/TwitterExtraData2.PNG}
-     \caption{\label{twitterextradata}Extra velden voor de Twitter dataset.}
- \end{figure}
- \FloatBarrier
- 
- Er is een duidelijke tendens zichtbaar. Ten eerste is de omvang van de dataset veel kleiner dan bij de Amazon dataset. De Twitter dataset telt tweets, terwijl de Amazon dataset 200.000 reviews bevat. Het gemiddeld aantal woorden per tweet is 14. Dit is enorm laag, zeker vergeleken met de Amazon dataset. Het maximum aantal woorden is 40 en het minimum aantal woorden is 2. 
- Kan dit een probleem vormen? Is de dataset daarom minder betrouwbaar? Reviews en tweets komen in alle vormen en maten. Een goede AI moet zowel korte als lange reviews/tweets kunnen analyseren. Daarom is het goed om twee compleet verschillende datasets met elkaar te vergelijken. 
-
-\subsection{Opzetten van training dataset en test dataset}
-De dataset wordt hier opgesplitst. 70\% van de data wordt training dataset en 30\% van de data wordt test dataset. Dit gebeurt voor beide datasets op dezelfde manier.
-
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{AI/AmazonValidatie.PNG}
-    \caption{\label{amazonopsplitsing}Opsplitsen training en test dataset.}
-\end{figure}
-\FloatBarrier
-
-\subsection{Model kiezen}
-\label{proofofconceptdatamodel}
-Het is enorm moeilijk om het juiste model te kiezen. Een extra laag, of epoch kan een groot verschil uitmaken in de nauwkeurigheid van het model. 
-
-\subsubsection{Model 1}
-
-Een eerste model dat getest wordt is een CNN model: een Convolutional Neural Network. Na enkele testen blijkt dat voor de Amazon dataset 30 epochs meer dan genoeg zijn, terwijl de Twitter dataset betere resultaten toont bij 50 epochs.
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{AI/Model1.PNG}
-    \caption{\label{model1}Model 1}
-\end{figure}
-\FloatBarrier
-
-Zoals gezien kan worden op figuur xx, is het model een sequentieel model. Dit model wordt gebruikt voor een 'stapel' lagen. Elke laag heeft 1 input en 1 output. Daarom wordt hier sequentieel doorgegaan. Het is ook duidelijk dat er een aantal verschillende lagen gebruikt worden. Zowel convolutional layers, dense layers als pooling layers worden hier gebruikt. Meer informatie over deze verschillende lagen kan gevonden worden in sectie 2.1.5. Dropout lagen zijn lagen die gebruikt worden om overfitting te vermijden. 
-
-Zoals te zien in figuur xx, is de eerste laag een embedding laag. Deze laag zet om te beginnen alle positieve getallen, in dit geval de scores, om naar vectors. Daarna wordt er een mix aan convolutionele, pooling en dense lagen gebruikt. De AI gaat zo op verschillende manieren door de data. Verder werd er voor elke laag de ReLU activatiefunctie gebruikt, behalve voor de laatste dense layer. Hier werd een softmax gebruikt. De softmax activatiefunctie wordt gebruikt om de data terug te normaliseren, daarom wordt deze op het einde gebruikt.   
-
-Het duurt even om het model te trainen, maar na een tijdje komen hier resultaten uit. 
-
-Voor de Amazon dataset heeft dit model een nauwkeurigheid van 82\%. Deze worden in een grafiek gestoken zodat men het verloop van de training gedurende de verschillende epochs kan zien. 
-
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{AI/AmazonResult.PNG}
-    \caption{\label{amazonresult}Resultaten Amazon dataset.}
-\end{figure}
-\FloatBarrier
-
-Voor de Twitter dataset heeft dit model een nauwkeurigheid van 75\%
-Een belangrijke nota hierbij is dat de Twitter dataset 50 epochs nodig had, terwijl de Amazon dataset 30 epochs nodig had.
-
-Wat is de reden hiervoor?
-De Twitter dataset bevat minder data en dus moet de AI aan de hand van minder voorbeelden trainen. Wanneer het aantal epochs verhoogd wordt, doorloopt de AI deze cyclus 50 keer. 
-Ook deze resultaten zijn te vinden in een grafiek zoals te zien op figuur xx. 
-
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{AI/TwitterResult.PNG}
-    \caption{\label{twitterresult}Resultaten Twitter dataset.}
-\end{figure}
-\FloatBarrier
-
-\subsubsection{Model 2}
 

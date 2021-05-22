@@ -45,6 +45,7 @@
 \RequirePackage{placeins}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[automake]{glossaries}
+\usepackage{pdfpages}
 
 %-------------------------------------------------------------------------------
 % Lettertypes, bestandscodering
