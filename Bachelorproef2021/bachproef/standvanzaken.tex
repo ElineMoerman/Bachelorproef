@@ -42,12 +42,12 @@ Machines kunnen op een aantal verschillende manieren leren, of een mix van versc
 
 \subsubsection{Supervised Learning}
 \label{sec:supervisedlearning}
-Bij \gls{SupervisedLearning} krijgt het algoritme gelabelde gegevens. Bijvoorbeeld bij een dataset van de winkelketen Zalando krijgt elk item een label: ‘kledij’ of ‘schoenen’. Het algoritme leert aan de hand van deze gelabelde gegevens en kan zo toekomstige gegevens in een categorie opdelen. Wanneer de labels reële getallen zijn, gaat het over \textbf{regressie}. Een voorbeeld van regressie is het voorspellen van het gewicht van een persoon aan de hand van zijn of haar lengte. Wanneer de labels voorgedefinieerde klassen voorstellen, dan gaat het over \textbf{classificatie}. Een voorbeeld hiervan is spamdetectie, waarbij de gegevens opgedeeld worden in ‘spam’ en ‘geen spam’.\autocite{Lievens2020} 
+Bij \gls{SupervisedLearning} krijgt het algoritme gelabelde gegevens. Bijvoorbeeld bij een dataset van de winkelketen Zalando krijgt elk item een label: ‘kledij’ of ‘schoenen’. Het algoritme leert aan de hand van deze gelabelde gegevens en kan zo toekomstige gegevens in een categorie opdelen. Wanneer de labels reële getallen zijn, gaat het over \textbf{regressie}. Een voorbeeld van \gls{regressie} is het voorspellen van het gewicht van een persoon aan de hand van zijn of haar lengte. Wanneer de labels voorgedefinieerde klassen voorstellen, dan gaat het over \textbf{\gls{classificatie}}. Een voorbeeld hiervan is spamdetectie, waarbij de gegevens opgedeeld worden in ‘spam’ en ‘geen spam’.\autocite{Lievens2020} 
 
 \subsubsection{Unsupervised Learning}
 \label{sec:unsupervisedlearning}
-Bij \gls{UnsupervisedLearning} krijgt het algoritme ongelabelde gegevens. Het doel hiervan is om een ‘structuur’ te ontdekken in de dataset. Clustering is de bekendste taak van unsupervised learning. Hierbij wordt de data in groepen (clusters) opgedeeld. Een voorbeeld hiervan is een website van een krant. Hier worden de verschillende artikels gegroepeerd volgens onderwerp. \autocite{Lievens2020}
-Andere taken van unsupervised learning zijn anomaliedetectie en principale-componentenanalyse. Anomaliedetectie detecteert automatisch gegevens die ver van de standaard liggen. Principale-componentenanalyse of PCA deelt de gegevens op in principale componenten zodat de data relevanter is. Als een aantal kenmerken van elk land in Europa geanalyseerd moet worden, kan men via PCA elk land als een principale component definiëren, om de data om een gemakkelijkere, simplere manier voor te stellen.
+Bij \gls{UnsupervisedLearning} krijgt het algoritme ongelabelde gegevens. Het doel hiervan is om een ‘structuur’ te ontdekken in de dataset. \gls{clustering} is de bekendste taak van unsupervised learning. Hierbij wordt de data in groepen (clusters) opgedeeld. Een voorbeeld hiervan is een website van een krant. Hier worden de verschillende artikels gegroepeerd volgens onderwerp. \autocite{Lievens2020}
+Andere taken van unsupervised learning zijn \gls{anomaliedetectie} en principale-componentenanalyse. Anomaliedetectie detecteert automatisch gegevens die ver van de standaard liggen. Principale-componentenanalyse of PCA deelt de gegevens op in principale componenten zodat de data relevanter is. Als een aantal kenmerken van elk land in Europa geanalyseerd moet worden, kan men via PCA elk land als een principale component definiëren, om de data om een gemakkelijkere, simplere manier voor te stellen.
 
 \subsubsection{Reinforcement Learning}
 \label{sec:reinforcementlearning}
@@ -64,14 +64,14 @@ Dankzij deep learning, kunnen algoritmes een output geven die veel accurater is 
 \label{sec:neuralnetworks}
 
 De meeste deep learning modellen maken gebruik van neurale netwerken. Daarom refereren sommigen naar deep learning modellen als ‘deep neural networks’. 
-Een \gls{NeuraalNetwerk} is een netwerk dat gebaseerd is op de hersenstructuur. Een neuraal netwerk bestaat uit neuronen, dit is ook zichtbaar op figuur 2.1. Het netwerk heeft verder enkele input neuronen en enkele output neuronen. Tussen deze inputs en outputs zijn er verbindingen, waar gewichten aan toegekend worden. Alle input neuronen samen worden de inputlaag genoemd, terwijl alle output neuronen de outputlaag vormen. Er kunnen hiertussen nog één of meerdere lagen liggen, die de verborgen lagen worden genoemd. De data gaat doorheen dit model, van de inputlaag, door de verborgen lagen, naar de uitvoerlaag. Hoe Natural Language Processing (NLP) deze lagen gebruikt, wordt later in deze bachelorproef besproken. \autocite{Vervoort2017}
+Een \gls{NeuraalNetwerk} is een netwerk dat gebaseerd is op de hersenstructuur. Een neuraal netwerk bestaat uit neuronen, dit is ook zichtbaar op figuur \ref{neuraalnetwerk}. Het netwerk heeft verder enkele input neuronen en enkele output neuronen. Tussen deze inputs en outputs zijn er verbindingen, waar gewichten aan toegekend worden. Alle input neuronen samen worden de inputlaag genoemd, terwijl alle output neuronen de outputlaag vormen. Er kunnen hiertussen nog één of meerdere lagen liggen, die de verborgen lagen worden genoemd. De data gaat doorheen dit model, van de inputlaag, door de verborgen lagen, naar de uitvoerlaag. Hoe Natural Language Processing (NLP) deze lagen gebruikt, wordt later in deze bachelorproef besproken. \autocite{Vervoort2017}
 
 \begin{figure}[!ht]
     \includegraphics[width=\textwidth]{neuraalnetwerk.jpg}
     \caption{\label{neuraalnetwerk}Neuraal Netwerk \autocite{KULeuven2019}.}
 \end{figure}
 
-De verschillende lagen voeren verschillende transformaties uit op de inputdata. Omdat de data van de invoer naar de uitvoer stroomt, wordt dit een voorwaarts gericht netwerk genoemd. Op de foto zien we dat de invoerlaag 4 neuronen heeft en de uitvoerlaag heeft 3 neuronen. Dit betekent dat er 3 mogelijke uitkomsten zijn. De verborgen lagen kunnen verschillende types lagen zijn. Zo zijn er bijvoorbeeld convolutional layers, dense layers of pooling layers. 
+De verschillende lagen voeren verschillende transformaties uit op de inputdata. Omdat de data van de invoer naar de uitvoer stroomt, wordt dit een voorwaarts gericht netwerk genoemd. Op figuur \ref{neuraalnetwerk} ziet men dat de invoerlaag 4 neuronen heeft en de uitvoerlaag heeft 3 neuronen. Dit betekent dat er 3 mogelijke uitkomsten zijn. De verborgen lagen kunnen verschillende types lagen zijn. Zo zijn er bijvoorbeeld convolutional layers, dense layers of pooling layers. 
 
 \subsubsection{Convolutional layers}
 \label{sec:convolutionallayers}
@@ -88,7 +88,13 @@ De verschillende lagen voeren verschillende transformaties uit op de inputdata. 
 \gls{PoolingLayer} zijn lagen die zich bevinden tussen twee convolutional layers. Pooling layers verminderen de complexiteit van de parameters en verminderen het aantal berekeningen die gedaan moeten worden. \autocite{Nanculef2020}
 
 Op elke verbinding tussen de lagen staan er ‘gewichten’. De transformatie van input naar output wordt zo berekend:
-output = activatiefunctie x (som van de gewichten van de input nodes). \autocite{Vervoort2017} Wat een activatiefunctie is wordt later besproken. 
+output = activatiefunctie x (som van de gewichten van de input nodes). \autocite{Vervoort2017} Wat een activatiefunctie is, wordt later besproken. 
+
+Verder heeft Deep Learning verschillende types Neurale Netwerken. De twee bekendste neurale netwerken zijn \gls{CNN} en \gls{RNN}.
+
+Convolutional Neural Networks (CNN) worden meestal gebruikt voor beeld-analyse. Denk hierbij aan afbeeldingen of video's.
+
+Recurrent Neural Networks (RNN) worden meestal gebruikt voor taal-analyse. RNN werkt met 'loops' waar de output van een laag opgeslagen wordt en gebruikt wordt om de output van de volgende laag te voorspellen.
 
 \section{Datasets en gegevensvergaring}
 \label{sec:datasetsgegevensvergaring}
@@ -103,7 +109,7 @@ Een dataset is een verzameling van data. In deze bachelorproef is de data een aa
 Wat betekent het om een dataset te trainen? Bij deep learning gaat de machine steeds over de dataset en leert hij uit de dataset. De nauwkeurigheid van een toekomstige voorspelling over een review wordt zo steeds beter. 
 
 Maar hoe wordt zo een dataset getraind?
-Om dit uit te leggen, dienen eerst drie termen verklaard te worden. Ten eerste is er de \gls{TrainingDataset}. Deze dataset is een verzameling van gegevens die gebruikt wordt om het model te trainen. Het model leert dan van deze gegevens. Om bepaalde parameters af te stellen, de hyperparameters, wordt er een \gls{ValidatieDataset} gebruikt. Deze hyperparameters staan ook bekend als metaparameters en worden gebruikt om overfitting te vermijden. De term overfitting wordt later besproken. De resultaten die voort komen uit de validatie dataset worden gebruikt om onze hyperparameters bij te stellen. Ten slotte is er de \gls{TestDataset}. Deze dataset wordt meestal in het begin van onze training afgesplitst van de originele dataset, en wordt na het trainen op ons model toegepast, om te kijken of onze dataset een goede hypothese kan vormen voor nog onbekende gegevens. Dit levert steeds een nauwkeurigheid op. Hoe hoger deze nauwkeurigheid, hoe beter. \autocite{Shah2017} Om een dataset te trainen, moeten er eerst een paar stappen gebeuren. Deze worden hieronder besproken. 
+Om dit uit te leggen, dienen eerst drie termen verklaard te worden. Ten eerste is er de \gls{TrainingDataset}. Deze dataset is een verzameling van gegevens die gebruikt wordt om het model te trainen. Het model leert dan van deze gegevens. Om bepaalde parameters af te stellen, de hyperparameters, wordt er een \gls{ValidatieDataset} gebruikt. Deze \gls{hyperparameters} staan ook bekend als metaparameters en worden gebruikt om overfitting te vermijden. De term overfitting wordt later besproken. De resultaten die voort komen uit de validatie dataset worden gebruikt om onze hyperparameters bij te stellen. Ten slotte is er de \gls{TestDataset}. Deze dataset wordt meestal in het begin van onze training afgesplitst van de originele dataset, en wordt na het trainen op ons model toegepast, om te kijken of onze dataset een goede hypothese kan vormen voor nog onbekende gegevens. Dit levert steeds een nauwkeurigheid op. Hoe hoger deze nauwkeurigheid, hoe beter. \autocite{Shah2017} Om een dataset te trainen, moeten er eerst een paar stappen gebeuren. Deze worden hieronder besproken. 
 
 \subsubsection{Data preparatie}
 \label{sec:datapreparatie}
@@ -119,7 +125,7 @@ Eenmaal de dataset opgekuist en klaargezet is, kan de dataset opgesplitst worden
 
 \subsubsection{Het juiste model kiezen}
 \label{sec:model}
-Eenmaal de dataset opgesplitst is in een training en een test dataset, is het tijd om het model te kiezen. Voor het onderwerp van deze bachelorproef hebben we een neuraal netwerk nodig. 
+Eenmaal de dataset opgesplitst is in een training en een test dataset, is het tijd om het model te kiezen. Voor het onderwerp van deze bachelorproef is er een neuraal netwerk nodig. 
 
 Ten eerste is het belangrijk om de juiste lagen te kiezen om het model te trainen. Eerder in deze bachelorproef werden dense layers, pooling layers en convolutional layers besproken. Elke laag heeft zijn voor-en nadelen. 
 
@@ -159,7 +165,7 @@ De eerste mogelijke activatiefunctie is de \gls{ReLU} (of rectified linear activ
 \subsubsection{Sigmoïde}
 \label{sec:sigmoide}
 
-De \gls{Sigmoïde} activatiefunctie zorgt ervoor dat elke input een output tussen 0 en 1 wordt. Ook hier kan de grafiek dus nooit in het negatieve gaan. Hoe hoger de input, hoe dichter bij 1 en omgekeerd. De sigmoïde functie wordt ook gebruikt bij logistische regressie, maar dit wordt niet in deze bachelorproef besproken. \autocite{Brownlee2021} De sigmoïde activatiefunctie gebeurt als volgt:
+De \gls{Sigmoïde} activatiefunctie zorgt ervoor dat elke input een output tussen 0 en 1 wordt. Ook hier kan de grafiek dus nooit in het negatieve gaan. Hoe hoger de input, hoe dichter bij 1 en omgekeerd. De sigmoïde functie wordt ook gebruikt bij logistische \gls{regressie}, maar dit wordt niet in deze bachelorproef besproken. \autocite{Brownlee2021} De sigmoïde activatiefunctie gebeurt als volgt:
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{sigmoide.PNG}
@@ -194,10 +200,10 @@ Op vlak van spraak gestuurde NLP, verspreekt een persoon zich al snel, of kan de
 
 Natural Language Processing heeft veel technieken om de menselijke taal te interpreteren. NLP breekt de volledige teksten in stukjes op. Daarna probeert NLP de relaties tussen deze stukjes te analyseren en te begrijpen. Enkele belangrijke taken van NLP zijn tokenization and parsing, language detection en lemmatization/stemming. \autocite{sas2020}
 
-\subsubsection{Language detection}
+\subsubsection{\gls{languagedetection}}
 \label{sec:Languagedetection}
 
-Wanneer een tekst onderzocht wordt, moet de machine eerst bepalen in welke taal deze tekst staat. Wanneer er meerdere talen in 1 tekst staan, worden er meerdere classificatie modellen gemaakt, 1 per taal. In figuur 2.5 wordt dit getest met de zin ‘vandaag is een prachtige dag' in verschillende talen. 
+Wanneer een tekst onderzocht wordt, moet de machine eerst bepalen in welke taal deze tekst staat. Wanneer er meerdere talen in 1 tekst staan, worden er meerdere classificatie modellen gemaakt, 1 per taal. In figuur \ref{languagedetection} wordt dit getest met de zin ‘vandaag is een prachtige dag' in verschillende talen. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{langdetect.PNG}
@@ -208,7 +214,7 @@ Wanneer een tekst onderzocht wordt, moet de machine eerst bepalen in welke taal 
 \subsubsection{Tokenization and parsing}
 \label{sec:Tokenization}
 
-Tokenization is een NLP techniek waarbij een string of zin in kleinere tokens opgedeeld wordt. Tokenization is belangrijk omdat in NLP de tekst geanalyseerd wordt op tokens. 
+Tokenization is een NLP techniek waarbij een \gls{string} of zin in kleinere tokens opgedeeld wordt. Tokenization is belangrijk omdat in NLP de tekst geanalyseerd wordt op tokens. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{tokenization.PNG}
@@ -219,7 +225,7 @@ Tokenization is een NLP techniek waarbij een string of zin in kleinere tokens op
 \subsubsection{Stemming and lemmatization}
 \label{sec:stemming}
 
-Stemming en lemmatization zijn twee NLP technieken die lijken op elkaar, maar toch verschillen op bepaalde vlakken. Het zijn beide tekst normalisatie technieken. Stemming en lemmatization baseren zich allebei op het feit dat woorden afgestamd zijn van een ander woord. Zo hebben we bijvoorbeeld het werkwoord ‘spelen’. Van het werkwoord spelen kan gezegd worden dat het afstamt van speel. ‘Speelt’ en ‘speelde’ stammen ook af van de stam ‘speel’. Bij stemming worden de woorden naar de stem herleid. Bij lemmetization blijven de woorden vaker zoals ze zijn, om rekening te houden met de context. \autocite{sas2020}
+Stemming en lemmatization zijn twee NLP technieken die lijken op elkaar, maar toch verschillen op bepaalde vlakken. Het zijn beide tekst normalisatie technieken. Stemming en lemmatization baseren zich allebei op het feit dat woorden afgestamd zijn van een ander woord. Zo is er bijvoorbeeld het werkwoord ‘spelen’. Van het werkwoord spelen kan gezegd worden dat het afstamt van speel. ‘Speelt’ en ‘speelde’ stammen ook af van de stam ‘speel’. Bij stemming worden de woorden naar de stem herleid. Bij lemmetization blijven de woorden vaker zoals ze zijn, om rekening te houden met de context. \autocite{sas2020}
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{stemming.png}
@@ -232,7 +238,7 @@ NLP wordt vaak gebruikt in het alledaagse leven. Alexa en Siri zijn heel gekende
 \subsection{Text Analytics}
 \label{sec:textanalytics}
 
-\gls{TextAnalytics} of text mining is een techniek die veel wordt teruggevonden in Natural Language Processing. Dankzij deze techniek wordt tekst zonder structuur gemakkelijk omgezet in een gestructureerde dataset. \autocite{Linguamatics2021} Deze dataset is nodig om het model te kunnen trainen, zoals uitgelegd in Hoofdstuk 2: Datasets en gegevensvergaring.
+\gls{TextAnalytics} of text mining is een techniek die veel wordt teruggevonden in Natural Language Processing. Dankzij deze techniek wordt tekst zonder structuur gemakkelijk omgezet in een gestructureerde dataset. \autocite{Linguamatics2021} Deze dataset is nodig om het model te kunnen trainen, zoals uitgelegd in Hoofdstuk \ref{sec:datasetsgegevensvergaring}: Datasets en gegevensvergaring.
 Text mining is enorm belangrijk. In het dagelijkse leven komt iedereen in aanraking met tekst, denk maar aan e-mails, digitale assistenten, chatbots of posten op sociale media. In deze bachelorproef worden volzinnen uit recensies geanalyseerd op een positieve of negatieve connotatie. Text mining zal hier aan te pas komen om deze ongestructureerde volzinnen in een gestructureerde dataset om te vormen. Tijdens dit proces zal NLP aan de hand van machine learning toegepast worden. 
 
 \section{Sentiment Analysis}
@@ -251,7 +257,7 @@ Er zijn verschillende soorten sentiment analysis, zoals emotiedetectie, multilin
 
 Emotiedetectie is een soort sentiment analysis die zich bezig houdt met het achterhalen van gevoelens uit teksten. Deze gevoelens kunnen boosheid, blijheid, verdriet en veel meer uitdrukken. \autocite{MonkeyLearn2021}
 
-Aspect-based sentiment analysis is de techniek die toegepast zal worden in het onderzoek van deze bachelorproef. Bij deze techniek komt een bedrijf te weten over welke features of producten de klant zich positief of negatief uitdrukt. \autocite{MonkeyLearn2021}
+Aspect-based sentiment analysis is de techniek die vaak gebruikt wordt in NLP. Bij deze techniek komt een bedrijf te weten over welke features of producten de klant zich positief of negatief uitdrukt. \autocite{MonkeyLearn2021}
 
 Aspect-based sentiment analysis analyseert ten eerste de sentimenten van de tekst, en ten tweede ook de aspecten (features of producten) waarover de gevoelens gaan.
  
@@ -265,12 +271,12 @@ Bij het implementeren van het sentiment analysis model, zijn er drie soorten alg
 \subsubsection{Rule based}
 \label{rule based}
 
-Rule based algoritmen voeren de analyse uit op basis van een set regels. Deze regels kunnen ook bestaan uit NLP technieken zoals tokenization. Algoritmen gebaseerd op regels bepalen twee lijsten. Een lijst met positieve woorden zoals ‘goed’, ‘mooi’, ‘prachtig’ en ‘super’, en een lijst met negatieve woorden zoals ‘slecht’, ‘ontevreden’,  en  ‘lelijk’. Daarna telt het algoritme het aantal woorden uit deze lijst dat voorkomt in de gegeven tekst of review. Als er meer positieve woorden geteld zijn dan negatieve, dan wordt de tekst gezien als positief. Dit is dus omgekeerd ook het geval. \autocite{MonkeyLearn2021}
+Rule based algoritmen voeren de analyse uit op basis van een set regels. Deze regels kunnen ook bestaan uit NLP technieken zoals \gls{tokenization}. Algoritmen gebaseerd op regels bepalen twee lijsten. Een lijst met positieve woorden zoals ‘goed’, ‘mooi’, ‘prachtig’ en ‘super’, en een lijst met negatieve woorden zoals ‘slecht’, ‘ontevreden’,  en  ‘lelijk’. Daarna telt het algoritme het aantal woorden uit deze lijst dat voorkomt in de gegeven tekst of review. Als er meer positieve woorden geteld zijn dan negatieve, dan wordt de tekst gezien als positief. Dit is dus omgekeerd ook het geval. \autocite{MonkeyLearn2021}
 
 \subsubsection{Automatic}
 \label{automatic}
 
-Bij dit algoritme gebruikt men machine learning technieken, waarbij de data getraind wordt. Wanneer we dan een tekst of review in dit algoritme steken, zal het algoritme daar een negatieve, neutrale of positieve connotatie aan toekennen. Dit gebeurt aan de hand van deep learning. \autocite{MonkeyLearn2021}
+Bij dit algoritme gebruikt men machine learning technieken, waarbij de data getraind wordt. Wanneer men dan een tekst of review in dit algoritme plaatst, zal het algoritme daar een negatieve, neutrale of positieve connotatie aan toekennen. Dit gebeurt aan de hand van deep learning. \autocite{MonkeyLearn2021}
 
 \subsubsection{Hybrid}
 \label{hybrid}
@@ -310,7 +316,7 @@ De context van bepaalde woorden is ook enorm belangrijk. Een voorbeeld: “De au
 \subsubsection{Ironie en sarcasme}
 \label{ironiesarcasme}
 
-Ironie en sarcasme zijn twee zaken die een machine moeilijk kan herkennen. Wanneer iemand ironie of sarcasme gebruikt, drukt hij zijn negatieve gevoelens over een bepaald aspect uit met positieve woorden. \autocite{MonkeyLearn2021} Een voorbeeld hiervan: “Wauw, dat ging goed!”. Deze zin kan zowel in een positieve context gezien worden, maar kan ook sarcastisch opgenomen worden. 
+Ironie en sarcasme zijn twee zaken die een machine moeilijk kan herkennen. Wanneer iemand ironie of sarcasme gebruikt, drukt hij zijn negatieve gevoelens over een bepaald aspect uit met positieve woorden. \autocite{MonkeyLearn2021} Een voorbeeld hiervan: “Wauw, dat ging goed!”. Deze zin kan in een positieve context gezien worden, maar kan ook sarcastisch opgenomen worden. 
 
 \subsubsection{Vergelijkingen}
 \label{vergelijkingen}
@@ -321,7 +327,7 @@ Ook vergelijkingen kunnen door elkaar gebruikt worden. We kunnen ‘beter dan’
     \item “Deze smartphone is beter dan de vorige versie.”
 \end{itemize}
 
-Deze review heeft duidelijk een positieve context, maar we kunnen ook deze review analyseren:
+Deze review heeft duidelijk een positieve context, maar onderstaande review kan ook geanalyseerd worden:
 
 
 \begin{itemize}
@@ -345,7 +351,7 @@ Wanneer een model voor sentiment analysis moet ontwikkeld worden, dan zou er een
 \subsubsection{Text Analytics API}
 \label{textanalytics}
 
-Text Analytics API is een service die NLP aan de gebruiker aanbiedt. Technieken zoals sentiment analysis en opinion mining kunnen worden uitgevoerd aan de hand van deze service. Deze API maakt deel uit van Azure Cognitive Services. \autocite{Microsoft2020} Deze Tekst Analytics API kan gebruikt worden in Visual Studio Code aan de hand van REST API. Ook deze service zal getest en gebruikt worden tijdens het onderzoek.
+Text Analytics API is een service die NLP aan de gebruiker aanbiedt. Technieken zoals sentiment analysis en \gls{opinionmining} kunnen worden uitgevoerd aan de hand van deze service. Deze API maakt deel uit van Azure Cognitive Services. \autocite{Microsoft2020} Deze Tekst Analytics API kan gebruikt worden in Visual Studio Code aan de hand van REST API. Ook deze service zal getest en gebruikt worden tijdens het onderzoek.
 
 \subsubsection{Google Cloud Platform}
 \label{googlecloudplatform}
@@ -363,7 +369,7 @@ Zoals hiervoor aangehaald, is het natuurlijk ook mogelijk om zelf een dataset te
 \subsection{Amazon Dataset}
 \label{amazon}
 
-De eerste dataset is de \textbf{Amazon dataset}. Deze dataset bevat reviews van de producten die op de populaire website Amazon verkocht worden. Deze dataset bevat meer dan 233 miljoen reviews, daardoor zal niet deze volledige dataset gebruikt worden. De reviews van deze dataset werden verzameld tussen 1996 en 2018. \autocite{Ni2019} Een voorbeeld van hoe een review er uit ziet in de dataset kan hieronder gevonden worden: 
+De eerste dataset is de \textbf{Amazon dataset}. Deze dataset bevat reviews van de producten die op de populaire website Amazon verkocht worden. Deze dataset bevat meer dan 233 miljoen reviews, daardoor zal niet deze volledige dataset gebruikt worden. De reviews van deze dataset werden verzameld tussen 1996 en 2018. \autocite{Ni2019} Een voorbeeld van hoe een review eruit ziet in de dataset kan hieronder in tabel \ref{tab:amazondataset} gevonden worden: 
   
 \begin{table}[]
     \begin{tabular}{@{}|l|l|@{}}
@@ -386,7 +392,7 @@ De eerste dataset is de \textbf{Amazon dataset}. Deze dataset bevat reviews van 
 \subsection{Twitter US Airline Sentiment Dataset}
 \label{twitter}
 
-De tweede dataset is de \textbf{Twitter US Airline Sentiment dataset}. Deze dataset bevat reviews in de vorm van tweets. Deze reviews gaan over de bekendste US vluchtmaatschappijen.\autocite{Kaggle2020} Een voorbeeld van hoe 1 tweet er uit ziet in de database kan hieronder gevonden worden:
+De tweede dataset is de \textbf{Twitter US Airline Sentiment dataset}. Deze dataset bevat reviews in de vorm van tweets. Deze reviews gaan over de bekendste US vluchtmaatschappijen.\autocite{Kaggle2020} Een voorbeeld van hoe één tweet eruit ziet in de database kan hieronder in tabel \ref{tab:twitterdataset} gevonden worden:
 \begin{table}[]
     \begin{tabular}{@{}|l|l|@{}}
         \toprule
@@ -414,7 +420,7 @@ De tweede dataset is de \textbf{Twitter US Airline Sentiment dataset}. Deze data
 
 \subsection{IMDB Dataset}
 \label{imdb}
-De derde dataset is de \textbf{IMDB Movie Review Dataset}. Deze dataset bevat reviews over enkele films. Deze dataset bevat 50.000 reviews die verzameld zijn doorheen de jaren. \autocite{Maas2011} Een voorbeeld van hoe 1 film review er uit ziet, kan in tabel 2.3 gevonden worden. 
+De derde dataset is de \textbf{IMDB Movie Review Dataset}. Deze dataset bevat reviews over enkele films. Deze dataset bevat 50.000 reviews die verzameld zijn doorheen de jaren. \autocite{Maas2011} Een voorbeeld van hoe één film review eruit ziet, kan in tabel \ref{tab:imdbdataset} gevonden worden. 
 
 \begin{table}[]
     \begin{tabular}{@{}|l|l|@{}}

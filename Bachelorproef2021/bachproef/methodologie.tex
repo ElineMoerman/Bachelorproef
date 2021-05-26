@@ -11,7 +11,7 @@
 %% mogelijke manier toegepast hebt om een antwoord te vinden op de
 %% onderzoeksvraag.
 
-In dit gedeelte van de bachelorproef wordt onderzocht of AI klaar is om Sentiment Analysis toe te passen in het bedrijfsleven. Er zullen een aantal mogelijkheden worden getest om te zien welke tool het meest nauwkeurig is. Zoals eerder vermeld, zal Sentiment Analysis klaar zijn om te gebruiken in het bedrijfsleven bij een succespercentage van 80\%. Om dit te realiseren, zullen eerst twee externe tools getest worden: Microsoft Azure Text Analytics API en Google Cloud Platform. In hoofdstuk~\ref{ch:proof-of-concept}: Proof-Of-Concept, zal er zelf getest worden of er een even goed of beter percentage kan bereikt worden door eigen geschreven.
+In dit gedeelte van de bachelorproef wordt onderzocht of AI klaar is om Sentiment Analysis toe te passen in het bedrijfsleven. Er zullen een aantal mogelijkheden worden getest om te zien welke tool het meest nauwkeurig is. Zoals eerder vermeld, zal Sentiment Analysis klaar zijn om te gebruiken in het bedrijfsleven bij een succespercentage van 80\%. Om dit te realiseren, zullen eerst twee externe tools getest worden: Microsoft Azure Text Analytics API en Google Cloud Platform. In hoofdstuk~\ref{ch:proof-of-concept}: Proof Of Concept, zal er zelf getest worden of er een even goed of beter percentage kan bereikt worden door eigen geschreven modellen.
 
 De eerste tool die getest wordt is de Microsoft Azure Text Analytics API. 
 
@@ -19,7 +19,7 @@ De eerste tool die getest wordt is de Microsoft Azure Text Analytics API.
 
 \subsection{Achtergrond informatie}
 \label{achtergrondinformatieazure}
-Zoals eerder besproken, biedt Microsoft Azure SaaS-tools aan in de vorm van software. De Text Analytics API biedt dus ook NLP features aan voor text mining, text analysis, sentiment analysis, opinion mining,... \autocite{Microsoft2020} Deze API maakt deel uit van de Azure Cognitive Services. Deze biedt een volledig aanbod aan machine learning en AI algoritmes. Om deze services te gebruiken , moet de gebruiker wel een account aanmaken. \autocite{Microsoft2020}
+Zoals eerder besproken, biedt Microsoft Azure SaaS-tools aan in de vorm van software. De Text Analytics API biedt dus ook NLP features aan voor text mining, text analysis, sentiment analysis, opinion mining... \autocite{Microsoft2020} Deze API maakt deel uit van de Azure Cognitive Services. Deze biedt een volledig aanbod aan machine learning en AI algoritmes. Om deze services te gebruiken, moet de gebruiker wel een account aanmaken. \autocite{Microsoft2020}
 
 Om deze Microsoft Text Analytics API te implementeren zal er gebruik gemaakt worden van Microsoft Visual Studio. Dit is een IDE (Integrated Development Environment) en wordt gebruikt om applicaties, websites en software te ontwikkelen voor Windows. Voor deze bachelorproef wordt de code in Microsoft Visual Studio geschreven, met name in de programmeertaal C\#. 
 
@@ -27,7 +27,7 @@ Om deze Microsoft Text Analytics API te implementeren zal er gebruik gemaakt wor
 \label{aanpakazure}
 \textbf{Stap 1}: De Text Analytics Resource
 
-Om te beginnen moet er een Text Analytics Resource gemaakt worden in Azure zoals te zien op figuur 3.1. Een Text Analytics Resource is een service waardoor de gebruiker teksten kan analyseren zonder daarvoor de AI te moeten trainen. \autocite{Microsoft2020}
+Om te beginnen moet er een Text Analytics Resource gemaakt worden in Azure zoals te zien op figuur \ref{azureresource}. Een Text Analytics Resource is een service waardoor de gebruiker teksten kan analyseren zonder daarvoor de AI te moeten trainen. \autocite{Microsoft2020}
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{AzureResource.PNG}
@@ -39,9 +39,9 @@ Eenmaal de service aangemaakt is, genereert Azure een sleutel en een endpoint. D
 
 \textbf{Stap 2}: Een project opzetten in Visual Studio en de juiste packages installeren
 
-Wanneer Visual Studio opgestart wordt, vraagt de applicatie om een nieuw project te maken. Hier is de beste keuze een .NET Core console applicatie. Dit zorgt ervoor dat er geen overbodige bestanden worden aangemaakt en dat enkel de klasse Program.cs aangemaakt zal worden. In deze file zal al de code geschreven worden om de datasets te kunnen analyseren. \autocite{Microsoft2020}
+Wanneer Visual Studio opgestart wordt, vraagt de applicatie om een nieuw project te maken. Hier is de beste keuze een \gls{.NETCore} console applicatie. Dit zorgt ervoor dat er geen overbodige bestanden worden aangemaakt en dat enkel de klasse Program.cs aangemaakt zal worden. In deze file zal al de code geschreven worden om de datasets te kunnen analyseren. \autocite{Microsoft2020}
 
-Daarna moet er een package geïnstalleerd worden. Een package is herbruikbare code die al door andere developers geschreven is en die de gebruiker kan downloaden in zijn of haar project. \autocite{Microsoft2018} De package die nodig is, is Azure.AI.TextAnalytics, zoals te zien op figuur 3.2.
+Daarna moet er een package geïnstalleerd worden. Een \gls{package} is herbruikbare code die al door andere developers geschreven is en die de gebruiker kan downloaden in zijn of haar project. \autocite{Microsoft2018} De \gls{package} die nodig is, is Azure.AI.TextAnalytics, zoals te zien op figuur \ref{azurepackage}.
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{AzurePackage.PNG}
@@ -52,7 +52,7 @@ Daarna moet er een package geïnstalleerd worden. Een package is herbruikbare co
 
 \textbf{Stap 3}: De data omzetten naar het juiste formaat
 
-Om de data uit de datasets te gebruiken, moet deze toegevoegd worden in Visual Studio. Allereerst wordt er een nieuwe klasse 'Data' aangemaakt. Hier zal alle data opgeslagen worden zodat deze later kan gebruikt worden. Daarna wordt er een een nieuw Google Colab document aangemaakt. Een Google Colab document is een tool waar de gebruiker code in Python kan schrijven. Dit gebeurt allemaal online, er moet geen software gedownload worden om deze tool te kunnen gebruiken. 
+Om de data uit de datasets te gebruiken, moet deze toegevoegd worden in Visual Studio. Allereerst wordt er een nieuwe klasse 'Data' aangemaakt. Hier zal alle data opgeslagen worden zodat deze later kan gebruikt worden. Daarna wordt er een nieuw Google Colab document aangemaakt. Een Google Colab document is een tool waar de gebruiker code in Python kan schrijven. Dit gebeurt allemaal online, er moet geen software gedownload worden om deze tool te kunnen gebruiken. 
 
 \textbf{Stap 4}: De juiste code schrijven om zinnen te kunnen analyseren
 
@@ -63,7 +63,7 @@ Met behulp van de Azure Text Analytics documentatie, kan de code in enkele metho
 
 \subsubsection{Data omzetten}
 \label{amazondatasetomzettenazure}
-Wanneer de Amazon dataset van het internet gehaald wordt, krijgt de gebruiker twee bz2 bestanden. Deze moeten natuurlijk omgezet worden zodat de data in Visual Studio geanalyseerd kan worden. Het is handig om de bestanden op Google Drive op te slaan aangezien men hier heel gemakkelijk vanuit een Google Colab document aankan. In figuur 3.3 wordt dit proces getoond. Om te beginnen, worden de juiste imports toegevoegd om data te kunnen analyseren. In dit bestand wordt er gebruik gemaakt van pandas, numpy en bz2. Daarna wordt er toegang tot Google Drive gemaakt. In een laatste stap worden de bestanden vanop Google Drive uitgelezen
+Wanneer de Amazon dataset van het internet gehaald wordt, krijgt de gebruiker twee \gls{bz2} bestanden. Deze moeten natuurlijk omgezet worden zodat de data in Visual Studio geanalyseerd kan worden. Het is handig om de bestanden op Google Drive op te slaan aangezien men hier heel gemakkelijk vanuit een Google Colab document aankan. In figuur \ref{stap1amazon} wordt dit proces getoond. Om te beginnen, worden de juiste imports toegevoegd om data te kunnen analyseren. In dit bestand wordt er gebruik gemaakt van \gls{pandas}, \gls{numpy} en \gls{bz2}. Daarna wordt er toegang tot Google Drive gemaakt. In een laatste stap worden de bestanden vanop Google Drive uitgelezen.
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{Stap1Omzetten.PNG}
@@ -71,7 +71,7 @@ Wanneer de Amazon dataset van het internet gehaald wordt, krijgt de gebruiker tw
 \end{figure}
 \FloatBarrier
 
-Daarna (figuur 3.4) wordt de data omgevormd tot bruikbare zinnen. Om te beginnen wordt de data via de functie readlines() omgezet naar een lijst van items waar elke lijn een object vormt. In het tweede blokje code wordt aangegeven hoe een review van de dataset eruitziet. Men kan zien dat er voor elke zin nog een b staat. Deze b staat er door de functie readlines(). Byte objecten beginnen steeds met een b. Deze b moet weggefilterd worden, zodat de data naar tekst omgevormd wordt. 
+Daarna (figuur \ref{stap2amazon} wordt de data omgevormd tot bruikbare zinnen. Om te beginnen wordt de data via de functie readlines() omgezet naar een lijst van items waar elke lijn een object vormt. In het tweede blokje code wordt aangegeven hoe een review van de dataset eruitziet. Men kan zien dat er voor elke zin nog een b staat. Deze b staat er door de functie readlines(). Byte objecten beginnen steeds met een b. Deze b moet weggefilterd worden, zodat de data naar tekst omgevormd wordt. 
 
 Eenmaal dit gebeurd is, kan men in het vierde blokje code zien dat de b weg is.
 
@@ -81,7 +81,7 @@ Eenmaal dit gebeurd is, kan men in het vierde blokje code zien dat de b weg is.
 \end{figure}
 \FloatBarrier
 
-Echter is dit nog niet genoeg om met deze data verder te werken. Vooraan elke zin staat ook nog een label. Dit label representeert een positieve of negatieve connotatie van de zin. Daarom worden de labels en de tekst opgeplitst in twee datasets, zoals te zien op figuur 3.5. De eerste dataset heet train\_labels: deze bevat de sentimenten die bij elke zin horen. Label1 wordt omgezet naar 0, label2 wordt omgezet naar 1. 1 representeert een positieve context, 0 een negatieve context. De tweede dataset heeft als naam train\_sentences: deze dataset bevat de eigenlijke zinnen die we door het programma in Visual Studio zullen laten lopen. In codeblokje twee staat een voorbeeld van hoe een zin er nu uit ziet, in codeblokje 3 staat een voorbeeld van hoe een score er nu uit ziet. 
+Echter is dit nog niet genoeg om met deze data verder te werken. Vooraan elke zin staat ook nog een label. Dit label representeert een positieve of negatieve connotatie van de zin. Daarom worden de labels en de tekst opgeplitst in twee datasets, zoals te zien op figuur \ref{stap3amazon}. De eerste dataset heet train\_labels: deze bevat de sentimenten die bij elke zin horen. Label1 wordt omgezet naar 0, label2 wordt omgezet naar 1. 1 representeert een positieve context, 0 een negatieve context. De tweede dataset heeft als naam train\_sentences: deze dataset bevat de eigenlijke zinnen die door het programma in Visual Studio zullen gehaald worden. In codeblokje twee staat een voorbeeld van hoe een zin er nu uitziet, in codeblokje 3 staat een voorbeeld van hoe een score er nu uitziet. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{Stap3Omzetten.PNG}
@@ -89,7 +89,7 @@ Echter is dit nog niet genoeg om met deze data verder te werken. Vooraan elke zi
 \end{figure}
 \FloatBarrier
 
-Verder zijn er veel url's die gebruikt worden in de zinnen. Deze zijn niet nodig om de connotatie van een zin te analyseren. Via onderstaande methode in figuur 3.6 worden de url's uit de tekst gefilterd.
+Verder zijn er veel url's die gebruikt worden in de zinnen. Deze zijn niet nodig om de connotatie van een zin te analyseren. Via onderstaande methode in figuur \ref{stap4amazon} worden de url's uit de tekst gefilterd.
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{Stap4Omzetten.PNG}
@@ -105,7 +105,7 @@ Om te visualiseren hoe de data er momenteel uitziet, worden de zinnen in een dat
 \end{figure}
 \FloatBarrier
 
-Zodat de zinnen gemakkelijk in Visual Studio kunnen toegevoegd worden, worden de eerste 500 zinnen met de methode head(500) geprint en wordt deze omgezet in de vorm Sentences.Add(zin). Zo kan dit gemakkelijk en zonder problemen gekopieerd worden naar Visual Studio.
+Zodat de zinnen gemakkelijk in Visual Studio kunnen toegevoegd worden, worden de eerste 500 zinnen met de methode head(500) geprint en wordt deze omgezet in de vorm Sentences.Add(zin). Zo kan dit gemakkelijk en zonder problemen gekopieerd worden naar Visual Studio (zie figuur \ref{stap6amazon}.
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{Stap6Omzetten.PNG}
@@ -113,7 +113,7 @@ Zodat de zinnen gemakkelijk in Visual Studio kunnen toegevoegd worden, worden de
 \end{figure}
 \FloatBarrier
 
-In figuur 3.9 kan men zien dat de zinnen die hiervoor gegenereerd werden, gekopieerd zijn naar de klasse Data. De zinnen worden in een lijst van strings gestopt die men 'Sentences' noemt. De scores worden in een lijst van ints gestoken, nadat deze omgezet zijn in figuur 3.10.
+In figuur \ref{stap7amazon} kan men zien dat de zinnen die hiervoor gegenereerd werden, gekopieerd zijn naar de klasse Data. De zinnen worden in een lijst van \gls{string}s gestopt die men 'Sentences' noemt. De scores worden in een lijst van \gls{int}s gestoken, nadat deze omgezet zijn in figuur \ref{stap8amazon}.
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{Stap7Omzetten.PNG}
@@ -130,7 +130,7 @@ In figuur 3.9 kan men zien dat de zinnen die hiervoor gegenereerd werden, gekopi
 
 \subsubsection{Visual Studio}
 \label{amazondatasetvisualstudioazure}
-Nu de data-omzetting gebeurd is, beschikt Visual Studio over een lijst van 500 zinnen met bijbehorende score. Een score 0 betekent dat de zin als 'negatief' beschouwd wordt, terwijl een score van 1 een positieve connotatie voorstelt. Om te kijken of de Azure Text Analytics API de zinnen ook werkelijk juist categoriseert, zal er een bepaalde nauwkeurigheid berekend moeten worden. 
+Nu de data-omzetting gebeurd is, beschikt Visual Studio over een lijst van 500 zinnen met bijhorende score. Een score 0 betekent dat de zin als 'negatief' beschouwd wordt, terwijl een score van 1 een positieve connotatie voorstelt. Om te kijken of de Azure Text Analytics API de zinnen ook werkelijk juist categoriseert, zal er een bepaalde nauwkeurigheid berekend moeten worden. 
 
 Maar om dit te verwezenlijken, moet er eerst een connectie met de Azure Text Analytics resource gemaakt worden. Dit gebeurt aan de hand van de endpoint en de key. Deze worden bovenaan in de klasse Program.cs geplaatst. Alle code zal vanaf nu in deze klasse geschreven worden. 
 
@@ -140,7 +140,7 @@ Maar om dit te verwezenlijken, moet er eerst een connectie met de Azure Text Ana
 \end{figure}
 \FloatBarrier
 
-Eenmaal de connectie in orde is, kan het onderzoek aan de slag gaan met de Azure Text Analytics API. Ten eerste zal er getest worden of de Azure resource alle zinnen ook daadwerkelijk herkent als 'Engels'. In sectie 2.3.1 wordt besproken wat Language Detection juist is. Deze techniek zal via een geschreven methode toegepast worden op alle zinnen. Als de getetecteerde taal gelijk is aan 'English', dan zal de nauwkeurigheid (in het codevoorbeeld: accuracy) verhoogd worden met 1. Als alle zinnen juist gezien worden als Engels, wordt er een nauwkeurigheid van 500/500 bereikt. 
+Eenmaal de connectie in orde is, kan het onderzoek aan de slag gaan met de Azure Text Analytics API. Ten eerste zal er getest worden of de Azure resource alle zinnen ook daadwerkelijk herkent als 'Engels'. In sectie \ref{sec:Languagedetection} wordt besproken wat Language Detection juist is. Deze techniek zal via een geschreven methode toegepast worden op alle zinnen. Als de getetecteerde taal gelijk is aan 'English', dan zal de nauwkeurigheid (in het codevoorbeeld: accuracy) verhoogd worden met 1. Als alle zinnen juist gezien worden als Engels, wordt er een nauwkeurigheid van 500/500 bereikt. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{LanguageDetectionAmazon.PNG}
@@ -148,7 +148,7 @@ Eenmaal de connectie in orde is, kan het onderzoek aan de slag gaan met de Azure
 \end{figure}
 \FloatBarrier
 
-Ten tweede zal er getest worden of de Azure Text Analytics API Sentiment Analysis juist kan toepassen. In sectie 2.4 wordt uitvoerig besproken wat Sentiment Analysis juist is. Via onderstaande methode in figuur 3.13 zal de nauwkeurigheid van de resource getest worden op 500. Bij deze methode is er echter nog wat toelichting nodig. De Azure Text Analytics API kan de zinnen categoriseren als Positief, Neutraal, Negatief en Gemengd. De Amazon dataset bevat enkel de informatie of een zin positief of negatief is. 
+Ten tweede zal er getest worden of de Azure Text Analytics API Sentiment Analysis juist kan toepassen. In sectie \ref{sec:sentimentanalysis} wordt uitvoerig besproken wat Sentiment Analysis juist is. Via onderstaande methode in figuur \ref{azuresentimentanalysisamazon} zal de nauwkeurigheid van de resource getest worden op 500. Bij deze methode is er echter nog wat toelichting nodig. De Azure Text Analytics API kan de zinnen categoriseren als Positief, Neutraal, Negatief en Gemengd. De Amazon dataset bevat enkel de informatie of een zin positief of negatief is. 
 
 Daarom wordt er bij elke zin die juist positief of juist negatief bestempeld wordt, een punt bij de nauwkeurigheid opgeteld. Wanneer de zin als uitkomst Neutraal of Gemengd krijgt, wordt er per stukje tekst gekeken of dit positief of negatief is. Als er meer positieve stukjes zijn dan er negatieve stukjes zijn, wordt deze zin toch bestempeld als positief. Omgekeerd gebeurt hetzelfde voor negatief. 
 
@@ -160,7 +160,7 @@ Daarom wordt er bij elke zin die juist positief of juist negatief bestempeld wor
 
 \subsubsection{Resultaten}
 \label{amazondatasetresultatenazure}
-Ten eerste werd er getest of de Azure Text Analytics API alle geselecteerde zinnen uit de dataset categoriseert als 'Engels'. In Figuur 3.14 ziet men dat de nauwkeurigheid 499/500 of 99.8\% is. Er werd 1 zin als 'Spaans' gecategoriseerd. Dit komt doordat deze dataset effectief een Spaanse zin bevatte. De nauwkeurigheid wordt daarom aangepast naar 500/500 of 100\%.
+Ten eerste werd er getest of de Azure Text Analytics API alle geselecteerde zinnen uit de dataset categoriseert als 'Engels'. In figuur \ref{azurelanguagedetectionamazonresults} ziet men dat de nauwkeurigheid 499/500 of 99.8\% is. Er werd 1 zin als 'Spaans' gecategoriseerd. Dit komt doordat deze dataset effectief een Spaanse zin bevatte. De nauwkeurigheid wordt daarom aangepast naar 500/500 of 100\%.
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{LanguageDetectionAmazonResult.PNG}
@@ -168,7 +168,7 @@ Ten eerste werd er getest of de Azure Text Analytics API alle geselecteerde zinn
 \end{figure}
 \FloatBarrier 
 
-Ten tweede werd er getest of de Azure resource de zinnen uit de dataset juist kan categoriseren als positief of negatief. In figuur 3.15 kunnen de resultaten hiervan gevonden worden. De Azure Text Analytics API heeft 421/500 zinnen juist toegekend. Omgerekend is dit 84.2\%. In sectie 1.3 wordt er bepaald dat als een AI 80\% van de resultaten juist classifieert, dat deze als 'succesvol' kan gezien worden en dus bij bedrijven kan gebruikt worden. Voor deze dataset is dit dus zeker het geval, maar om te bepalen of dit betrouwbaar is, wordt dit ook getest op een tweede dataset, de Twitter Airlines dataset. 
+Ten tweede werd er getest of de Azure resource de zinnen uit de dataset juist kan categoriseren als positief of negatief. In figuur \ref{azuresentimentanalysisamazonresults} kunnen de resultaten hiervan gevonden worden. De Azure Text Analytics API heeft 421/500 zinnen juist toegekend. Omgerekend is dit 84.2\%. In sectie \ref{sec:onderzoeksdoelstelling} wordt er bepaald dat als een AI 80\% van de resultaten juist classificeert, dat deze als 'succesvol' kan gezien worden en dus bij bedrijven kan gebruikt worden. Voor deze dataset is dit dus zeker het geval, maar om te bepalen of dit betrouwbaar is, wordt dit ook getest op een tweede dataset, de Twitter Airlines dataset. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{SentimentAnalysisAmazonResult.PNG}
@@ -179,11 +179,11 @@ Ten tweede werd er getest of de Azure resource de zinnen uit de dataset juist ka
 \subsection{Twitter Airlines Dataset}
 \label{twitterdatasetazure}
 
-Ook bij de Twitter Airlines dataset worden dezelfde stappen gevolgd zoals eerder besproken in sectie 3.1.2 Aanpak. Ten eerste zal de data omgezet worden naar het juiste formaat, ten tweede zullen er enkele methodes uitgevoerd worden met deze data en ten slotte zullen de resultaten besproken worden. 
+Ook bij de Twitter Airlines dataset worden dezelfde stappen gevolgd zoals eerder besproken in sectie \ref{aanpakazure} Aanpak. Ten eerste zal de data omgezet worden naar het juiste formaat, ten tweede zullen er enkele methodes uitgevoerd worden met deze data en ten slotte zullen de resultaten besproken worden. 
 
 \subsubsection{Data omzetten}
 \label{twitterdatasetomzettenazure}
-Ook voor deze dataset moet de data omgevormd worden. Deze keer begint men met een csv bestand. een csv-bestand bevat 'comma separated values'. Met andere woorden wordt de data gescheiden door een komma. Om te beginnen importeren we juiste imports zoals numpy, pandas en re. Daarna moet er opnieuw verbinding gemaakt worden met Google Drive zodat het juiste csv bestand opgehaald kan worden. 
+Ook voor deze dataset moet de data omgevormd worden. Deze keer begint men met een csv bestand. een \gls{csv}-bestand bevat 'comma separated values'. Met andere woorden wordt de data gescheiden door een komma. Om te beginnen worden de juiste imports zoals \gls{numpy}, \gls{pandas} en \gls{re} geïmporteerd. Daarna moet er opnieuw verbinding gemaakt worden met Google Drive zodat het juiste csv bestand opgehaald kan worden. 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{Stap1Twitter.PNG}
     \caption{\label{azurestap1twitter}Twitter Airline dataset: Imports afhandelen en connectie met Google Drive maken.}
@@ -212,7 +212,7 @@ Ten slotte worden de zinnen, zoals bij de Amazon dataset, in een nieuw formaat a
 
 \subsubsection{Visual Studio}
 \label{twitterdatasetvisualstudioazure}
-Voor deze dataset maken we gebruik van dezelfde endpoint en key als bij de vorige dataset, zoals te zien op figuur 3.11. Aan de methode voor gebruik te maken van Language Detection moet er in principe bijna niets aangepast worden. Enkel de dataset verandert. De methode die hier toegepast wordt, is ook te zien in figuur 3.12.
+Voor deze dataset maakt men gebruik van dezelfde endpoint en key als bij de vorige dataset, zoals te zien op figuur \ref{azurecredentials}. Aan de methode voor gebruik te maken van Language Detection moet er in principe bijna niets aangepast worden. Enkel de dataset verandert. De methode die hier toegepast wordt, is ook te zien in figuur \ref{azurelanguagedetectionamazon}.
 
 Ten tweede wordt ook hier getest of de Azure Text Analytics API de zinnen uit deze dataset kan categoriseren. Hiervoor moet de methode enigzins aangepast worden aangezien de Twitter dataset wel neutrale connotatie herkent. In deze dataset worden de zinnen gezien als positief, negatief of neutraal. 
 
@@ -234,7 +234,7 @@ Hier haalt de Azure Text Analytics API een score van 499/500, omgerekend is dit 
 \end{figure}
 \FloatBarrier 
 
-Ten slotte werd er ook getest of Azure de zinnen juist herkent als positief, neutraal of negatief. In figuur 3.22 kunnen de resultaten hiervan terug gevonden worden. Er werd een score van 334/500 behaald door de Azure Text Analytics API. Omgerekend is dit 66.8\%. Dit is minder dan bij de Amazon dataset. Dit kan verklaard worden doordat 'tweets' korter zijn dan reviews, maar ook meer hashtags en apestaartjes bevatten. Verder worden er meer emoji's en tussentaal gebruikt bij tweets dan bij reviews.
+Ten slotte werd er ook getest of Azure de zinnen juist herkent als positief, neutraal of negatief. In figuur \ref{azuresentimentanalysistwitterresults} kunnen de resultaten hiervan terug gevonden worden. Er werd een score van 334/500 behaald door de Azure Text Analytics API. Omgerekend is dit 66.8\%. Dit is minder dan bij de Amazon dataset. Dit kan verklaard worden doordat 'tweets' korter zijn dan reviews, maar ook meer hashtags en apestaartjes bevatten. Verder worden er meer emoji's en tussentaal gebruikt bij tweets dan bij reviews.
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{SentimentAnalysisTwitterResult.PNG}
@@ -248,7 +248,7 @@ Ten slotte wordt ook de IMDB dataset in deze tool getest.
 
 \subsubsection{Data omzetten}
 \label{imdbdatasetomzettenazure}
-Na het downloaden van de IMDB dataset, is dit in een csv formaat. Deze data moet wel nog wat omgevormd worden om gebruikt te kunnen worden. Allereerst worden de juiste imports gedeclareerd, wordt er opnieuw een connectie met Google Drive gemaakt en wordt het bestand ingelezen. 
+Na het downloaden van de IMDB dataset, is dit in een \gls{csv} formaat. Deze data moet wel nog wat omgevormd worden om gebruikt te kunnen worden. Allereerst worden de juiste imports gedeclareerd, wordt er opnieuw een connectie met Google Drive gemaakt en wordt het bestand ingelezen. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{Stap1IMDB.PNG}
@@ -256,7 +256,7 @@ Na het downloaden van de IMDB dataset, is dit in een csv formaat. Deze data moet
 \end{figure}
 \FloatBarrier 
 
-De IMDB dataset bevat maar twee kolommen, de review en de score. Er moeten dus geen kolommen meer verwijderd worden. De data van de kolom sentiment is momenteel 'positive' of 'negative'. Deze worden ten eerste omgezet naar een 1 of een 0. Daarna wordt de functie clean\_html toegepast, om alle html tags, zoals <p></p> te verwijderen. Een voorbeeld van hoe de data er nu uit ziet, is te vinden in figuur 3.24.
+De IMDB dataset bevat maar twee kolommen, de review en de score. Er moeten dus geen kolommen meer verwijderd worden. De data van de kolom sentiment is momenteel 'positive' of 'negative'. Deze worden ten eerste omgezet naar een 1 of een 0. Daarna wordt de functie clean\_html toegepast, om alle html tags, zoals <p></p> te verwijderen. Een voorbeeld van hoe de data er nu uitziet, is te vinden in figuur \ref{stap2imdb}.
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{Stap2IMDB.PNG}
@@ -290,9 +290,9 @@ Hierna worden de reviews opnieuw in een nieuw formaat afgeprint om gemakkelijk o
 
 \subsubsection{Visual Studio}
 \label{imdbdatasetvisualstudioazure}
-Om de taal van de reviews te herkennen, wordt dezelfde methode gebruikt als bij de Twitter en Amazon datasets. Deze kan gevonden worden in figuur 3.12.
+Om de taal van de reviews te herkennen, wordt dezelfde methode gebruikt als bij de Twitter en Amazon datasets. Deze kan gevonden worden in figuur \ref{azurelanguagedetectionamazon}.
 
-Er werd ook getest of de Azure Text Analytics API de zinnen correct kan categoriseren. De methode die hier gebruikt werd is dezelfde als in figuur 3.13. Als de review juist bestempeld wordt als positief of negatief, wordt een punt bij de nauwkeurigheid opgeteld. Wanneer de zin neutraal of gemengd is, wordt de zin in stukjes geanalyseerd en wordt er bepaald of de zin toch negatiever of positiever is. Als er meer positieve stukjes zijn dan er negatieve stukjes zijn, wordt deze zin toch bestempeld als positief. 
+Er werd ook getest of de Azure Text Analytics API de zinnen correct kan categoriseren. De methode die hier gebruikt werd is dezelfde als in figuur \ref{azuresentimentanalysisamazon}. Als de review juist bestempeld wordt als positief of negatief, wordt een punt bij de nauwkeurigheid opgeteld. Wanneer de zin neutraal of gemengd is, wordt de zin in stukjes geanalyseerd en wordt er bepaald of de zin toch negatiever of positiever is. Als er meer positieve stukjes zijn dan er negatieve stukjes zijn, wordt deze zin toch bestempeld als positief. 
 
 \subsubsection{Resultaten}
 \label{imdbdatasetresultatenazure}
@@ -304,7 +304,7 @@ Werden alle zinnen als Engels herkend? De Azure Text Analytics API behaalde een 
 \end{figure}
 \FloatBarrier 
 
-Ten tweede werd er getest of het categoriseren van de reviews uit de dataset juist verloopt. De Azure Text Analytics API kan deze reviews classifieren als positief of negatief. Er werden 376/500 zinnen juist toegekend. Omgerekend is dit 75,5\%. Dit is een matig resultaat, maar zeker niet slecht. 
+Ten tweede werd er getest of het categoriseren van de reviews uit de dataset juist verloopt. De Azure Text Analytics API kan deze reviews classificeren als positief of negatief. Er werden 376/500 zinnen juist toegekend. Omgerekend is dit 75,5\%. Dit is een matig resultaat, maar zeker niet slecht. 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{SentimentAnalysisIMDBResult.PNG}
     \caption{\label{azuresentimentanalysisimdbresults}Sentiment Analysis voor de IMDB dataset in Visual Studio: Resultaten.}
@@ -336,11 +336,11 @@ De aanpak die hier toegepast wordt, kan ook teruggevonden worden in de developer
 
 \textbf{Stap 1}: Setup
 
-Om Google Cloud Platform te gebruiker, is er een account nodig. Daarom is de eerste stap om een account aan te maken. Het enige dat de gebruiker moet doen, is een Visakaart voorzien. Hier wordt geen geld afgehaald, dit is enkel om te bewijzen dat de gebruiker geen robot is. 
+Om Google Cloud Platform te gebruiker, is er een account nodig. Daarom is de eerste stap een account aanmaken. Het enige dat de gebruiker moet doen, is een Visakaart voorzien. Hier wordt geen geld afgehaald, dit is enkel om te bewijzen dat de gebruiker geen robot is. 
 
 Eenmaal het account aangemaakt is, komt men terecht op de homepagina van het platform. Het volgende dat nodig is, is een nieuw project. De verdere setup gebeurt via de Cloud Shell. Dit is een console die gebruikt kan worden binnen het Google Cloud Platform. 
 
-Met behulp van de Cloud Shell wordt de Natural Language API aan het project toegevoegd. 
+Met behulp van de \gls{Cloudshell} wordt de Natural Language API aan het project toegevoegd. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{GoogleAccount.PNG}
@@ -350,7 +350,7 @@ Met behulp van de Cloud Shell wordt de Natural Language API aan het project toeg
 
 \textbf{Stap 2}: Authenticatie
 
-Om het platform te gebruiken, is er natuurlijk authenticatie nodig. Hiervoor moet er een 'key' gegenereerd worden. Dit gebeurt opnieuw via de Cloud Shell console. De commando's die hiervoor gebruikt worden, zijn te vinden in figuur 3.24.
+Om het platform te gebruiken, is er natuurlijk authenticatie nodig. Hiervoor moet er een 'key' gegenereerd worden. Dit gebeurt opnieuw via de \gls{Cloudshell} console. De commando's die hiervoor gebruikt worden, zijn te vinden in figuur \ref{setupgoogleplatform}.
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{SetupGooglePlatform.PNG}
@@ -364,7 +364,7 @@ De laatste stap omvat het opzetten van een console applicatie. Via het commando
 
 dotnet new console -n \{Projectnaam\} 
 
-wordt de applicatie aangemaakt. Hierna moet de Google Cloud Nuget package toegevoegd worden. Dit gebeurt via het commando
+wordt de applicatie aangemaakt. Hierna moet de Google Cloud Nuget \gls{package} toegevoegd worden. Dit gebeurt via het commando
 
 dotnet add package Google.Cloud.Language.V
 
@@ -374,11 +374,11 @@ Nadat alles opgezet is, kan de vereiste code geschreven worden.
 \subsection{Amazon Dataset}
 \label{amazongoogleplatform}
 
-De data werd op dezelfde manier omgezet als bij het testen van de Azure Text Analytics API. Deze omzetting kan gevonden worden van figuur 3.3 tot figuur 3.10.
+De data werd op dezelfde manier omgezet als bij het testen van de Azure Text Analytics API. Deze omzetting kan gevonden worden van figuur \ref{stap1amazon} tot figuur \ref{stap8amazon}.
 
 \subsubsection{Code}
 \label{amazoncodegoogleplatform}
-De code wordt opnieuw geschreven in de klasse Program.cs. Google Cloud Platform werkt met een score die aan elke zin toegekend wordt. Een score tussen -1 en -0.25 betekent dat de tekst negatief is, een score tussen -0.25 en 0.25 betekent een neutrale score en een score tussen 0.25 en 1.0 staat voor een positieve connotatie. Aangezien de Amazon dataset enkel voorbeelden bevat die negatief of positief zijn, zijn de scores verdeeld als volgt: tussen -1 en 0 betekent negatief en tussen 0 en 1 betekent positief. In figuur 3.32 kan de geschreven code teruggevonden worden. Eenmaal alle data geanalyseerd is, komt er een nauwkeurigheid uit. 
+De code wordt opnieuw geschreven in de klasse Program.cs. Google Cloud Platform werkt met een score die aan elke zin toegekend wordt. Een score tussen -1 en -0.25 betekent dat de tekst negatief is, een score tussen -0.25 en 0.25 betekent een neutrale score en een score tussen 0.25 en 1.0 staat voor een positieve connotatie. Aangezien de Amazon dataset enkel voorbeelden bevat die negatief of positief zijn, zijn de scores verdeeld als volgt: tussen -1 en 0 betekent negatief en tussen 0 en 1 betekent positief. In figuur \ref{codeamazon} kan de geschreven code teruggevonden worden. Eenmaal alle data geanalyseerd is, komt er een nauwkeurigheid uit. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{CodeAmazon.PNG}
@@ -389,21 +389,21 @@ De code wordt opnieuw geschreven in de klasse Program.cs. Google Cloud Platform 
 \subsubsection{Resultaten}
 \label{amazonresultatengoogleplatform}
 
-Er werd getest of Google Cloud Platform de zinnen uit de Amazon dataset juist kan categoriseren als positief of negatief. De resultaten hiervoor kunnen in figuur 3.34 teruggevonden worden. Na het analyseren van de zinnen, behaalde het platform een score van 465/500. Omgerekend is dit 93.0\%. Zoals eerder besproken, wordt een score van 80\% of hoger gezien als succesvol. Daarom kan geconcludeerd worden dat Google Coud Platform uitstekende resultaten biedt. Om meer zekerheid aan de lezer te bieden dat Google Cloud Platform een goede keuze is, wordt dit ook met de Twitter Airlines dataset getest. 
+Er werd getest of Google Cloud Platform de zinnen uit de Amazon dataset juist kan categoriseren als positief of negatief. De resultaten hiervoor kunnen in figuur\ref{accurracyAmazon} teruggevonden worden. Na het analyseren van de zinnen, behaalde het platform een score van 465/500. Omgerekend is dit 93.0\%. Zoals eerder besproken, wordt een score van 80\% of hoger gezien als succesvol. Daarom kan geconcludeerd worden dat Google Cloud Platform uitstekende resultaten biedt. Om meer zekerheid aan de lezer te bieden dat Google Cloud Platform een goede keuze is, wordt dit ook met de Twitter Airlines dataset getest. 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{AccuracyAmazonGoogle.PNG}
-    \caption{\label{accuracyTwitter}Google Cloud Platform resultaten voor de Amazon dataset.}
+    \caption{\label{accuracyAmazon}Google Cloud Platform resultaten voor de Amazon dataset.}
 \end{figure}
 \FloatBarrier 
 
 \subsection{Twitter Airlines Dataset}
 \label{twittergoogleplatform}
 
-De data werd op dezelfde manier omgezet als bij het testen van de Azure Text Analytics API. Deze omzetting kan gevonden worden van figuur 3.16 tot figuur 3.19.
+De data werd op dezelfde manier omgezet als bij het testen van de Azure Text Analytics API. Deze omzetting kan gevonden worden van figuur \ref{azurestap1twitter} tot figuur \ref{azurestap4twitter}.
 
 \subsubsection{Code}
 \label{twittercodegoogleplatform}
-Aangezien de Twitte Airlines dataset wel data over de drie categorieën positief, neutraal en negatief bevat, kan Google Cloud Platform hier nauwkeuriger toegepast worden. Zinnen met een score boven de 0.25 krijgen een lineSentiment met waarde 'positief', zinnen met een score lager dan -0.25 krijgen een lineSentiment met waarde 'negatief' en zinnen met een score tussen de -0.25 en 0.25 krijgen 'neutraal'. Eenmaal alle zinnen door de code gegaan zijn, wordt er een nauwkeurigheid berekend op 500. De code kan teruggevonden worden in figuur 3.34.
+Aangezien de Twitte Airlines dataset wel data over de drie categorieën positief, neutraal en negatief bevat, kan Google Cloud Platform hier nauwkeuriger toegepast worden. Zinnen met een score boven de 0.25 krijgen een lineSentiment met waarde 'positief', zinnen met een score lager dan -0.25 krijgen een lineSentiment met waarde 'negatief' en zinnen met een score tussen de -0.25 en 0.25 krijgen 'neutraal'. Eenmaal alle zinnen door de code gegaan zijn, wordt er een nauwkeurigheid berekend op 500. De code kan teruggevonden worden in figuur \ref{codetwitter}.
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{CodeTwitter.PNG}
@@ -413,7 +413,7 @@ Aangezien de Twitte Airlines dataset wel data over de drie categorieën positief
 
 \subsubsection{Resultaten}
 \label{twitterresultatengoogleplatform}
-Er werd getest of Google Cloud Platform de zinnen uit de Twitter Airlines dataset ook juist kan categoriseren als positief, neutraal of negatief. De resultaten hiervoor kunnen in figuur 3.35 teruggevonden worden. Google Cloud Platform behaalde hier een score van 365/500. Omgerekend is dit 73.0\%. Zoals eerder besproken, wordt een score van 80\% of hoger gezien als succesvol. Daarom kan geconcludeerd worden dat Google Coud Platform redelijk goede resultaten biedt. Er werd eerder geconcludeerd dat de Twitter Airlines dataset steeds minder goede resultaten zal behalen omdat de tekst korter is, en de zinnen in een ander formaat staan. 
+Er werd getest of Google Cloud Platform de zinnen uit de Twitter Airlines dataset ook juist kan categoriseren als positief, neutraal of negatief. De resultaten hiervoor kunnen in figuur \ref{accuracytwitter} teruggevonden worden. Google Cloud Platform behaalde hier een score van 365/500. Omgerekend is dit 73.0\%. Zoals eerder besproken, wordt een score van 80\% of hoger gezien als succesvol. Daarom kan geconcludeerd worden dat Google Cloud Platform redelijk goede resultaten biedt. Er werd eerder geconcludeerd dat de Twitter Airlines dataset steeds minder goede resultaten zal behalen omdat de tekst korter is, en de zinnen in een ander formaat staan. 
 
 \begin{figure}[!htbp]
     \includegraphics[width=\textwidth]{AccuracyTwitterGoogle.PNG}
@@ -423,9 +423,9 @@ Er werd getest of Google Cloud Platform de zinnen uit de Twitter Airlines datase
 
 \subsection{IMDB Dataset}
 \label{imdbgoogleplatform}
-De data werd op dezelfde manier omgezet als bij het testen van de Azure Text Analytics API. De omzetting kan gevonden worden van figuur 3.23 tot figuur 3.27. Opnieuw worden zinnen met een score boven de 0 gecategoriseerd als 'positief', en zinnen met een score onder de 0, worden als 'negatief' beoordeeld. Er wordt opnieuw een nauwkeurigheid op 500 berekend.
+De data werd op dezelfde manier omgezet als bij het testen van de Azure Text Analytics API. De omzetting kan gevonden worden van figuur \ref{stap1imdb} tot figuur \ref{stap5imdb}. Opnieuw worden zinnen met een score boven de 0 gecategoriseerd als 'positief', en zinnen met een score onder de 0, worden als 'negatief' beoordeeld. Er wordt opnieuw een nauwkeurigheid op 500 berekend.
 
-De code die gebruikt wordt, is dezelfde als in figuur 3.34.
+De code die gebruikt wordt, is dezelfde als in figuur \ref{codeamazon}.
 
 
 \subsubsection{Resultaten}
